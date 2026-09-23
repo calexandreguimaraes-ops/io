@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plano de Saúde Empresarial (CNPJ) no Rio de Janeiro | Carlos Alexandre</title>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18413773557"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18413773557');
+</script>
+
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', Arial, sans-serif; }
+  body { background:#f4f7fa; color:#1a1a1a; scroll-behavior:smooth; }
+
+  header {
+    background: linear-gradient(135deg, #0057a8, #00a651);
+    color:#fff;
+    text-align:center;
+    padding:35px 20px 40px;
+  }
+  header h1 { font-size:1.9rem; margin:14px 0 14px; line-height:1.3; }
+  header p { font-size:1.05rem; max-width:700px; margin:0 auto 18px; opacity:0.95; }
+
+  .cta-btn {
+    display:inline-block;
+    background:#25D366;
+    color:#fff;
+    text-decoration:none;
+    padding:16px 32px;
+    border-radius:50px;
+    font-size:1.1rem;
+    font-weight:bold;
+    box-shadow:0 4px 12px rgba(0,0,0,0.2);
+    transition:transform 0.2s;
+    border:none;
+    cursor:pointer;
+    margin:6px 0;
+  }
+  .cta-btn:hover { transform:scale(1.05); }
+
+  section { max-width:900px; margin:0 auto; padding:30px 20px; }
+
+  .perfil {
+    background:#fff;
+    border-radius:12px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.06);
+    text-align:center;
+  }
+  .perfil img {
+    width:120px; height:120px; object-fit:cover; border-radius:50%;
+    margin-bottom:15px; border:3px solid #0057a8;
+  }
+  .perfil h2 { color:#0057a8; margin-bottom:12px; }
+
+  .perfil-whatsapp {
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    background:#25D366;
+    color:#fff;
+    text-decoration:none;
+    padding:10px 20px;
+    border-radius:20px;
+    font-weight:bold;
+    font-size:1rem;
+    margin-bottom:18px;
+    box-shadow:0 3px 8px rgba(0,0,0,0.15);
+    transition:transform 0.2s;
+  }
+  .perfil-whatsapp:hover { transform:scale(1.05); }
+
+  .perfil p { max-width:600px; margin:0 auto 6px; font-size:1rem; line-height:1.6; }
+  .perfil .legenda-operadoras { font-size:0.9rem; color:#666; margin-bottom:12px; }
+
+  .logo-parceiro {
+    max-width:160px;
+    height:auto;
+    border:none;
+    border-radius:0;
+    margin:10px auto;
+    display:block;
+  }
+
+  .operadoras {
+    display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin-top:10px;
+  }
+  .operadoras span {
+    background:#e8f4ff; color:#0057a8; padding:6px 14px;
+    border-radius:20px; font-size:0.85rem; font-weight:bold;
+  }
+
+  .beneficios { background:#fff; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.06); }
+  .beneficios h2 {
+    text-align:center; color:#0057a8; margin-bottom:20px; font-size:1.6rem;
+  }
+
+  .grid {
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap:16px;
+    padding:0 10px;
+    justify-content:center;
+  }
+  .card {
+    background:#f0f7ff;
+    border-left:4px solid #00a651;
+    padding:16px 14px;
+    border-radius:8px;
+  }
+  .card .icone { font-size:1.3rem; margin-bottom:6px; }
+  .card h3 { color:#0057a8; margin-bottom:6px; font-size:0.95rem; line-height:1.3; }
+  .card p { font-size:0.85rem; color:#333; line-height:1.4; }
+
+  @media (max-width:700px) {
+    .grid {
+      grid-template-columns: repeat(2, minmax(0, 220px));
+      justify-content:center;
+    }
+  }
+  @media (max-width:380px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .guia-resumo {
+    background:#fff;
+    border-radius:12px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.06);
+    text-align:center;
+    border-top:4px solid #00a651;
+  }
+  .guia-resumo-icone { font-size:2rem; margin-bottom:8px; }
+  .guia-resumo h2 { color:#0057a8; font-size:1.4rem; margin-bottom:10px; line-height:1.4; }
+  .guia-resumo-sub {
+    color:#666;
+    font-size:0.92rem;
+    max-width:600px;
+    margin:0 auto 20px;
+  }
+  .guia-resumo-cta-texto {
+    max-width:560px;
+    margin:18px auto 16px;
+    font-size:0.95rem;
+    color:#333;
+  }
+  .guia-resumo-cta-texto strong { color:#00a651; }
+
+  .acordeao {
+    background:#fff;
+    border-radius:12px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.06);
+    overflow:hidden;
+  }
+  .acordeao-cabecalho {
+    width:100%;
+    background:none;
+    border:none;
+    padding:22px 25px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    cursor:pointer;
+    text-align:left;
+  }
+  .acordeao-cabecalho h2 {
+    color:#0057a8;
+    font-size:1.4rem;
+    margin-bottom:4px;
+  }
+  .acordeao-cabecalho .resumo {
+    font-size:0.9rem;
+    color:#666;
+    font-weight:normal;
+  }
+  .acordeao-seta {
+    font-size:1.3rem;
+    color:#0057a8;
+    transition:transform 0.3s ease;
+    flex-shrink:0;
+    margin-left:15px;
+  }
+  .acordeao.aberto .acordeao-seta { transform:rotate(180deg); }
+  .acordeao-conteudo {
+    max-height:0;
+    overflow:hidden;
+    transition:max-height 0.4s ease;
+    padding:0 25px;
+  }
+  .acordeao.aberto .acordeao-conteudo {
+    padding:0 25px 25px;
+  }
+
+  .passos {
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap:20px;
+    padding-top:10px;
+  }
+  .passo { text-align:center; }
+  .passo .numero {
+    width:40px; height:40px; line-height:40px; border-radius:50%;
+    background:#0057a8; color:#fff; font-weight:bold; margin:0 auto 10px;
+  }
+  .passo h3 { color:#0057a8; margin-bottom:6px; font-size:1rem; }
+  .passo p { font-size:0.9rem; color:#333; }
+
+  .destaque {
+    background:#e8f4ff; border-radius:8px; padding:20px; text-align:center; margin-top:20px;
+  }
+  .destaque strong { display:block; color:#0057a8; margin-bottom:6px; }
+
+  .sobre-texto p { margin-bottom:14px; font-size:1rem; line-height:1.6; color:#333; }
+
+  .faq-item {
+    border-bottom:1px solid #eee;
+    padding:14px 0;
+  }
+  .faq-item:last-child { border-bottom:none; }
+  .faq-pergunta {
+    width:100%;
+    background:none;
+    border:none;
+    text-align:left;
+    font-weight:bold;
+    color:#0057a8;
+    font-size:1rem;
+    cursor:pointer;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
+  .faq-resposta {
+    max-height:0;
+    overflow:hidden;
+    transition:max-height 0.3s ease;
+    font-size:0.95rem;
+    color:#333;
+  }
+  .faq-item.aberto .faq-resposta { padding-top:10px; }
+  .faq-seta { transition:transform 0.3s ease; }
+  .faq-item.aberto .faq-seta { transform:rotate(180deg); }
+  .aviso-final { text-align:center; font-size:0.85rem; color:#666; margin-top:14px; }
+
+  .quiz-section {
+    background:#0057a8;
+    border-radius:12px;
+    padding:40px 25px;
+  }
+  .quiz-container {
+    max-width:520px;
+    margin:0 auto;
+    color:#fff;
+  }
+  .quiz-titulo-secao { text-align:center; margin-bottom:22px; }
+  .quiz-titulo-secao h2 { font-size:1.5rem; margin-bottom:8px; }
+  .quiz-titulo-secao p { font-size:0.95rem; opacity:0.9; }
+
+  .quiz-progress {
+    width:100%;
+    height:8px;
+    background:rgba(255,255,255,0.25);
+    border-radius:10px;
+    overflow:hidden;
+    margin-bottom:28px;
+  }
+  .quiz-progress-bar {
+    height:100%;
+    width:0%;
+    background:#25D366;
+    transition:width 0.4s ease;
+  }
+  .quiz-step {
+    display:none;
+    text-align:center;
+    animation:fadeIn 0.4s ease;
+  }
+  .quiz-step.active { display:block; }
+  @keyframes fadeIn {
+    from { opacity:0; transform:translateY(8px); }
+    to { opacity:1; transform:translateY(0); }
+  }
+  .quiz-step h2 { font-size:1.5rem; margin-bottom:10px; }
+  .quiz-question { font-size:1.15rem; font-weight:bold; margin-bottom:20px; }
+  .quiz-options {
+    display:flex; flex-direction:column; gap:12px;
+  }
+  .quiz-options.grid-2 {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+  }
+  .quiz-btn {
+    background:#fff;
+    color:#0057a8;
+    border:2px solid #fff;
+    padding:15px;
+    border-radius:10px;
+    font-size:1rem;
+    font-weight:bold;
+    cursor:pointer;
+    transition:all 0.2s;
+  }
+  .quiz-btn:hover { background:#e8f4ff; transform:scale(1.02); }
+  .quiz-btn.selected { background:#25D366; border-color:#25D366; color:#fff; }
+
+  .quiz-loading-bar {
+    width:100%;
+    height:14px;
+    background:rgba(255,255,255,0.25);
+    border-radius:10px;
+    overflow:hidden;
+    margin-top:10px;
+  }
+  .quiz-loading-fill {
+    height:100%;
+    width:0%;
+    background:#25D366;
+    transition:width 2.2s ease;
+  }
+
+  .quiz-result-icon {
+    width:60px; height:60px; line-height:60px;
+    background:#25D366; color:#fff; font-size:1.8rem;
+    border-radius:50%; margin:0 auto 15px;
+  }
+  .quiz-result-text { font-size:1rem; margin-bottom:22px; opacity:0.95; }
+  .quiz-step input, .quiz-step textarea {
+    width:100%;
+    padding:14px;
+    border-radius:8px;
+    border:none;
+    font-size:1rem;
+    margin-bottom:12px;
+    font-family:inherit;
+  }
+  .quiz-step textarea { resize:vertical; min-height:70px; }
+  .idade-label {
+    text-align:left;
+    font-size:0.85rem;
+    opacity:0.9;
+    margin-bottom:4px;
+  }
+  .quiz-btn-final {
+    width:100%;
+    background:#25D366;
+    color:#fff;
+    border:none;
+    padding:16px;
+    border-radius:8px;
+    font-size:1rem;
+    font-weight:bold;
+    cursor:pointer;
+    margin-top:6px;
+    transition:transform 0.2s;
+    line-height:1.3;
+  }
+  .quiz-btn-final:hover { transform:scale(1.03); }
+  .privacidade { font-size:0.8rem; opacity:0.8; margin-top:12px; }
+
+  .quiz-back {
+    background:none;
+    border:none;
+    color:#fff;
+    opacity:0.8;
+    font-size:0.85rem;
+    margin-top:16px;
+    cursor:pointer;
+    text-decoration:underline;
+  }
+
+  footer {
+    text-align:center;
+    padding:22px 20px;
+    background:#003b73;
+    color:#dce8f5;
+    font-size:0.9rem;
+  }
+  footer p { margin-bottom:6px; }
+
+  .whatsapp-float {
+    position:fixed;
+    bottom:16px;
+    left:16px;
+    background:#25D366;
+    color:#fff;
+    border-radius:50px;
+    padding:14px 18px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    box-shadow:0 4px 14px rgba(0,0,0,0.3);
+    text-decoration:none;
+    font-weight:bold;
+    z-index:999;
+    animation:pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0% { box-shadow:0 0 0 0 rgba(37,211,102,0.5); }
+    70% { box-shadow:0 0 0 12px rgba(37,211,102,0); }
+    100% { box-shadow:0 0 0 0 rgba(37,211,102,0); }
+  }
+</style>
+</head>
+<body>
+
+  <header>
+    <h1>Plano de Saúde/Odontológico Empresarial no Rio de Janeiro</h1>
+    <p>Contrate ou migre seu plano com orientação personalizada. Compare alternativas para CNPJ Ltda - ME, MEI, e Individual.</p>
+    <a class="cta-btn" href="#cotacao">Simulação Online + Bônus</a>
+  </header>
+
+  <section class="perfil">
+    <img src="carlos-alexandre.jpg" alt="Foto de Carlos Alexandre, corretor de planos de saúde">
+    <h2>Carlos Alexandre</h2>
+    <p>Corretor parceiro da JC Luz Corretora de Seguros</p>
+
+    <a class="perfil-whatsapp" href="https://wa.me/5521985112985" target="_blank" rel="noopener">
+      💬 Fale comigo
+    </a>
+
+    <img src="LOGO JC LUZ.jpg" alt="JC Luz Corretora de Seguros" class="logo-parceiro">
+    <p class="legenda-operadoras">Trabalhamos com as principais operadoras do mercado, atendendo empresas e famílias em todo o estado do Rio de Janeiro.</p>
+    <div class="operadoras">
+      <span>Bradesco Saúde</span>
+      <span>SulAmérica</span>
+      <span>Porto Saúde</span>
+      <span>Amil</span>
+      <span>Hapvida NotreDame</span>
+      <span>Assim Saúde</span>
+      <span>Leve Saúde</span>
+      <span>MedSênior</span>
+      <span>PreventSênior</span>
+      <span>Klini Saúde</span>
+      <span>Unimed Leste</span>
+      <span>Odontoprev</span>
+      <span>Cemeru</span>
+    </div>
+  </section>
+
+  <section class="guia-resumo">
+    <div class="guia-resumo-icone">📘</div>
+    <h2>Conclua a simulação online e receba gratuitamente junto com a sua cotação, o Guia Inteligente de Planos de Saúde.</h2>
+    <p class="guia-resumo-sub">Um material baseado nas normas oficiais da ANS, para você entender exatamente o que está contratando antes de assinar qualquer proposta.</p>
+    <div class="grid">
+      <div class="card">
+        <div class="icone">🧭</div>
+        <h3>Escolhendo o plano certo</h3>
+        <p>Tipos de contratação, abrangência geográfica e segmentação assistencial ideal para o seu caso.</p>
+      </div>
+      <div class="card">
+        <div class="icone">⏳</div>
+        <h3>Carências e doenças preexistentes</h3>
+        <p>Prazos oficiais de carência e regras da Cobertura Parcial Temporária (CPT).</p>
+      </div>
+      <div class="card">
+        <div class="icone">💳</div>
+        <h3>Preço, reajustes e coparticipação</h3>
+        <p>Como funcionam os reajustes anuais e o que muda quando o plano tem coparticipação.</p>
+      </div>
+      <div class="card">
+        <div class="icone">📑</div>
+        <h3>Contratação, direitos e cancelamento</h3>
+        <p>Seus direitos e deveres, portabilidade de carências e canais oficiais da ANS.</p>
+      </div>
+    </div>
+    <a class="cta-btn" href="#cotacao">Quero meu Bônus: simulação + Guia</a>
+  </section>
+
+  <section class="beneficios">
+    <h2>Por que contratar um plano pelo CNPJ?</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="icone">💰</div>
+        <h3>Valores mais acessíveis</h3>
+        <p>Mensalidades geralmente mais baixas que planos individuais equivalentes.</p>
+      </div>
+      <div class="card">
+        <div class="icone">📋</div>
+        <h3>Menos carências</h3>
+        <p>Carências reduzidas ou até isentas, dependendo da operadora e quantidade de vidas.</p>
+      </div>
+      <div class="card">
+        <div class="icone">🏢</div>
+        <h3>Para CNPJ e MEI</h3>
+        <p>Todas as operadoras comercializam para CNPJ ativo, inclusive MEI, mas nem todas comercializam para pessoa física.</p>
+      </div>
+      <div class="card">
+        <div class="icone">🤝</div>
+        <h3>Assessoria gratuita</h3>
+        <p>Comparo as opções do mercado e te ajudo a escolher o melhor custo-benefício, sem custo adicional.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="acordeao" id="acordeaoComoFunciona">
+      <button class="acordeao-cabecalho" onclick="toggleAcordeao('acordeaoComoFunciona')">
+        <div>
+          <h2>Como funciona</h2>
+          <p class="resumo">Veja o passo a passo para contratar seu plano</p>
+        </div>
+        <span class="acordeao-seta">▼</span>
+      </button>
+      <div class="acordeao-conteudo">
+        <div class="passos">
+          <div class="passo">
+            <div class="numero">1</div>
+            <h3>Simulação</h3>
+            <p>Você responde algumas perguntas rápidas sobre seu perfil.</p>
+          </div>
+          <div class="passo">
+            <div class="numero">2</div>
+            <h3>Comparação</h3>
+            <p>Eu comparo as opções entre as principais operadoras do mercado.</p>
+          </div>
+          <div class="passo">
+            <div class="numero">3</div>
+            <h3>Proposta</h3>
+            <p>Você recebe a cotação de preços, o Guia Inteligente e tira dúvidas diretamente comigo.</p>
+          </div>
+          <div class="passo">
+            <div class="numero">4</div>
+            <h3>Contratação</h3>
+            <p>Cuido de toda a parte burocrática até a ativação do seu plano.</p>
+          </div>
+        </div>
+        <div class="destaque">
+          <strong>Atendimento 100% consultivo</strong>
+          Sem pressão, sem letra miúda. Você decide com todas as informações em mãos.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="acordeao" id="acordeaoSobre">
+      <button class="acordeao-cabecalho" onclick="toggleAcordeao('acordeaoSobre')">
+        <div>
+          <h2>Sobre o corretor</h2>
+          <p class="resumo">Conheça um pouco da minha trajetória</p>
+        </div>
+        <span class="acordeao-seta">▼</span>
+      </button>
+      <div class="acordeao-conteudo">
+        <div class="sobre-texto">
+          <p>Sou corretor de planos de saúde parceiro da JC Luz Corretora de Seguros, atuando no Rio de Janeiro com foco em atendimento próximo e consultivo.</p>
+          <p>Meu trabalho é te ajudar a entender as opções disponíveis no mercado, sem enrolação, para que você tome a melhor decisão para você, sua família ou sua empresa.</p>
+        </div>
+        <a class="cta-btn" href="https://wa.me/5521985112985" target="_blank" rel="noopener">Falar com Carlos</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="acordeao" id="acordeaoFaq">
+      <button class="acordeao-cabecalho" onclick="toggleAcordeao('acordeaoFaq')">
+        <div>
+          <h2>Perguntas frequentes</h2>
+          <p class="resumo">Tire suas principais dúvidas antes de contratar</p>
+        </div>
+        <span class="acordeao-seta">▼</span>
+      </button>
+      <div class="acordeao-conteudo">
+        <div class="faq-item">
+          <button class="faq-pergunta" onclick="toggleFaq(this)">
+            Quanto tempo o CNPJ precisa estar ativo para contratar um plano PME?
+            <span class="faq-seta">▼</span>
+          </button>
+          <div class="faq-resposta">
+            <p>Os planos empresariais exigem 6 meses para MEI e 30 dias para Ltda ou ME.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-pergunta" onclick="toggleFaq(this)">
+            Posso incluir minha família no plano CNPJ?
+            <span class="faq-seta">▼</span>
+          </button>
+          <div class="faq-resposta">
+            <p>Depende da operadora e do tipo de contrato, mas em muitos casos sim, é possível incluir dependentes.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-pergunta" onclick="toggleFaq(this)">
+            Quanto tempo leva para o plano ficar ativo?
+            <span class="faq-seta">▼</span>
+          </button>
+          <div class="faq-resposta">
+            <p>Normalmente entre 5 e 15 dias úteis após o envio da documentação completa, variando conforme a operadora.</p>
+          </div>
+        </div>
+        <p class="aviso-final">Ainda com dúvidas? Fale comigo diretamente pelo WhatsApp.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="cotacao" class="quiz-section">
+    <div class="quiz-container">
+      <div class="quiz-titulo-secao">
+        <h2>Simulador de Plano de Saúde</h2>
+        <p>Responda 4 perguntas rápidas e receba sua cotação personalizada + o Guia Inteligente de Planos de Saúde, de presente.</p>
+      </div>
+
+      <div class="quiz-progress">
+        <div class="quiz-progress-bar" id="quizProgressBar"></div>
+      </div>
+
+      <div class="quiz-step active" data-step="1">
+        <p class="quiz-question">Qual é o seu perfil?</p>
+        <div class="quiz-options">
+          <button class="quiz-btn" data-field="perfil" data-value="CNPJ / Ltda ou ME">CNPJ / Ltda ou ME</button>
+          <button class="quiz-btn" data-field="perfil" data-value="CNPJ MEI">CNPJ MEI</button>
+          <button class="quiz-btn" data-field="perfil" data-value="Pessoa Física">Pessoa Física</button>
+        </div>
+      </div>
+
+      <div class="quiz-step" data-step="2">
+        <p class="quiz-question">Quantas pessoas serão incluídas?</p>
+        <div class="quiz-options">
+          <button class="quiz-btn" data-field="quantidade" data-value="1 pessoa" data-qtd="1">1 pessoa</button>
+          <button class="quiz-btn" data-field="quantidade" data-value="2 pessoas" data-qtd="2">2 pessoas</button>
+          <button class="quiz-btn" data-field="quantidade" data-value="3 a 5 pessoas" data-qtd="5">3 a 5 pessoas</button>
+          <button class="quiz-btn" data-field="quantidade" data-value="+ de 5 pessoas" data-qtd="0">+ de 5 pessoas</button>
+        </div>
+        <button class="quiz-back" data-back="1">Voltar</button>
+      </div>
+
+      <div class="quiz-step" data-step="3">
+        <p class="quiz-question">Em qual município você está?</p>
+        <div class="quiz-options grid-2">
+          <button class="quiz-btn" data-field="municipio" data-value="Araruama">Araruama</button>
+          <button class="quiz-btn" data-field="municipio" data-value="Armação dos Búzios">Armação dos Búzios</button>
+          <button class="quiz-btn" data-field="municipio" data-value="Belford Roxo">Belford Roxo</button>
+          <button class="quiz-btn" data-field="municipio" data-value="Cabo Frio">Cabo Frio</button>
+          <button class="quiz-btn" data-field="municipio" data-value="Cachoeiras de Macacu">Cachoeiras de Macacu</button>
+          <button class="quiz-btn" data-field="municipio" data-value="Campos dos Goytacazes">Campos dos Goytacazes</button>
+          <button class="quiz-btn" data-field="municipio" data-value="Duque de Caxias">Duque de Caxias</button>
+          <button class="quiz-btn" data-field="municipio" data-value="Itaboraí">Itaboraí</button>
+          <button class="quiz-btn" data-field="municipio" data-value="Macaé">Macaé</button>
+          <button class="quiz-btn" data-field="municipio" data-value="Magé">Magé</button>
+          <button class="quiz-btn" data-field="municipio" data-value="Niterói">Niterói</button>
+          <button class="quiz-btn" data-field="municipio" data-value="Nilópolis">Nilópolis</button>
+          <button class="quiz-btn" data-field="municipio" data-value="Nova Friburgo">Nova Friburgo</button>
+          <button class="quiz-btn" data-field="municipio" data-value="Petrópolis">Petrópolis</button>
+          <button class="quiz-btn" data-field="municipio" data-value="Rio das Ostras">Rio das Ostras</button>
+          <button class="quiz-btn" data-field="municipio" data-value="Rio de Janeiro">Rio de Janeiro</button>
+          <button class="quiz-btn" data-field="municipio" data-value="São Gonçalo">São Gonçalo</button>
+          <button class="quiz-btn" data-field="municipio" data-value="São João de Meriti">São João de Meriti</button>
+          <button class="quiz-btn" data-field="municipio" data-value="Teresópolis">Teresópolis</button>
+        </div>
+        <button class="quiz-back" data-back="2">Voltar</button>
+      </div>
+
+      <div class="quiz-step" data-step="4">
+        <p class="quiz-question" id="tituloIdade">Agora, informe a idade</p>
+        <div id="idadesContainer"></div>
+        <button class="quiz-btn-final" id="idadesContinuar" style="margin-top:8px;">Continuar</button>
+        <button class="quiz-back" data-back="3">Voltar</button>
+      </div>
+
+      <div class="quiz-step" data-step="5">
+        <p class="quiz-question">Calculando as melhores opções para o seu perfil...</p>
+        <div class="quiz-loading-bar">
+          <div class="quiz-loading-fill" id="loadingFill"></div>
+        </div>
+      </div>
+
+      <div class="quiz-step" data-step="6">
+        <div class="quiz-result-icon">✓</div>
+        <h2>✅ Simulação concluída com sucesso!</h2>
+        <p class="quiz-result-text">Estamos gerando as melhores opções para o seu perfil! Libere sua cotação personalizada e o seu Bônus clicando no botão abaixo.</p>
+        <p class="quiz-question">Em nome de quem devo preparar sua cotação?</p>
+        <input type="text" id="quizNome" placeholder="Seu nome">
+        <button class="quiz-btn-final" id="quizSubmit">RECEBER COTAÇÃO + GUIA GRÁTIS</button>
+        <p class="privacidade">Seus dados serão utilizados apenas para contato e cotação, conforme a LGPD.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <p>Carlos Alexandre &copy; 2026 — Corretor de Planos de Saúde</p>
+    <p>Parceiro JC Luz Corretora de Seguros | Rio de Janeiro</p>
+    <p>WhatsApp: (21) 98511-2985 | alexandrecorretor1000@gmail.com</p>
+  </footer>
+
+  <a class="whatsapp-float"
+     href="https://wa.me/5521985112985?text=Ol%C3%A1%20Carlos%2C%20vim%20pela%20landing%20page%20e%20quero%20uma%20cota%C3%A7%C3%A3o."
+     target="_blank" rel="noopener"
+     onclick="gtag('event', 'conversion', {'send_to': 'AW-18413773557/tu5QCLaXu_UcEPXFr8xE'});">
+    💬 WhatsApp
+  </a>
+
+  <script>
+    // ===== ACORDEÕES =====
+    function toggleAcordeao(id) {
+      const el = document.getElementById(id);
+      const conteudo = el.querySelector('.acordeao-conteudo');
+      const estaAberto = el.classList.contains('aberto');
+
+      if (estaAberto) {
+        conteudo.style.maxHeight = null;
+        el.classList.remove('aberto');
+      } else {
+        el.classList.add('aberto');
+        conteudo.style.maxHeight = conteudo.scrollHeight + 'px';
+      }
+    }
+
+    function toggleFaq(btn) {
+      const item = btn.closest('.faq-item');
+      const resposta = item.querySelector('.faq-resposta');
+      const estaAberto = item.classList.contains('aberto');
+
+      if (estaAberto) {
+        resposta.style.maxHeight = null;
+        item.classList.remove('aberto');
+      } else {
+        item.classList.add('aberto');
+        resposta.style.maxHeight = resposta.scrollHeight + 'px';
+      }
+    }
+
+    // ===== QUIZ =====
+    const respostas = {};
+    const totalSteps = 6;
+    let currentStep = 1;
+
+    const progressBar = document.getElementById('quizProgressBar');
+    const loadingFill = document.getElementById('loadingFill');
+    const idadesContainer = document.getElementById('idadesContainer');
+    const tituloIdade = document.getElementById('tituloIdade');
+
+    function ordinal(n) {
+      return n + 'ª';
+    }
+
+    function updateProgress() {
+      const percent = ((currentStep - 1) / (totalSteps - 1)) * 100;
+      progressBar.style.width = percent + '%';
+    }
+
+    function goToStep(step) {
+      document.querySelectorAll('.quiz-step').forEach(el => el.classList.remove('active'));
+      document.querySelector(`.quiz-step[data-step="${step}"]`).classList.add('active');
+      currentStep = step;
+      updateProgress();
+
+      if (step === 5) {
+        loadingFill.style.width = '0%';
+        setTimeout(() => { loadingFill.style.width = '100%'; }, 100);
+        setTimeout(() => { goToStep(6); }, 2200);
+      }
+    }
+
+    function gerarCamposIdade(qtd) {
+      idadesContainer.innerHTML = '';
+
+      if (qtd === 1) {
+        tituloIdade.textContent = 'Agora, informe sua idade';
+        const input = document.createElement('input');
+        input.type = 'number';
+        input.min = '0';
+        input.max = '110';
+        input.placeholder = 'Sua idade';
+        input.className = 'idade-input';
+        idadesContainer.appendChild(input);
+
+      } else if (qtd > 1) {
+        tituloIdade.textContent = 'Agora, informe a idade de cada pessoa';
+        for (let i = 1; i <= qtd; i++) {
+          const label = document.createElement('p');
+          label.className = 'idade-label';
+          label.textContent = `Idade da ${ordinal(i)} pessoa`;
+          const input = document.createElement('input');
+          input.type = 'number';
+          input.min = '0';
+          input.max = '110';
+          input.placeholder = `Idade da ${ordinal(i)} pessoa`;
+          input.className = 'idade-input';
+          idadesContainer.appendChild(label);
+          idadesContainer.appendChild(input);
+        }
+
+      } else {
+        tituloIdade.textContent = 'Agora, informe a idade de cada pessoa';
+        const label = document.createElement('p');
+        label.className = 'idade-label';
+        label.textContent = 'Informe as idades de cada pessoa, separadas por vírgula';
+        const textarea = document.createElement('textarea');
+        textarea.placeholder = 'Ex: 25, 30, 34, 41, 52, 60';
+        textarea.id = 'idadesLivre';
+        idadesContainer.appendChild(label);
+        idadesContainer.appendChild(textarea);
+      }
+    }
+
+    document.querySelectorAll('.quiz-btn[data-field]').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const field = this.dataset.field;
+        const value = this.dataset.value;
+        respostas[field] = value;
+
+        const parent = this.closest('.quiz-options');
+        parent.querySelectorAll('.quiz-btn').forEach(b => b.classList.remove('selected'));
+        this.classList.add('selected');
+
+        if (field === 'quantidade') {
+          respostas.qtdNumero = parseInt(this.dataset.qtd);
+        }
+
+        setTimeout(() => {
+          const next = currentStep + 1;
+          if (next === 4) {
+            gerarCamposIdade(respostas.qtdNumero || 0);
+          }
+          goToStep(next);
+        }, 300);
+      });
+    });
+
+    document.getElementById('idadesContinuar').addEventListener('click', function() {
+      const inputs = idadesContainer.querySelectorAll('.idade-input');
+      if (inputs.length > 0) {
+        const idades = Array.from(inputs).map(i => i.value || 'não informado');
+        respostas.idades = idades.join(', ');
+      } else {
+        const livre = document.getElementById('idadesLivre');
+        respostas.idades = livre.value || 'não informado';
+      }
+      goToStep(5);
+    });
+
+    document.querySelectorAll('.quiz-back').forEach(btn => {
+      btn.addEventListener('click', function() {
+        goToStep(parseInt(this.dataset.back));
+      });
+    });
+
+    // ===== BOTÃO FINAL: RECEBER COTAÇÃO + GUIA GRÁTIS =====
+    document.getElementById('quizSubmit').addEventListener('click', function() {
+      const nome = document.getElementById('quizNome').value || 'Cliente';
+
+      let mensagem = `Olá Carlos, fiz o simulador no site e meu nome é ${nome}.`;
+      mensagem += ` Perfil: ${respostas.perfil || 'não informado'}.`;
+      mensagem += ` Quantidade de pessoas: ${respostas.quantidade || 'não informado'}.`;
+      mensagem += ` Município: ${respostas.municipio || 'não informado'}.`;
+      mensagem += ` Idades das vidas: ${respostas.idades || 'não informado'}.`;
+      mensagem += ` Gostaria de receber a cotação de preços e o Guia Inteligente de Planos de Saúde.`;
+
+      gtag('event', 'conversion', {
+        'send_to': 'AW-18413773557/tu5QCLaXu_UcEPXFr8xE'
+      });
+
+      const url = `https://wa.me/5521985112985?text=${encodeURIComponent(mensagem)}`;
+      window.open(url, '_blank');
+    });
+
+    updateProgress();
+  </script>
+
+</body>
+</html>
