@@ -129,34 +129,12 @@
     }
   }
 
-  .guia-resumo {
-    background:#fff;
-    border-radius:12px;
-    box-shadow:0 2px 10px rgba(0,0,0,0.06);
-    text-align:center;
-    border-top:4px solid #00a651;
-  }
-  .guia-resumo-icone { font-size:2rem; margin-bottom:8px; }
-  .guia-resumo h2 { color:#0057a8; font-size:1.4rem; margin-bottom:10px; line-height:1.4; }
-  .guia-resumo-sub {
-    color:#666;
-    font-size:0.92rem;
-    max-width:600px;
-    margin:0 auto 20px;
-  }
-  .guia-resumo-cta-texto {
-    max-width:560px;
-    margin:18px auto 16px;
-    font-size:0.95rem;
-    color:#333;
-  }
-  .guia-resumo-cta-texto strong { color:#00a651; }
-
   .acordeao {
     background:#fff;
     border-radius:12px;
     box-shadow:0 2px 10px rgba(0,0,0,0.06);
     overflow:hidden;
+    margin-bottom:20px;
   }
   .acordeao-cabecalho {
     width:100%;
@@ -197,6 +175,63 @@
     padding:0 25px 25px;
   }
 
+  .guia-secao-conteudo {
+    font-size:0.95rem;
+    line-height:1.7;
+    color:#333;
+  }
+  .guia-secao-conteudo h3 {
+    color:#0057a8;
+    margin-top:18px;
+    margin-bottom:10px;
+    font-size:1.1rem;
+    font-weight:bold;
+  }
+  .guia-secao-conteudo p {
+    margin-bottom:12px;
+  }
+  .guia-secao-conteudo strong {
+    color:#00a651;
+  }
+  .guia-secao-conteudo ul, .guia-secao-conteudo ol {
+    margin-left:20px;
+    margin-bottom:12px;
+  }
+  .guia-secao-conteudo li {
+    margin-bottom:8px;
+  }
+  .guia-secao-conteudo .destaque {
+    background:#e8f4ff;
+    border-left:4px solid #00a651;
+    padding:16px;
+    border-radius:6px;
+    margin:16px 0;
+  }
+  .guia-secao-conteudo .aviso {
+    background:#fff3cd;
+    border-left:4px solid #ff9800;
+    padding:16px;
+    border-radius:6px;
+    margin:16px 0;
+  }
+  .guia-secao-conteudo .tabela-carencias {
+    width:100%;
+    border-collapse:collapse;
+    margin:16px 0;
+    background:#f0f7ff;
+  }
+  .guia-secao-conteudo .tabela-carencias th,
+  .guia-secao-conteudo .tabela-carencias td {
+    border:1px solid #0057a8;
+    padding:12px;
+    text-align:left;
+  }
+  .guia-secao-conteudo .tabela-carencias th {
+    background:#0057a8;
+    color:#fff;
+    font-weight:bold;
+  }
+
   .passos {
     display:grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -216,7 +251,7 @@
   }
   .destaque strong { display:block; color:#0057a8; margin-bottom:6px; }
 
-  .sobre-texto p { margin-bottom:14px; font-size:1rem; line-height:1.6; color:#333; }
+  .sobre-texto p { margin-bottom:14px; font-size:1rem; line-height:1.6; }
 
   .faq-item {
     border-bottom:1px solid #eee;
@@ -409,11 +444,10 @@
 </style>
 </head>
 <body>
-
   <header>
     <h1>Plano de Saúde/Odontológico Empresarial no Rio de Janeiro</h1>
     <p>Contrate ou migre seu plano com orientação personalizada. Compare alternativas para CNPJ Ltda - ME, MEI, e Individual.</p>
-    <a class="cta-btn" href="#cotacao">Simulação Online + Bônus</a>
+    <a class="cta-btn" href="#cotacao">Simulação Online</a>
   </header>
 
   <section class="perfil">
@@ -421,9 +455,9 @@
     <h2>Carlos Alexandre</h2>
     <p>Corretor parceiro da JC Luz Corretora de Seguros</p>
 
-   <a href="https://wa.me/5521985112985" onclick="gtag('event', 'conversion', {'send_to': 'AW-18413773557/hpcKCObT2oIdEPXFr8xE'});" style="background-color: #25D366; color: #ffffff; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 18px; font-weight: bold; border-radius: 50px; box-shadow: 0px 4px 6px rgba(0,0,0,0.1); cursor: pointer;" class="btn-whatsapp">
-  💬 Falar com o Corretor
-</a>
+    <a class="perfil-whatsapp" href="https://wa.me/5521985112985" target="_blank" rel="noopener">
+      💬 Fale comigo
+    </a>
 
     <img src="LOGO JC LUZ.jpg" alt="JC Luz Corretora de Seguros" class="logo-parceiro">
     <p class="legenda-operadoras">Trabalhamos com as principais operadoras do mercado, atendendo empresas e famílias em todo o estado do Rio de Janeiro.</p>
@@ -444,33 +478,239 @@
     </div>
   </section>
 
-  <section class="guia-resumo">
-    <div class="guia-resumo-icone">📘</div>
-    <h2>Conclua a simulação online e receba gratuitamente junto com a sua cotação, o Guia Inteligente de Planos de Saúde.</h2>
-    <p class="guia-resumo-sub">Um material baseado nas normas oficiais da ANS, para você entender exatamente o que está contratando antes de assinar qualquer proposta.</p>
-    <div class="grid">
-      <div class="card">
-        <div class="icone">🧭</div>
-        <h3>Escolhendo o plano certo</h3>
-        <p>Tipos de contratação, abrangência geográfica e segmentação assistencial ideal para o seu caso.</p>
-      </div>
-      <div class="card">
-        <div class="icone">⏳</div>
-        <h3>Carências e doenças preexistentes</h3>
-        <p>Prazos oficiais de carência e regras da Cobertura Parcial Temporária (CPT).</p>
-      </div>
-      <div class="card">
-        <div class="icone">💳</div>
-        <h3>Preço, reajustes e coparticipação</h3>
-        <p>Como funcionam os reajustes anuais e o que muda quando o plano tem coparticipação.</p>
-      </div>
-      <div class="card">
-        <div class="icone">📑</div>
-        <h3>Contratação, direitos e cancelamento</h3>
-        <p>Seus direitos e deveres, portabilidade de carências e canais oficiais da ANS.</p>
+  <!-- SEÇÃO GUIA INTELIGENTE - ACORDEÕES -->
+  <section>
+    <div class="acordeao" id="acordeaoGuia1">
+      <button class="acordeao-cabecalho" onclick="toggleAcordeao('acordeaoGuia1')">
+        <div>
+          <h2>Entenda os Tipos de Plano</h2>
+          <p class="resumo">Qual é o melhor plano para você?</p>
+        </div>
+        <span class="acordeao-seta">▼</span>
+      </button>
+      <div class="acordeao-conteudo">
+        <div class="guia-secao-conteudo">
+          <p>Existem três formas de contratar um plano de saúde, e cada uma tem suas vantagens. Entender a diferença é o primeiro passo para fazer a escolha certa.</p>
+
+          <h3>Plano Individual ou Familiar</h3>
+          <p>Você contrata diretamente com a operadora. É flexível, mas o reajuste anual é limitado apenas pela ANS, o que pode ficar caro com o tempo. Ideal se você está sozinho ou quer máxima liberdade. Um número bem reduzido de operadoras aqui no nosso estado comercializam nessa modalidade.</p>
+
+          <h3>Plano Coletivo por Adesão</h3>
+          <p>Sua associação profissional ou sindicato contrata para você. É uma opção interessante se você tem formação universitária ou técnica, pois oferece preços melhores que o individual.</p>
+
+          <h3>Plano Coletivo Empresarial (A Melhor Opção para MEI e Pequenas Empresas)</h3>
+          <p>Sua empresa contrata para você — e desde 2018, até o MEI pode contratar um plano coletivo empresarial! Basta comprovar 6 meses de atividade regular e 30 dias para demais enquadramentos de CNPJ.</p>
+
+          <p><strong>Por que o coletivo empresarial é melhor?</strong> Porque o reajuste é negociado com base na sua sinistralidade e a operadora (não é imposto pela ANS), o que significa preços menores e mais previsibilidade. Para contrato acima de 30 vidas não há aplicação de carências — uma vantagem gigantesca.</p>
+
+          <div class="destaque">
+            <strong>⚠️ Atenção:</strong> Muitos MEIs não sabem que podem contratar como empresarial. Nós sabemos, e é por isso que conseguimos preços até 40% menores que o individual.
+          </div>
+
+          <a class="cta-btn" href="https://wa.me/5521985112985?text=Olá%20Carlos,%20tenho%20dúvida%20sobre%20tipos%20de%20plano.%20Pode%20me%20ajudar?" target="_blank" rel="noopener">Qual tipo é melhor para minha empresa?</a>
+        </div>
       </div>
     </div>
-    <a class="cta-btn" href="#cotacao">Quero meu Bônus: simulação + Guia</a>
+  </section>
+
+  <section>
+    <div class="acordeao" id="acordeaoGuia2">
+      <button class="acordeao-cabecalho" onclick="toggleAcordeao('acordeaoGuia2')">
+        <div>
+          <h2>Carências e Doenças Preexistentes</h2>
+          <p class="resumo">Não deixe surpresas arruinarem seu plano</p>
+        </div>
+        <span class="acordeao-seta">▼</span>
+      </button>
+      <div class="acordeao-conteudo">
+        <div class="guia-secao-conteudo">
+          <p>Carência é o tempo de espera antes de usar determinados serviços. A ANS estabelece prazos máximos que a operadora não pode ultrapassar:</p>
+
+          <table class="tabela-carencias">
+            <tr>
+              <th>Cobertura</th>
+              <th>Prazo máximo</th>
+            </tr>
+            <tr>
+              <td>Urgências e emergências</td>
+              <td>24 horas</td>
+            </tr>
+            <tr>
+              <td>Consultas e exames simples</td>
+              <td>30 dias</td>
+            </tr>
+            <tr>
+              <td>Demais coberturas (exames complexos, cirurgias, internações, etc.)</td>
+              <td>180 dias</td>
+            </tr>
+            <tr>
+              <td>Partos a termo</td>
+              <td>300 dias</td>
+            </tr>
+          </table>
+
+          <h3>O Grande Problema: Doenças Preexistentes (CPT)</h3>
+          <p>Se você já tinha diabetes, hipertensão, problemas cardíacos ou qualquer outra doença antes de contratar, a operadora pode aplicar a <strong>Cobertura Parcial Temporária (CPT)</strong>.</p>
+
+          <h3>Como funciona a CPT</h3>
+          <ul>
+            <li><strong>Finalidade:</strong> Restringe temporariamente (por até 24 meses) procedimentos cirúrgicos, leitos de alta tecnologia e exames de alta complexidade ligados exclusivamente à doença informada.</li>
+            <li><strong>Formalização:</strong> Deve constar expressamente no contrato ou termo específico assinado na adesão, detalhando a condição preexistente.</li>
+            <li><strong>Urgência e emergência:</strong> Não se aplica a casos de urgência ou emergência que representem risco imediato à vida.</li>
+            <li><strong>Aplicação por CID:</strong> A CPT é aplicada pela CID (Classificação Internacional de Doenças).</li>
+          </ul>
+
+          <div class="aviso">
+            <strong>Exemplo Prático:</strong> Se ao preencher a declaração de saúde, o beneficiário declarar a Lombalgia (dor na região lombar ou parte baixa das costas - CID M54.5) e for aplicada a CPT, caso o beneficiário tenha uma ocorrência de Cervicalgia (dor no pescoço ou coluna cervical - CID M54.2), apesar de estarem relacionadas à região da coluna, não haverá agravo de carências para esse beneficiário em doença com CID diferente da declarada.
+          </div>
+
+          <div class="destaque">
+            <strong>Outro segredo que poucos sabem:</strong> Em contratos coletivos empresariais com 30 ou mais pessoas, quem entra até 30 dias após a assinatura fica <strong>isento dessa restrição</strong>. Ou seja, sua doença preexistente é coberta desde o primeiro dia!
+          </div>
+
+          <div class="aviso">
+            <strong>⚠️ Aviso Importante:</strong> Sempre preencha a Declaração de Saúde com a verdade. Se você omitir uma doença preexistente, a operadora pode negar cobertura depois. Nós ajudamos você a preencher corretamente e a negociar as melhores condições com a operadora.
+          </div>
+
+          <a class="cta-btn" href="https://wa.me/5521985112985?text=Olá%20Carlos,%20tenho%20doença%20preexistente.%20Como%20isso%20afeta%20meu%20plano?" target="_blank" rel="noopener">Tenho doença preexistente. Como isso afeta meu plano?</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="acordeao" id="acordeaoGuia3">
+      <button class="acordeao-cabecalho" onclick="toggleAcordeao('acordeaoGuia3')">
+        <div>
+          <h2>Preço, Reajustes e Coparticipação</h2>
+          <p class="resumo">Entenda como funciona o dinheiro do seu plano</p>
+        </div>
+        <span class="acordeao-seta">▼</span>
+      </button>
+      <div class="acordeao-conteudo">
+        <div class="guia-secao-conteudo">
+          <p>O preço do seu plano não é fixo para sempre. Ele aumenta anualmente, e a forma como esse aumento é calculado depende do tipo de contrato que você tem.</p>
+
+          <h3>Plano Individual</h3>
+          <p>O reajuste é limitado pela ANS (geralmente entre 8% e 15% ao ano). Você está protegido por lei, mas o valor pode ficar alto com o tempo.</p>
+
+          <h3>Coletivo até 30 Beneficiários</h3>
+          <p>A operadora aplica um percentual único para todos os clientes dela nessa faixa. Ainda assim, pode ser alto.</p>
+
+          <h3>Coletivo com Mais de 30 Beneficiários</h3>
+          <p>Aqui é onde a mágica acontece. O reajuste é <strong>negociado</strong> entre você e a operadora. Isso significa que você tem poder de barganha. Se a operadora quer aumentar 12%, você pode negociar para 8% ou até menos, dependendo do seu histórico de sinistralidade (quantas vezes você usou o plano).</p>
+
+          <div class="destaque">
+            <strong>O Exemplo Prático:</strong> Se você tem um plano individual pagando R$ 500/mês, um reajuste de 12% te custa R$ 60 a mais por mês (R$ 720/ano). Mas se você contratar um coletivo empresarial e negociar um reajuste de 6%, você economiza R$ 30/mês (R$ 360/ano). Em 5 anos, essa diferença é de R$ 1.800 — dinheiro que fica no seu bolso.
+          </div>
+
+          <h3>Desmistificando a Coparticipação</h3>
+          <p>Algumas operadoras disponibilizam a modalidade de <strong>coparticipação</strong>: você contrata um plano com a mensalidade entre 25% e 30% mais em conta do que o modelo convencional, mas um custo adicional será cobrado na fatura do mês subsequente toda vez que usa o plano (consulta, exame, internação). Um plano barato com coparticipação pode ser uma opção ideal para quem usa pouco o plano de saúde.</p>
+
+          <a class="cta-btn" href="#cotacao">Quer saber qual é a melhor opção de preço?</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="acordeao" id="acordeaoGuia4">
+      <button class="acordeao-cabecalho" onclick="toggleAcordeao('acordeaoGuia4')">
+        <div>
+          <h2>Seus Direitos e Como Contratar com Segurança</h2>
+          <p class="resumo">Você tem direitos. Nós garantimos que você os use.</p>
+        </div>
+        <span class="acordeao-seta">▼</span>
+      </button>
+      <div class="acordeao-conteudo">
+        <div class="guia-secao-conteudo">
+          <p>Muitos clientes assinam um plano de saúde sem saber quais são seus direitos. Depois, quando precisam, descobrem que a operadora nega cobertura. Não deixe isso acontecer com você.</p>
+
+          <h3>Seus Direitos Garantidos pela ANS</h3>
+          <ul>
+            <li><strong>Contratação sem restrição por idade ou doença.</strong> A operadora não pode recusar você porque você é idoso ou tem uma doença preexistente. Isso é lei.</li>
+            <li><strong>Cobertura conforme o Rol da ANS e o contrato.</strong> Você tem direito a todos os procedimentos listados no Rol da ANS e naquilo que está no seu contrato.</li>
+            <li><strong>Atendimento dentro dos prazos regulados.</strong> A operadora não pode te deixar esperando indefinidamente por uma autorização.</li>
+            <li><strong>Reembolso quando previsto em contrato.</strong> Se você pagar do bolso, a operadora deve reembolsar.</li>
+            <li><strong>Portabilidade de carências.</strong> Você pode trocar de plano sem perder as carências já cumpridas.</li>
+          </ul>
+
+          <h3>Como Contratar Corretamente</h3>
+          <p>Antes de assinar qualquer contrato:</p>
+          <ol>
+            <li><strong>Leia tudo.</strong> Não confie em resumos. Leia o contrato completo.</li>
+            <li><strong>Esclareça dúvidas.</strong> Se não entender algo, pergunte. Nós estamos aqui para explicar.</li>
+            <li><strong>Leia a Carta de Orientação ao Beneficiário.</strong> A operadora é obrigada a fornecer isso.</li>
+            <li><strong>Preencha a Declaração de Saúde com a verdade.</strong> Isso é crucial. Uma mentira aqui pode virar uma negação de cobertura depois.</li>
+            <li><strong>Confirme o tipo de plano na proposta.</strong> Verifique se está escrito "Coletivo Empresarial", "Nacional", "Ambulatorial + Hospitalar", etc.</li>
+          </ol>
+
+          <div class="aviso">
+            <strong>⚠️ O Segredo que Muitos Corretores Não Contam:</strong> Muitos corretores vendem o plano mais barato e desaparecem. Nós fazemos o oposto. Nós validamos juntos os 4 pilares exigidos pela ANS antes de você assinar:
+            <ul style="margin-top: 12px;">
+              <li><strong>Abrangência:</strong> O plano atende só na sua cidade, no seu estado ou no Brasil todo?</li>
+              <li><strong>Rede Credenciada:</strong> Seus hospitais de preferência e laboratórios de confiança estão na lista oficial?</li>
+              <li><strong>Carências e CPT:</strong> Prazos exatos e o tratamento correto para doenças preexistentes.</li>
+              <li><strong>Regras de Reajuste:</strong> Como funciona o aumento anual e o reajuste por mudança de faixa etária.</li>
+            </ul>
+          </div>
+          <a class="cta-btn" href="https://wa.me/5521985112985?text=Olá%20Carlos,%20quero%20garantir%20meus%20direitos.%20Vamos%20conversar?" target="_blank" rel="noopener">Quero garantir meus direitos. Vamos conversar?</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="acordeao" id="acordeaoGuia5">
+      <button class="acordeao-cabecalho" onclick="toggleAcordeao('acordeaoGuia5')">
+        <div>
+          <h2>Portabilidade e Cancelamento</h2>
+          <p class="resumo">Como trocar de plano sem perder nada</p>
+        </div>
+        <span class="acordeao-seta">▼</span>
+      </button>
+      <div class="acordeao-conteudo">
+        <div class="guia-secao-conteudo">
+          <p>Às vezes, o plano que você tem não atende mais suas necessidades. Talvez a rede credenciada tenha ficado ruim, ou você encontrou um plano melhor com preço menor. A boa notícia? Você pode trocar sem começar do zero.</p>
+
+          <h3>Portabilidade: Seu Direito de Migrar</h3>
+          <p>A portabilidade permite que você troque para outro plano <strong>sem cumprir nova carência</strong>, desde que respeite os critérios da ANS. Isso significa que se você já cumpriu 180 dias de carência no plano antigo, você não precisa cumprir novamente no plano novo.</p>
+
+          <div class="destaque">
+            <strong>O Exemplo Prático:</strong> Você está em um plano individual há 1 ano. Quer trocar para um coletivo empresarial porque é mais barato. Com portabilidade, você não precisa esperar 180 dias novamente — você já está coberto desde o primeiro dia no novo plano.
+          </div>
+
+          <div class="aviso">
+            <strong>⚠️ O Erro Que Muitos Cometem (E Que Nós Evitamos):</strong> Nunca, <strong>nunca mesmo</strong>, cancele o plano antigo antes de ter o novo plano ativo. Se você fizer isso, você fica descoberto. Se precisar de um atendimento nesse período, a operadora pode negar cobertura.
+          </div>
+
+          <h3>O Procedimento Correto é:</h3>
+          <ol>
+            <li>Contratar o novo plano (data de início: geralmente 1º do mês seguinte).</li>
+            <li>Aguardar a confirmação de que o novo plano está ativo.</li>
+            <li><strong>Depois disso</strong>, cancelar o plano antigo.</li>
+          </ol>
+
+          <p>Nós cuidamos dessa transição para você. Você não precisa se preocupar com prazos ou documentos — nós fazemos tudo.</p>
+
+          <h3>Dúvidas, Reclamações e Cancelamento</h3>
+          <p>Se tiver um problema com a operadora:</p>
+          <ol>
+            <li>Procure primeiro a operadora (ligação, e-mail, atendimento).</li>
+            <li>Se não resolver, procure a ANS pelos canais oficiais:
+              <ul style="margin-top: 8px;">
+                <li><strong>Disque ANS:</strong> 0800 701 9656</li>
+                <li><strong>Portal:</strong> www.gov.br/ans</li>
+                <li><strong>Para deficientes auditivos:</strong> 0800 021 2105</li>
+              </ul>
+            </li>
+          </ol>
+
+          <p style="margin-top: 12px;">Mas honestamente? Se você contratar conosco, você não vai precisar disso. Nós resolvemos 99% dos problemas antes deles virarem problemas.</p>
+          <a class="cta-btn" href="https://wa.me/5521985112985?text=Olá%20Carlos,%20estou%20em%20um%20plano%20ruim.%20Como%20saio%20sem%20perder%20carências?" target="_blank" rel="noopener">Estou em um plano ruim. Como saio sem perder carências?</a>
+        </div>
+      </div>
+    </div>
   </section>
 
   <section class="beneficios">
@@ -523,7 +763,7 @@
           <div class="passo">
             <div class="numero">3</div>
             <h3>Proposta</h3>
-            <p>Você recebe a cotação de preços, o Guia Inteligente e tira dúvidas diretamente comigo.</p>
+            <p>Você recebe a cotação de preços e tira dúvidas diretamente comigo.</p>
           </div>
           <div class="passo">
             <div class="numero">4</div>
@@ -598,13 +838,203 @@
         <p class="aviso-final">Ainda com dúvidas? Fale comigo diretamente pelo WhatsApp.</p>
       </div>
     </div>
+    <section class="depoimentos-section" id="depoimentos">
+    <div style="max-width:900px; margin:0 auto; padding:30px 20px;">
+      <div style="text-align:center; margin-bottom:40px;">
+        <h2 style="color:#0057a8; font-size:2rem; margin-bottom:10px;">O que Nossos Clientes Dizem</h2>
+        <p style="color:#666; font-size:1.05rem; max-width:600px; margin:0 auto;">Veja os depoimentos de clientes satisfeitos que já contrataram seus planos conosco.</p>
+      </div>
+
+      <div class="depoimentos-grid">
+
+        <!-- DEPOIMENTO 1 -->
+        <div class="depoimento-card">
+          <div class="depoimento-header">
+            <div class="depoimento-avatar">👨‍💼</div>
+            <div class="depoimento-info">
+              <h3>Cliente Satisfeito</h3>
+              <p>★★★★★</p>
+            </div>
+          </div>
+          <div class="depoimento-texto">
+            <p>"Excelente atendimento, comprometimento com o cliente, super índico, o cliente se sente seguro e acolhido do início até o final da contratação."</p>
+          </div>
+        </div>
+
+        <!-- DEPOIMENTO 2 -->
+        <div class="depoimento-card">
+          <div class="depoimento-header">
+            <div class="depoimento-avatar">👩‍💼</div>
+            <div class="depoimento-info">
+              <h3>Maria Silva</h3>
+              <p>★★★★★</p>
+            </div>
+          </div>
+          <div class="depoimento-texto">
+            <p>"Boa tarde Carlos. Fiquei muito satisfeita com o plano, e mais ainda com o seu atendimento que foi impecável do começo ao fim! Com certeza vou te recomendar sem medo para quem precisar. Muito obrigado por tudo! Forte abraço."</p>
+          </div>
+        </div>
+
+        <!-- DEPOIMENTO 3 -->
+        <div class="depoimento-card">
+          <div class="depoimento-header">
+            <div class="depoimento-avatar">👩</div>
+            <div class="depoimento-info">
+              <h3>Cliente Feliz</h3>
+              <p>★★★★★</p>
+            </div>
+          </div>
+          <div class="depoimento-texto">
+            <p>"Adorei a atenção, o cuidado e a agilidade. O atendimento superou todas as minhas expectativas! Muito obrigado pela preocupação e o carinho com os seus clientes. Não têm noção quanto estou feliz e já ansiosa para utilizar o meu plano."</p>
+          </div>
+        </div>
+
+        <!-- DEPOIMENTO 4 -->
+        <div class="depoimento-card">
+          <div class="depoimento-header">
+            <div class="depoimento-avatar">👨</div>
+            <div class="depoimento-info">
+              <h3>João Santos</h3>
+              <p>★★★★★</p>
+            </div>
+          </div>
+          <div class="depoimento-texto">
+            <p>"Gostaria de agradecer pelo excelente atendimento. Sua disponibilidade, clareza nas explicações e profissionalismo fizeram toda a diferença. Com certeza indicarei seu trabalho sempre que tiver oportunidade. Muito obrigado!"</p>
+          </div>
+        </div>
+
+        <!-- DEPOIMENTO 5 -->
+        <div class="depoimento-card">
+          <div class="depoimento-header">
+            <div class="depoimento-avatar">🏢</div>
+            <div class="depoimento-info">
+              <h3>Ótica Manilha</h3>
+              <p>★★★★★</p>
+            </div>
+          </div>
+          <div class="depoimento-texto">
+            <p>"Nós da ótica Manilha só temos a agradecer o sr pelo seu atendimento, na época em que íamos fechar o plano de saúde tiramos todas as dúvidas. O sr explicou tudo com muita paciência e competência. Estamos muito satisfeitos com a adesão do nosso plano de saúde. Deus abençoe grandemente."</p>
+          </div>
+        </div>
+
+        <!-- DEPOIMENTO 6 -->
+        <div class="depoimento-card">
+          <div class="depoimento-header">
+            <div class="depoimento-avatar">👩‍💼</div>
+            <div class="depoimento-info">
+              <h3>Cliente Corporativo</h3>
+              <p>★★★★★</p>
+            </div>
+          </div>
+          <div class="depoimento-texto">
+            <p>"Perfeito, conseguiu escrever em poucas palavras a avaliação do meu atendimento? Gostaria de agradecer pelo excelente atendimento. Sua disponibilidade, clareza nas explicações e profissionalismo fizeram toda a diferença."</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="text-align:center; margin-top:40px;">
+        <a class="cta-btn" href="https://wa.me/5521985112985?text=Olá%20Carlos,%20vi%20os%20depoimentos%20e%20gostaria%20de%20conhecer%20melhor%20seus%20serviços." target="_blank" rel="noopener">
+          Quero ter uma experiência como essas! Fale comigo
+        </a>
+      </div>
+    </div>
   </section>
 
+  <style>
+    .depoimentos-section {
+      background: linear-gradient(135deg, #f4f7fa 0%, #e8f4ff 100%);
+      padding: 60px 20px;
+      margin: 40px 0;
+    }
+
+    .depoimentos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-bottom: 30px;
+    }
+
+    .depoimento-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 4px 15px rgba(0, 87, 168, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-top: 4px solid #00a651;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .depoimento-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 25px rgba(0, 87, 168, 0.15);
+    }
+
+    .depoimento-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .depoimento-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #0057a8, #00a651);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 1.5rem;
+    }
+
+    .depoimento-info {
+      flex: 1;
+    }
+
+    .depoimento-info h3 {
+      color: #0057a8;
+      margin: 0;
+      font-size: 1rem;
+      font-weight: bold;
+    }
+
+    .depoimento-info p {
+      color: #00a651;
+      margin: 0;
+      font-size: 0.85rem;
+      font-weight: bold;
+    }
+
+    .depoimento-texto {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #333;
+      flex: 1;
+    }
+
+    .depoimento-texto p {
+      margin: 0;
+      font-style: italic;
+    }
+
+    @media (max-width: 768px) {
+      .depoimentos-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .depoimentos-section {
+        padding: 40px 20px;
+      }
+    }
+  </style>
   <section id="cotacao" class="quiz-section">
     <div class="quiz-container">
       <div class="quiz-titulo-secao">
         <h2>Simulador de Plano de Saúde</h2>
-        <p>Responda 4 perguntas rápidas e receba sua cotação personalizada + o Guia Inteligente de Planos de Saúde, de presente.</p>
+        <p>Responda 4 perguntas rápidas e receba sua cotação personalizada.</p>
       </div>
 
       <div class="quiz-progress">
@@ -674,10 +1104,10 @@
       <div class="quiz-step" data-step="6">
         <div class="quiz-result-icon">✓</div>
         <h2>✅ Simulação concluída com sucesso!</h2>
-        <p class="quiz-result-text">Estamos gerando as melhores opções para o seu perfil! Libere sua cotação personalizada e o seu Bônus clicando no botão abaixo.</p>
+        <p class="quiz-result-text">Estamos gerando as melhores opções para o seu perfil! Libere sua cotação personalizada clicando no botão abaixo.</p>
         <p class="quiz-question">Em nome de quem devo preparar sua cotação?</p>
         <input type="text" id="quizNome" placeholder="Seu nome">
-        <button class="quiz-btn-final" id="quizSubmit">RECEBER COTAÇÃO + GUIA GRÁTIS</button>
+        <button class="quiz-btn-final" id="quizSubmit">RECEBER COTAÇÃO</button>
         <p class="privacidade">Seus dados serão utilizados apenas para contato e cotação, conforme a LGPD.</p>
       </div>
 
@@ -687,7 +1117,7 @@
   <footer>
     <p>Carlos Alexandre &copy; 2026 — Corretor de Planos de Saúde</p>
     <p>Parceiro JC Luz Corretora de Seguros | Rio de Janeiro</p>
-    <p>WhatsApp: (21) 98511-2985 | carlosalexandre@corretorsaudepro.com.br</p>
+    <p>WhatsApp: (21) 98511-2985 | alexandrecorretor1000@gmail.com</p>
   </footer>
 
   <a class="whatsapp-float"
@@ -843,7 +1273,7 @@
       });
     });
 
-    // ===== BOTÃO FINAL: RECEBER COTAÇÃO + GUIA GRÁTIS =====
+    // ===== BOTÃO FINAL: RECEBER COTAÇÃO =====
     document.getElementById('quizSubmit').addEventListener('click', function() {
       const nome = document.getElementById('quizNome').value || 'Cliente';
 
@@ -852,7 +1282,7 @@
       mensagem += ` Quantidade de pessoas: ${respostas.quantidade || 'não informado'}.`;
       mensagem += ` Município: ${respostas.municipio || 'não informado'}.`;
       mensagem += ` Idades das vidas: ${respostas.idades || 'não informado'}.`;
-      mensagem += ` Gostaria de receber a cotação de preços e o Guia Inteligente de Planos de Saúde.`;
+      mensagem += ` Gostaria de receber a cotação de preços.`;
 
       gtag('event', 'conversion', {
         'send_to': 'AW-18413773557/tu5QCLaXu_UcEPXFr8xE'
@@ -866,4 +1296,4 @@
   </script>
 
 </body>
-</html>
+</html>r
