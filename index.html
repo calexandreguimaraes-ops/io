@@ -479,18 +479,17 @@
   </section>
 
   <!-- SEÇÃO GUIA INTELIGENTE - ACORDEÕES -->
-  <section>
-      <section class="acordeao-guia">
+  <section>  <section class="guia-secao">
     <div style="max-width:900px; margin:0 auto; padding:30px 20px;">
       <h2 style="text-align:center; color:#0057a8; margin-bottom:30px;">Guia Completo do Plano de Saúde</h2>
 
       <!-- SEÇÃO 1: TIPOS DE PLANO -->
-      <div class="acordeao-item" id="acordeaoGuia1">
-        <button class="acordeao-header" onclick="toggleAcordeao(this)">
+      <div class="guia-item" id="acordeaoGuia1">
+        <button class="guia-header" onclick="toggleGuia(this)">
           Qual é o melhor plano para você?
-          <span class="acordeao-icone">+</span>
+          <span class="guia-icone">+</span>
         </button>
-        <div class="acordeao-conteudo">
+        <div class="guia-conteudo">
           <p>Existem três formas de contratar um plano de saúde, e cada uma tem suas vantagens. Entender a diferença é o primeiro passo para fazer a escolha certa.</p>
 
           <p><strong>Plano Individual ou Familiar:</strong> Você contrata diretamente com a operadora. É flexível, mas o reajuste anual é limitado apenas pela ANS, o que pode ficar caro com o tempo. Ideal se você está sozinho ou quer máxima liberdade. Um número bem reduzido de operadoras aqui no nosso estado comercializam nessa modalidade.</p>
@@ -508,12 +507,12 @@
       </div>
 
       <!-- SEÇÃO 2: DIREITOS -->
-      <div class="acordeao-item" id="acordeaoGuia2">
-        <button class="acordeao-header" onclick="toggleAcordeao(this)">
+      <div class="guia-item" id="acordeaoGuia2">
+        <button class="guia-header" onclick="toggleGuia(this)">
           Você tem direitos. Nós garantimos que você os use.
-          <span class="acordeao-icone">+</span>
+          <span class="guia-icone">+</span>
         </button>
-        <div class="acordeao-conteudo">
+        <div class="guia-conteudo">
           <p>Muitos clientes assinam um plano de saúde sem saber quais são seus direitos. Depois, quando precisam, descobrem que a operadora nega cobertura. Não deixe isso acontecer com você.</p>
 
           <p><strong>Seus Direitos Garantidos pela ANS:</strong></p>
@@ -531,12 +530,12 @@
       </div>
 
       <!-- SEÇÃO 3: CARÊNCIAS E DOENÇAS PREEXISTENTES -->
-      <div class="acordeao-item" id="acordeaoGuia3">
-        <button class="acordeao-header" onclick="toggleAcordeao(this)">
+      <div class="guia-item" id="acordeaoGuia3">
+        <button class="guia-header" onclick="toggleGuia(this)">
           Não deixe surpresas arruinarem seu plano
-          <span class="acordeao-icone">+</span>
+          <span class="guia-icone">+</span>
         </button>
-        <div class="acordeao-conteudo">
+        <div class="guia-conteudo">
           <p>Carência é o tempo de espera antes de usar determinados serviços. A ANS estabelece prazos máximos que a operadora não pode ultrapassar:</p>
 
           <p><strong>Urgências e Emergências:</strong> 24 horas (você está protegido desde o primeiro dia)<br>
@@ -569,12 +568,12 @@
       </div>
 
       <!-- SEÇÃO 4: PREÇO, REAJUSTES E COPARTICIPAÇÃO -->
-      <div class="acordeao-item" id="acordeaoGuia4">
-        <button class="acordeao-header" onclick="toggleAcordeao(this)">
+      <div class="guia-item" id="acordeaoGuia4">
+        <button class="guia-header" onclick="toggleGuia(this)">
           Entenda como funciona o dinheiro do seu plano
-          <span class="acordeao-icone">+</span>
+          <span class="guia-icone">+</span>
         </button>
-        <div class="acordeao-conteudo">
+        <div class="guia-conteudo">
           <p>O preço do seu plano não é fixo para sempre. Ele aumenta anualmente, e a forma como esse aumento é calculado depende do tipo de contrato que você tem.</p>
 
           <p><strong>Plano Individual:</strong> O reajuste é limitado pela ANS (geralmente entre 8% e 15% ao ano). Você está protegido por lei, mas o valor pode ficar alto com o tempo.</p>
@@ -592,12 +591,12 @@
       </div>
 
       <!-- SEÇÃO 5: REDUÇÃO DE CARÊNCIAS E CANCELAMENTO -->
-      <div class="acordeao-item" id="acordeaoGuia5">
-        <button class="acordeao-header" onclick="toggleAcordeao(this)">
+      <div class="guia-item" id="acordeaoGuia5">
+        <button class="guia-header" onclick="toggleGuia(this)">
           Como trocar de plano sem perder nada
-          <span class="acordeao-icone">+</span>
+          <span class="guia-icone">+</span>
         </button>
-        <div class="acordeao-conteudo">
+        <div class="guia-conteudo">
           <p>Às vezes, o plano que você tem não atende mais suas necessidades. Talvez a rede credenciada tenha ficado ruim, ou você encontrou um plano melhor com preço menor. A boa notícia? Você pode trocar sem começar do zero.</p>
 
           <p><strong>Redução de Carências: Seu Direito de Migrar</strong></p>
@@ -653,7 +652,7 @@
   </section>
 
   <style>
-    .acordeao-item {
+    .guia-item {
       background: #fff;
       border-radius: 10px;
       margin-bottom: 15px;
@@ -661,7 +660,7 @@
       overflow: hidden;
     }
 
-    .acordeao-header {
+    .guia-header {
       width: 100%;
       background: #f4f7fa;
       border: none;
@@ -676,36 +675,36 @@
       align-items: center;
     }
 
-    .acordeao-icone {
+    .guia-icone {
       font-size: 1.4rem;
       color: #00a651;
     }
 
-    .acordeao-conteudo {
+    .guia-conteudo {
       max-height: 0;
       overflow: hidden;
       padding: 0 20px;
       transition: max-height 0.4s ease, padding 0.4s ease;
     }
 
-    .acordeao-conteudo p {
+    .guia-conteudo p {
       line-height: 1.7;
       color: #333;
       margin-bottom: 14px;
     }
 
-    .acordeao-item.ativo .acordeao-conteudo {
+    .guia-item.guia-ativo .guia-conteudo {
       max-height: 3000px;
       padding: 10px 20px 25px;
     }
   </style>
 
   <script>
-    function toggleAcordeao(botao) {
+    function toggleGuia(botao) {
       const item = botao.parentElement;
-      item.classList.toggle('ativo');
+      item.classList.toggle('guia-ativo');
     }
-  </section>
+  </script>
 
   <section class="beneficios">
     <h2>Por que contratar um plano pelo CNPJ?</h2>
