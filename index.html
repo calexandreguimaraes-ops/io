@@ -796,6 +796,100 @@
         <a class="cta-btn" href="https://wa.me/5521985112985" target="_blank" rel="noopener">Falar com Carlos</a>
       </div>
     </div>
+    <section class="premiacoes-section" id="premiacoes">
+    <div style="max-width:900px; margin:0 auto; padding:30px 20px;">
+      <div style="text-align:center; margin-bottom:40px;">
+        <h2 style="color:#0057a8; font-size:2rem; margin-bottom:10px;">🏆 Reconhecimento e Premiações</h2>
+        <p style="color:#666; font-size:1.05rem; max-width:700px; margin:0 auto; line-height:1.7;">
+          Ao longo da minha carreira como corretor de planos de saúde, recebi diversos reconhecimentos e premiações pela excelência em atendimento, dedicação aos clientes e resultados alcançados. Esses prêmios refletem meu compromisso em oferecer o melhor serviço consultivo, garantindo a segurança jurídica e financeira de cada cliente. Cada premiação é uma prova do trabalho sério e responsável que realizo todos os dias.
+        </p>
+      </div>
+
+      <div class="premiacoes-galeria">
+        <div class="premiacao-foto">
+          <img src="premiacao1.jpg" alt="Equipe Ouro - Reconhecimento">
+        </div>
+        <div class="premiacao-foto">
+          <img src="premiacao2.jpg" alt="Prêmio R$ 1.000,00">
+        </div>
+        <div class="premiacao-foto">
+          <img src="premiacao3.jpg" alt="Evento de Premiação">
+        </div>
+        <div class="premiacao-foto">
+          <img src="premiacao4.jpg" alt="Apresentação de Resultados">
+        </div>
+      </div>
+
+      <div style="text-align:center; margin-top:40px;">
+        <a class="cta-btn" href="https://wa.me/5521985112985?text=Olá%20Carlos,%20vi%20suas%20premiações%20e%20gostaria%20de%20conhecer%20melhor%20seus%20serviços." target="_blank" rel="noopener">
+          Quero ter a mesma experiência! Fale comigo
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .premiacoes-section {
+      background: linear-gradient(135deg, #f4f7fa 0%, #e8f4ff 100%);
+      padding: 60px 20px;
+      margin: 40px 0;
+    }
+
+    .premiacoes-galeria {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .premiacao-foto {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 87, 168, 0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      height: 280px;
+    }
+
+    .premiacao-foto:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 25px rgba(0, 87, 168, 0.2);
+    }
+
+    .premiacao-foto img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* TABLET: 2 colunas */
+    @media (max-width: 900px) {
+      .premiacoes-galeria {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+      }
+
+      .premiacao-foto {
+        height: 240px;
+      }
+    }
+
+    /* CELULAR: 1 coluna (uma abaixo da outra) */
+    @media (max-width: 600px) {
+      .premiacoes-galeria {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+
+      .premiacao-foto {
+        height: 300px;
+      }
+
+      .premiacoes-section {
+        padding: 40px 20px;
+      }
+    }
+  </style>
   </section>
 
   <section>
