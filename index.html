@@ -1533,6 +1533,7 @@
 </style>
 
 <script>
+ <script>
   (function() {
     var popup = document.getElementById('popupSaida');
     var jaMostrou = sessionStorage.getItem('popupSaidaMostrado');
@@ -1551,33 +1552,54 @@
       if (e.target === popup) fecharPopupSaida();
     });
 
-    if (!jaMostrou) {
-      // Desktop: mouse saindo pelo topo da página
-      document.addEventListener('mouseleave', function(e) {
-        if (e.clientY <= 0) {
-          abrirPopup();
-        }
-      });
+    if (jaMostrou) return;
 
-      // Mobile: rolagem rápida de volta ao topo após ter descido a página
-      var ultimoScroll = window.scrollY;
-      var passouDaMetade = false;
+    // Desktop: mouse saindo pelo topo da página
+    document.addEventListener('mouseleave', function(e) {
+      if (e.clientY <= 0) {
+        abrirPopup();
+      }
+    });
 
-      window.addEventListener('scroll', function() {
-        var scrollAtual = window.scrollY;
-        var alturaTotal = document.body.scrollHeight - window.innerHeight;
+    // Mobile: rolagem consistente de volta ao topo após passar da metade da página
+    var alturaTotal = 0;
+    var ultimoScroll = window.scrollY;
+    var passouDaMetade = false;
+    var acumuladoParaCima = 0;
 
-        if (scrollAtual > alturaTotal * 0.4) {
-          passouDaMetade = true;
-        }
-
-        if (passouDaMetade && scrollAtual < ultimoScroll && scrollAtual < 150) {
-          abrirPopup();
-        }
-
-        ultimoScroll = scrollAtual;
-      });
+    function recalcularAltura() {
+      alturaTotal = document.body.scrollHeight - window.innerHeight;
     }
+
+    // Recalcula a altura só depois que a página (incluindo imagens) carregar
+    window.addEventListener('load', function() {
+      setTimeout(recalcularAltura, 300);
+    });
+    recalcularAltura();
+
+    window.addEventListener('scroll', function() {
+      var scrollAtual = window.scrollY;
+
+      if (alturaTotal > 0 && scrollAtual > alturaTotal * 0.5) {
+        passouDaMetade = true;
+      }
+
+      var diferenca = ultimoScroll - scrollAtual;
+
+      if (diferenca > 0) {
+        // está rolando para cima
+        acumuladoParaCima += diferenca;
+      } else {
+        // rolando para baixo, zera o acumulado
+        acumuladoParaCima = 0;
+      }
+
+      if (passouDaMetade && acumuladoParaCima > 120 && scrollAtual < 150) {
+        abrirPopup();
+      }
+
+      ultimoScroll = scrollAtual;
+    });
   })();
 </script>
 </body>
