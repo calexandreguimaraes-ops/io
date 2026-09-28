@@ -1437,6 +1437,148 @@
 
     updateProgressBarQuiz();
   </script>
+<!-- POP-UP DE SAÍDA -->
+<div id="popupSaida" class="popup-overlay">
+  <div class="popup-caixa">
+    <button class="popup-fechar" onclick="fecharPopupSaida()">✕</button>
+    <div class="popup-icone">⏳</div>
+    <h2>Espera! Antes de sair...</h2>
+    <p>Ainda com dúvidas sobre qual plano cabe no seu bolso? Me chama agora no WhatsApp e eu te ajudo a comparar as melhores opções sem compromisso.</p>
+    <a class="popup-btn" href="https://wa.me/5521985112985?text=Ol%C3%A1%20Carlos%2C%20vi%20o%20site%20e%20quero%20tirar%20uma%20d%C3%BAvida%20sobre%20plano%20de%20sa%C3%BAde." target="_blank" rel="noopener" onclick="return gtagSendEvent(this.href);">
+      💬 Falar com Carlos agora
+    </a>
+    <p class="popup-aviso">Sem custo. Sem compromisso.</p>
+  </div>
+</div>
 
+<style>
+  .popup-overlay {
+    display:none;
+    position:fixed;
+    top:0; left:0; right:0; bottom:0;
+    background:rgba(0,0,0,0.6);
+    z-index:2000;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+  }
+  .popup-overlay.ativo {
+    display:flex;
+    animation:fadeInOverlay 0.3s ease;
+  }
+  @keyframes fadeInOverlay {
+    from { opacity:0; }
+    to { opacity:1; }
+  }
+  .popup-caixa {
+    background:#fff;
+    border-radius:16px;
+    max-width:420px;
+    width:100%;
+    padding:32px 26px;
+    text-align:center;
+    position:relative;
+    box-shadow:0 10px 40px rgba(0,0,0,0.3);
+    animation:popupSurge 0.35s ease;
+  }
+  @keyframes popupSurge {
+    from { opacity:0; transform:translateY(20px) scale(0.97); }
+    to { opacity:1; transform:translateY(0) scale(1); }
+  }
+  .popup-fechar {
+    position:absolute;
+    top:12px; right:14px;
+    background:none;
+    border:none;
+    font-size:1.2rem;
+    color:#999;
+    cursor:pointer;
+    line-height:1;
+  }
+  .popup-fechar:hover { color:#333; }
+  .popup-icone {
+    font-size:2.4rem;
+    margin-bottom:10px;
+  }
+  .popup-caixa h2 {
+    color:#0057a8;
+    font-size:1.4rem;
+    margin-bottom:12px;
+  }
+  .popup-caixa p {
+    color:#444;
+    font-size:0.95rem;
+    line-height:1.5;
+    margin-bottom:20px;
+  }
+  .popup-btn {
+    display:inline-block;
+    background:#25D366;
+    color:#fff;
+    text-decoration:none;
+    padding:15px 26px;
+    border-radius:50px;
+    font-size:1rem;
+    font-weight:bold;
+    box-shadow:0 4px 12px rgba(0,0,0,0.2);
+    transition:transform 0.2s;
+  }
+  .popup-btn:hover { transform:scale(1.05); }
+  .popup-aviso {
+    font-size:0.8rem;
+    color:#999;
+    margin-top:14px;
+    margin-bottom:0;
+  }
+</style>
+
+<script>
+  (function() {
+    var popup = document.getElementById('popupSaida');
+    var jaMostrou = sessionStorage.getItem('popupSaidaMostrado');
+
+    function abrirPopup() {
+      if (sessionStorage.getItem('popupSaidaMostrado')) return;
+      popup.classList.add('ativo');
+      sessionStorage.setItem('popupSaidaMostrado', 'true');
+    }
+
+    window.fecharPopupSaida = function() {
+      popup.classList.remove('ativo');
+    };
+
+    popup.addEventListener('click', function(e) {
+      if (e.target === popup) fecharPopupSaida();
+    });
+
+    if (!jaMostrou) {
+      // Desktop: mouse saindo pelo topo da página
+      document.addEventListener('mouseleave', function(e) {
+        if (e.clientY <= 0) {
+          abrirPopup();
+        }
+      });
+
+      // Mobile: rolagem rápida de volta ao topo após ter descido a página
+      var ultimoScroll = window.scrollY;
+      var passouDaMetade = false;
+
+      window.addEventListener('scroll', function() {
+        var scrollAtual = window.scrollY;
+        var alturaTotal = document.body.scrollHeight - window.innerHeight;
+
+        if (scrollAtual > alturaTotal * 0.4) {
+          passouDaMetade = true;
+        }
+
+        if (passouDaMetade && scrollAtual < ultimoScroll && scrollAtual < 150) {
+          abrirPopup();
+        }
+
+        ultimoScroll = scrollAtual;
+      });
+    }
+  })();
+</script>
 </body>
 </html>
