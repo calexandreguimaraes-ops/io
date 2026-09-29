@@ -1534,12 +1534,13 @@
 
 <script>
  <script>
+ <script>
   (function() {
     var popup = document.getElementById('popupSaida');
     var jaMostrou = sessionStorage.getItem('popupSaidaMostrado');
 
     function abrirPopup() {
-      if (sessionStorage.getItem('popupSaidaMostrado')) return;
+      if (jaMostrou) return; // Se já mostrou na sessão, não abre de novo
       popup.classList.add('ativo');
       sessionStorage.setItem('popupSaidaMostrado', 'true');
     }
@@ -1552,54 +1553,41 @@
       if (e.target === popup) fecharPopupSaida();
     });
 
-    if (jaMostrou) return;
-
-    // Desktop: mouse saindo pelo topo da página
+    // Gatilho para Desktop: mouse saindo pelo topo da página
     document.addEventListener('mouseleave', function(e) {
       if (e.clientY <= 0) {
         abrirPopup();
       }
     });
 
-    // Mobile: rolagem consistente de volta ao topo após passar da metade da página
-    var alturaTotal = 0;
+    // Gatilho para Mobile: rolagem rápida para cima após ter descido um pouco
     var ultimoScroll = window.scrollY;
-    var passouDaMetade = false;
-    var acumuladoParaCima = 0;
-
-    function recalcularAltura() {
-      alturaTotal = document.body.scrollHeight - window.innerHeight;
-    }
-
-    // Recalcula a altura só depois que a página (incluindo imagens) carregar
-    window.addEventListener('load', function() {
-      setTimeout(recalcularAltura, 300);
-    });
-    recalcularAltura();
+    var scrollThreshold = 150; // Quantidade de pixels para considerar "rolagem para cima"
+    var initialScrollPosition = 0; // Posição inicial de rolagem ao carregar a página
 
     window.addEventListener('scroll', function() {
       var scrollAtual = window.scrollY;
 
-      if (alturaTotal > 0 && scrollAtual > alturaTotal * 0.5) {
-        passouDaMetade = true;
+      // Se o usuário rolou para baixo o suficiente para ter conteúdo relevante
+      if (scrollAtual > 300) { // Ajuste este valor se quiser que dispare mais cedo ou mais tarde
+        initialScrollPosition = scrollAtual; // Marca a posição como "já desceu"
       }
 
-      var diferenca = ultimoScroll - scrollAtual;
-
-      if (diferenca > 0) {
-        // está rolando para cima
-        acumuladoParaCima += diferenca;
-      } else {
-        // rolando para baixo, zera o acumulado
-        acumuladoParaCima = 0;
+      // Se o usuário está rolando para cima e já tinha descido antes
+      if (scrollAtual < ultimoScroll && initialScrollPosition > 0) {
+        // Verifica se a rolagem para cima é significativa
+        if (ultimoScroll - scrollAtual > scrollThreshold) {
+          abrirPopup();
+        }
       }
-
-      if (passouDaMetade && acumuladoParaCima > 120 && scrollAtual < 150) {
-        abrirPopup();
-      }
-
       ultimoScroll = scrollAtual;
     });
+
+    // Gatilho de tempo: se o usuário passar um tempo na página e não interagir
+    // Isso é um fallback caso os outros gatilhos não disparem
+    setTimeout(function() {
+      abrirPopup();
+    }, 45000); // 45 segundos (45000 milissegundos)
   })();
 </script>
 </body>
