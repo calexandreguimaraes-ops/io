@@ -1533,14 +1533,12 @@
 </style>
 
 <script>
- <script>
- <script>
   (function() {
     var popup = document.getElementById('popupSaida');
     var jaMostrou = sessionStorage.getItem('popupSaidaMostrado');
 
     function abrirPopup() {
-      if (jaMostrou) return; // Se já mostrou na sessão, não abre de novo
+      if (sessionStorage.getItem('popupSaidaMostrado')) return;
       popup.classList.add('ativo');
       sessionStorage.setItem('popupSaidaMostrado', 'true');
     }
@@ -1553,41 +1551,33 @@
       if (e.target === popup) fecharPopupSaida();
     });
 
-    // Gatilho para Desktop: mouse saindo pelo topo da página
-    document.addEventListener('mouseleave', function(e) {
-      if (e.clientY <= 0) {
-        abrirPopup();
-      }
-    });
-
-    // Gatilho para Mobile: rolagem rápida para cima após ter descido um pouco
-    var ultimoScroll = window.scrollY;
-    var scrollThreshold = 150; // Quantidade de pixels para considerar "rolagem para cima"
-    var initialScrollPosition = 0; // Posição inicial de rolagem ao carregar a página
-
-    window.addEventListener('scroll', function() {
-      var scrollAtual = window.scrollY;
-
-      // Se o usuário rolou para baixo o suficiente para ter conteúdo relevante
-      if (scrollAtual > 300) { // Ajuste este valor se quiser que dispare mais cedo ou mais tarde
-        initialScrollPosition = scrollAtual; // Marca a posição como "já desceu"
-      }
-
-      // Se o usuário está rolando para cima e já tinha descido antes
-      if (scrollAtual < ultimoScroll && initialScrollPosition > 0) {
-        // Verifica se a rolagem para cima é significativa
-        if (ultimoScroll - scrollAtual > scrollThreshold) {
+    if (!jaMostrou) {
+      // Desktop: mouse saindo pelo topo da página
+      document.addEventListener('mouseleave', function(e) {
+        if (e.clientY <= 0) {
           abrirPopup();
         }
-      }
-      ultimoScroll = scrollAtual;
-    });
+      });
 
-    // Gatilho de tempo: se o usuário passar um tempo na página e não interagir
-    // Isso é um fallback caso os outros gatilhos não disparem
-    setTimeout(function() {
-      abrirPopup();
-    }, 45000); // 45 segundos (45000 milissegundos)
+      // Mobile: rolagem rápida de volta ao topo após ter descido a página
+      var ultimoScroll = window.scrollY;
+      var passouDaMetade = false;
+
+      window.addEventListener('scroll', function() {
+        var scrollAtual = window.scrollY;
+        var alturaTotal = document.body.scrollHeight - window.innerHeight;
+
+        if (scrollAtual > alturaTotal * 0.4) {
+          passouDaMetade = true;
+        }
+
+        if (passouDaMetade && scrollAtual < ultimoScroll && scrollAtual < 150) {
+          abrirPopup();
+        }
+
+        ultimoScroll = scrollAtual;
+      });
+    }
   })();
 </script>
 </body>
