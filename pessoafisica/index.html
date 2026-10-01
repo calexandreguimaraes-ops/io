@@ -685,6 +685,7 @@
           <button class="quiz-btn" data-field="municipio" data-value="Niterói">Niterói</button>
           <button class="quiz-btn" data-field="municipio" data-value="São Gonçalo">São Gonçalo</button>
           <button class="quiz-btn" data-field="municipio" data-value="Itaboraí">Itaboraí</button>
+          <button class="quiz-btn" data-field="municipio" data-value="Magé">Magé</button>
           <button class="quiz-btn" data-field="municipio" data-value="Zona Sul">Zona Sul</button>
           <button class="quiz-btn" data-field="municipio" data-value="Zona Norte">Zona Norte</button>
           <button class="quiz-btn" data-field="municipio" data-value="Zona Oeste">Zone Oeste</button>
@@ -1629,6 +1630,18 @@
       encodeURIComponent(mensagem);
 
     window.location.href = url;
+  });
+</script>
+<!-- Rastreamento de Conversão Google Ads -->
+<script>
+  document.addEventListener('click', function(e) {
+    var targetLink = e.target.closest('a');
+    if (targetLink && targetLink.href && targetLink.href.includes('wa.me')) {
+      gtag('event', 'conversion', {'send_to': 'AW-18413773557/tu5QCLaXu_UcEPXFr8xE'});
+    }
+    if (e.target && e.target.id === 'quizSubmit') {
+      gtag('event', 'conversion', {'send_to': 'AW-18413773557/tu5QCLaXu_UcEPXFr8xE'});
+    }
   });
 </script>
 </body>
