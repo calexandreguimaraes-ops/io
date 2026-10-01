@@ -1641,16 +1641,43 @@
     window.location.href = url;
   });
 </script>
-<!-- Rastreamento de Conversão Google Ads -->
 <script>
-  document.addEventListener('click', function(e) {
-    var targetLink = e.target.closest('a');
-    if (targetLink && targetLink.href && targetLink.href.includes('wa.me')) {
-      gtag('event', 'conversion', {'send_to': 'AW-18413773557/tu5QCLaXu_UcEPXFr8xE'});
+  // Função para registrar a conversão de Pessoa Física
+  function registrarConversaoPF(url) {
+    var callback = function () {
+      if (typeof(url) != 'undefined') {
+        window.location = url;
+      }
+    };
+    gtag('event', 'conversion', {
+        'send_to': 'AW-18413773557/yxo4CP-I_YwdEPXFr8xE',
+        'value': 1.0,
+        'currency': 'BRL',
+        'event_callback': callback
+    });
+    return false;
+  }
+
+  // Monitorar os cliques no botão do Quiz e no WhatsApp
+  document.addEventListener('DOMContentLoaded', function() {
+
+    // 1. Botão do Quiz
+    var botaoQuiz = document.getElementById('quizSubmit');
+    if (botaoQuiz) {
+      botaoQuiz.addEventListener('click', function() {
+        registrarConversaoPF(); 
+      });
     }
-    if (e.target && e.target.id === 'quizSubmit') {
-      gtag('event', 'conversion', {'send_to': 'AW-18413773557/tu5QCLaXu_UcEPXFr8xE'});
-    }
+
+    // 2. Links do WhatsApp
+    var linksWhats = document.querySelectorAll('a[href*="wa.me"]');
+    linksWhats.forEach(function(link) {
+      link.addEventListener('click', function(evento) {
+        evento.preventDefault(); 
+        registrarConversaoPF(this.href);
+      });
+    });
+
   });
 </script>
 </body>
