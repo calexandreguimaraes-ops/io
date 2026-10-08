@@ -11,17 +11,26 @@
     content="Compare opções de planos de saúde para pessoa física e família no Rio de Janeiro. Receba atendimento consultivo com Carlos Alexandre."
   >
 
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CYLKN1Z244"></script>
-
   <script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+    window.dataLayer.push(arguments);
+  }
+
+  gtag("js", new Date());
+  gtag("config", "G-CYLKN1Z244");
+  gtag("config", "AW-18413773557");
+
   function registrarCliqueWhatsAppPF() {
-    gtag('event', 'conversion', {
-        'send_to': 'AW-18413773557/yxo4CP-I_YwdEPXFr8xE',
-        'value': 1.0,
-        'currency': 'BRL'
+    gtag("event", "conversion", {
+      send_to: "AW-18413773557/yxo4CP-I_YwdEPXFr8xE",
+      value: 1.0,
+      currency: "BRL"
     });
   }
 </script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CYLKN1Z244"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
 
@@ -1684,15 +1693,15 @@
       });
     });
 
-    /* Rastreamento dos links do WhatsApp sem bloquear a navegação */
-    document.querySelectorAll(".whatsapp-link").forEach((link) => {
-      link.addEventListener("click", () => {
-        registrarEvento("whatsapp_click", {
-          link_text: link.textContent.trim().substring(0, 100),
-          page_location: window.location.href
-        });
-      });
+   /* Rastreamento dos links do WhatsApp */
+document.querySelectorAll(".whatsapp-link").forEach((link) => {
+  link.addEventListener("click", () => {
+    registrarEvento("whatsapp_click", {
+      link_text: link.textContent.trim().substring(0, 100),
+      page_location: window.location.href
     });
+  });
+});
 
     atualizarProgresso();
 
