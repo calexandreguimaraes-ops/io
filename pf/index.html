@@ -11,48 +11,59 @@
     content="Compare opções de planos de saúde para pessoa física e família no Rio de Janeiro. Receba atendimento consultivo com Carlos Alexandre."
   >
 
+  <!-- Google Analytics 4 e Google Ads -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CYLKN1Z244"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
 
-  function gtag() {
-    window.dataLayer.push(arguments);
-  }
+  <script>
+    window.dataLayer = window.dataLayer || [];
 
-  gtag("js", new Date());
-  gtag("config", "G-CYLKN1Z244");
-  gtag("config", "AW-18413773557");
-</script>
-  function registrarConversaoGoogleAds(dados = {}) {
-  return new Promise((resolve) => {
-    if (typeof window.gtag !== "function") {
-      console.warn("Google tag ainda não está disponível.");
-      resolve(false);
-      return;
+    function gtag() {
+      window.dataLayer.push(arguments);
     }
 
-    let finalizado = false;
+    gtag("js", new Date());
 
-    function concluir() {
-      if (finalizado) return;
-      finalizado = true;
-      resolve(true);
+    gtag("config", "G-CYLKN1Z244");
+    gtag("config", "AW-18413773557");
+
+    /*
+     * Dispara a conversão do Google Ads.
+     * O código aguarda até 2 segundos para enviar o evento
+     * antes de abrir o WhatsApp.
+     */
+    function registrarConversaoGoogleAds(dados = {}) {
+      return new Promise(function(resolve) {
+        if (typeof window.gtag !== "function") {
+          console.warn("Google tag não está disponível.");
+          resolve(false);
+          return;
+        }
+
+        var finalizado = false;
+
+        function concluir() {
+          if (finalizado) {
+            return;
+          }
+
+          finalizado = true;
+          resolve(true);
+        }
+
+        window.gtag("event", "conversion", {
+          send_to: "AW-18413773557/yxo4CP-I_YwdEPXFr8xE",
+          value: 1.0,
+          currency: "BRL",
+          ...dados,
+          event_callback: concluir,
+          event_timeout: 2000
+        });
+
+        setTimeout(concluir, 2000);
+      });
     }
+  </script>
 
-    window.gtag("event", "conversion", {
-      send_to: "AW-18413773557/yxo4CP-I_YwdEPXFr8xE",
-      value: 1.0,
-      currency: "BRL",
-      ...dados,
-      event_callback: concluir,
-      event_timeout: 2000
-    });
-
-    // Garante que a navegação não fique bloqueada
-    setTimeout(concluir, 2000);
-  });
-}
-</script>
   <style>
     :root {
       --azul: #0057a8;
@@ -103,7 +114,7 @@
 
     .hero {
       background: linear-gradient(135deg, var(--azul), var(--verde));
-      color: var(--branco);
+      color: #fff;
       padding: 42px 16px 48px;
       text-align: center;
     }
@@ -124,7 +135,7 @@
     .hero small {
       display: block;
       margin-bottom: 20px;
-      opacity: 0.9;
+      opacity: .9;
     }
 
     .btn {
@@ -140,8 +151,8 @@
       font-weight: 700;
       text-decoration: none;
       text-align: center;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-      transition: transform 0.2s, filter 0.2s;
+      box-shadow: 0 4px 12px rgba(0,0,0,.2);
+      transition: transform .2s, filter .2s;
     }
 
     .btn:hover,
@@ -150,18 +161,14 @@
       filter: brightness(1.05);
     }
 
-    .btn-secondary {
-      background: var(--azul);
-    }
-
     section {
       padding: 32px 0;
     }
 
     .card {
-      background: var(--branco);
+      background: #fff;
       border-radius: 14px;
-      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+      box-shadow: 0 2px 12px rgba(0,0,0,.07);
       padding: 28px;
     }
 
@@ -198,7 +205,7 @@
 
     .observacao {
       color: #777;
-      font-size: 0.8rem;
+      font-size: .8rem;
       margin: 14px auto 20px;
       max-width: 700px;
     }
@@ -207,7 +214,7 @@
       display: block;
       width: 160px;
       max-width: 100%;
-      margin: 14px auto;
+      margin: 20px auto;
     }
 
     .operadoras {
@@ -222,7 +229,7 @@
       background: #e8f4ff;
       border-radius: 999px;
       color: var(--azul);
-      font-size: 0.85rem;
+      font-size: .85rem;
       font-weight: bold;
       padding: 7px 12px;
     }
@@ -249,17 +256,22 @@
 
     .indicador span {
       color: var(--cinza);
-      font-size: 0.8rem;
+      font-size: .8rem;
     }
 
     .como-funciona {
       text-align: center;
     }
 
-    .passos {
+    .passos,
+    .grade,
+    .depoimentos-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
       gap: 16px;
+    }
+
+    .passos {
+      grid-template-columns: repeat(4, 1fr);
       margin-top: 22px;
     }
 
@@ -279,15 +291,19 @@
       font-weight: bold;
     }
 
-    .passo h3 {
+    .passo h3,
+    .mini-card h3,
+    .depoimento h3 {
       color: var(--azul);
       font-size: 1rem;
-      margin-bottom: 5px;
+      margin-bottom: 6px;
     }
 
-    .passo p {
-      color: #555;
-      font-size: 0.9rem;
+    .passo p,
+    .mini-card p,
+    .depoimento p {
+      color: #444;
+      font-size: .92rem;
     }
 
     .destaque {
@@ -320,7 +336,6 @@
     }
 
     .quiz-intro {
-      color: #fff;
       margin-bottom: 24px;
       text-align: center;
     }
@@ -328,7 +343,7 @@
     .progress {
       width: 100%;
       height: 8px;
-      background: rgba(255, 255, 255, 0.25);
+      background: rgba(255,255,255,.25);
       border-radius: 10px;
       margin-bottom: 28px;
       overflow: hidden;
@@ -338,7 +353,7 @@
       width: 0;
       height: 100%;
       background: var(--whatsapp);
-      transition: width 0.3s ease;
+      transition: width .3s ease;
     }
 
     .quiz-step {
@@ -350,19 +365,6 @@
 
     .quiz-step.active {
       display: block;
-      animation: aparecer 0.25s ease;
-    }
-
-    @keyframes aparecer {
-      from {
-        opacity: 0;
-        transform: translateY(8px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
     }
 
     .pergunta {
@@ -388,7 +390,7 @@
       color: var(--azul);
       font-weight: bold;
       padding: 14px 12px;
-      transition: 0.2s;
+      transition: .2s;
     }
 
     .quiz-btn:hover,
@@ -430,45 +432,31 @@
     }
 
     .privacidade {
-      color: #fff;
-      font-size: 0.82rem;
+      font-size: .82rem;
       margin-top: 14px;
-      opacity: 0.9;
+      opacity: .9;
     }
 
     .grade {
-      display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
     }
 
-    .mini-card {
+    .mini-card,
+    .depoimento {
       background: #fff;
       border-radius: 10px;
       border-top: 4px solid var(--verde);
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
       padding: 18px;
-    }
-
-    .mini-card h3 {
-      color: var(--azul);
-      font-size: 1rem;
-      margin-bottom: 8px;
-    }
-
-    .mini-card p {
-      color: #444;
-      font-size: 0.92rem;
     }
 
     .sobre {
       background: #fff;
+      text-align: center;
     }
 
     .sobre p {
       max-width: 720px;
       margin: 0 auto 12px;
-      text-align: center;
     }
 
     .galeria {
@@ -490,22 +478,7 @@
     }
 
     .depoimentos-grid {
-      display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-    }
-
-    .depoimento {
-      background: #fff;
-      border-radius: 12px;
-      border-top: 4px solid var(--verde);
-      padding: 20px;
-    }
-
-    .depoimento h3 {
-      color: var(--azul);
-      font-size: 1rem;
-      margin-bottom: 5px;
     }
 
     .estrelas {
@@ -514,15 +487,13 @@
     }
 
     .depoimento p {
-      color: #444;
-      font-size: 0.92rem;
       font-style: italic;
     }
 
     .acordeao {
       background: #fff;
       border-radius: 12px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+      box-shadow: 0 2px 10px rgba(0,0,0,.06);
       margin-bottom: 14px;
       overflow: hidden;
     }
@@ -539,24 +510,15 @@
       text-align: left;
     }
 
-    .acordeao-cabecalho h2 {
-      margin: 0;
-      font-size: 1.2rem;
-    }
-
     .resumo {
+      display: block;
       color: #666;
-      font-size: 0.85rem;
+      font-size: .85rem;
       margin-top: 4px;
     }
 
     .seta {
       font-size: 1.2rem;
-      transition: transform 0.25s;
-    }
-
-    .acordeao.aberto .seta {
-      transform: rotate(180deg);
     }
 
     .acordeao-conteudo {
@@ -568,6 +530,10 @@
       display: block;
     }
 
+    .acordeao.aberto .seta {
+      transform: rotate(180deg);
+    }
+
     .acordeao-conteudo h3 {
       color: var(--azul);
       font-size: 1.05rem;
@@ -577,7 +543,7 @@
     .acordeao-conteudo p,
     .acordeao-conteudo li {
       color: #444;
-      font-size: 0.95rem;
+      font-size: .95rem;
       margin-bottom: 10px;
     }
 
@@ -594,28 +560,10 @@
       padding: 14px;
     }
 
-    .tabela {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 16px 0;
-    }
-
-    .tabela th,
-    .tabela td {
-      border: 1px solid #c8d9e8;
-      padding: 10px;
-      text-align: left;
-    }
-
-    .tabela th {
-      background: var(--azul);
-      color: #fff;
-    }
-
     footer {
       background: var(--azul-escuro);
       color: #dce8f5;
-      font-size: 0.88rem;
+      font-size: .88rem;
       padding: 24px 16px;
       text-align: center;
     }
@@ -638,51 +586,7 @@
       padding: 13px 17px;
       font-weight: bold;
       text-decoration: none;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
-    }
-
-    .popup {
-      display: none;
-      position: fixed;
-      inset: 0;
-      z-index: 2000;
-      align-items: center;
-      justify-content: center;
-      background: rgba(0, 0, 0, 0.65);
-      padding: 20px;
-    }
-
-    .popup.aberto {
-      display: flex;
-    }
-
-    .popup-conteudo {
-      position: relative;
-      width: min(420px, 100%);
-      border-radius: 14px;
-      background: #fff;
-      padding: 30px 24px;
-      text-align: center;
-    }
-
-    .popup-conteudo h2 {
-      color: var(--azul);
-      margin-bottom: 10px;
-    }
-
-    .popup-conteudo p {
-      color: #444;
-      margin-bottom: 18px;
-    }
-
-    .fechar-popup {
-      position: absolute;
-      top: 10px;
-      right: 14px;
-      border: 0;
-      background: transparent;
-      color: #777;
-      font-size: 1.3rem;
+      box-shadow: 0 4px 14px rgba(0,0,0,.3);
     }
 
     @media (max-width: 760px) {
@@ -724,30 +628,24 @@
     }
   </style>
 </head>
-
 <body>
-
-  <header class="hero">
-    <h1>Planos de Saúde Individual e Familiar.</h1> 
-      <h1>Cotação rápida e sem compromisso.</h1>
+    <header class="hero">
+    <h1>Planos de Saúde Individual e Familiar</h1>
 
     <p>
-      Fuja dos altos reajustes e tenha proteção ideal que cabe no seu bolso em poucos cliques.
+      Cotação rápida, atendimento consultivo e opções para você e sua família.
     </p>
 
-    <small>⏱ Resposta em até 30 minutos em horário comercial</small>
+    <small>
+      ⏱ Resposta em até 30 minutos em horário comercial
+    </small>
 
-    <a
-      class="btn"
-      id="headerCta"
-      href="#cotacao"
-    >
+    <a class="btn" id="headerCta" href="#cotacao">
       COMEÇAR MINHA SIMULAÇÃO
     </a>
   </header>
 
   <main>
-
     <section>
       <div class="container card perfil">
         <img
@@ -833,6 +731,7 @@
     <section>
       <div class="container card como-funciona">
         <h2>Como funciona</h2>
+
         <p>Simples, rápido e sem burocracia.</p>
 
         <div class="passos">
@@ -868,7 +767,6 @@
       </div>
     </section>
 
-    <!-- SIMULADOR -->
     <section id="cotacao" class="quiz-section">
       <h2>Simulador de Plano de Saúde</h2>
 
@@ -880,43 +778,26 @@
         <div id="progressBar" class="progress-bar"></div>
       </div>
 
-      <!-- ETAPA 1 -->
       <div class="quiz-step active" data-step="1">
         <p class="pergunta">
           Qual opção descreve melhor sua situação?
         </p>
 
         <div class="opcoes">
-          <button
-            type="button"
-            class="quiz-btn"
-            data-field="perfil"
-            data-value="Pessoa física - individual"
-          >
+          <button type="button" class="quiz-btn" data-field="perfil" data-value="Pessoa física - individual">
             Pessoa física — individual
           </button>
 
-          <button
-            type="button"
-            class="quiz-btn"
-            data-field="perfil"
-            data-value="Pessoa física - familiar"
-          >
+          <button type="button" class="quiz-btn" data-field="perfil" data-value="Pessoa física - familiar">
             Pessoa física — familiar
           </button>
 
-          <button
-            type="button"
-            class="quiz-btn"
-            data-field="perfil"
-            data-value="Tenho MEI ou CNPJ"
-          >
+          <button type="button" class="quiz-btn" data-field="perfil" data-value="Tenho MEI ou CNPJ">
             Tenho MEI ou CNPJ e quero comparar essa possibilidade
           </button>
         </div>
       </div>
 
-      <!-- ETAPA 2 -->
       <div class="quiz-step" data-step="2">
         <p class="pergunta">Quantas pessoas serão incluídas?</p>
 
@@ -943,50 +824,20 @@
         </button>
       </div>
 
-      <!-- ETAPA 3 -->
       <div class="quiz-step" data-step="3">
         <p class="pergunta">Em qual município ou região você está?</p>
 
         <div class="opcoes duas-colunas">
-          <button type="button" class="quiz-btn" data-field="municipio" data-value="Baixada">
-            Baixada
-          </button>
-
-          <button type="button" class="quiz-btn" data-field="municipio" data-value="Niterói">
-            Niterói
-          </button>
-
-          <button type="button" class="quiz-btn" data-field="municipio" data-value="São Gonçalo">
-            São Gonçalo
-          </button>
-
-          <button type="button" class="quiz-btn" data-field="municipio" data-value="Itaboraí">
-            Itaboraí
-          </button>
-
-          <button type="button" class="quiz-btn" data-field="municipio" data-value="Maricá">
-            Maricá
-          </button>
-
-          <button type="button" class="quiz-btn" data-field="municipio" data-value="Zona Sul">
-            Zona Sul
-          </button>
-
-          <button type="button" class="quiz-btn" data-field="municipio" data-value="Zona Norte">
-            Zona Norte
-          </button>
-
-          <button type="button" class="quiz-btn" data-field="municipio" data-value="Zona Oeste">
-            Zona Oeste
-          </button>
-
-          <button type="button" class="quiz-btn" data-field="municipio" data-value="Centro-RJ">
-            Centro-RJ
-          </button>
-
-          <button type="button" class="quiz-btn" data-field="municipio" data-value="Outra região">
-            Outra região
-          </button>
+          <button type="button" class="quiz-btn" data-field="municipio" data-value="Baixada">Baixada</button>
+          <button type="button" class="quiz-btn" data-field="municipio" data-value="Niterói">Niterói</button>
+          <button type="button" class="quiz-btn" data-field="municipio" data-value="São Gonçalo">São Gonçalo</button>
+          <button type="button" class="quiz-btn" data-field="municipio" data-value="Itaboraí">Itaboraí</button>
+          <button type="button" class="quiz-btn" data-field="municipio" data-value="Maricá">Maricá</button>
+          <button type="button" class="quiz-btn" data-field="municipio" data-value="Zona Sul">Zona Sul</button>
+          <button type="button" class="quiz-btn" data-field="municipio" data-value="Zona Norte">Zona Norte</button>
+          <button type="button" class="quiz-btn" data-field="municipio" data-value="Zona Oeste">Zona Oeste</button>
+          <button type="button" class="quiz-btn" data-field="municipio" data-value="Centro-RJ">Centro-RJ</button>
+          <button type="button" class="quiz-btn" data-field="municipio" data-value="Outra região">Outra região</button>
         </div>
 
         <button type="button" class="voltar" data-voltar="2">
@@ -994,7 +845,6 @@
         </button>
       </div>
 
-      <!-- ETAPA 4 -->
       <div class="quiz-step" data-step="4">
         <p id="tituloIdade" class="pergunta">
           Agora, informe a idade
@@ -1011,7 +861,6 @@
         </button>
       </div>
 
-      <!-- ETAPA 5 -->
       <div class="quiz-step" data-step="5">
         <p class="pergunta">
           Preparando as melhores opções para o seu perfil...
@@ -1022,7 +871,6 @@
         </div>
       </div>
 
-      <!-- ETAPA 6 -->
       <div class="quiz-step" data-step="6">
         <p class="pergunta">✅ Simulação concluída!</p>
 
@@ -1048,7 +896,6 @@
       </div>
     </section>
 
-    <!-- O QUE AVALIAR -->
     <section>
       <div class="container">
         <h2>O que avaliar antes de contratar</h2>
@@ -1056,56 +903,40 @@
         <div class="grade">
           <article class="mini-card">
             <h3>Modalidade de contratação</h3>
-            <p>
-              Planos individuais, familiares, coletivos por adesão e empresariais
-              possuem regras diferentes.
-            </p>
+            <p>Planos individuais, familiares, coletivos por adesão e empresariais possuem regras diferentes.</p>
           </article>
 
           <article class="mini-card">
             <h3>Rede credenciada</h3>
-            <p>
-              Confira hospitais, clínicas e laboratórios na rede atualizada da operadora.
-            </p>
+            <p>Confira hospitais, clínicas e laboratórios na rede atualizada da operadora.</p>
           </article>
 
           <article class="mini-card">
             <h3>Preço e cobertura</h3>
-            <p>
-              Compare mensalidade, cobertura, acomodação, coparticipação e carências.
-            </p>
+            <p>Compare mensalidade, cobertura, acomodação, coparticipação e carências.</p>
           </article>
 
           <article class="mini-card">
             <h3>Reajustes</h3>
-            <p>
-              Peça explicações sobre os critérios de reajuste aplicáveis ao contrato.
-            </p>
+            <p>Peça explicações sobre os critérios de reajuste aplicáveis ao contrato.</p>
           </article>
 
           <article class="mini-card">
             <h3>Carências</h3>
-            <p>
-              Verifique os prazos e as condições informadas na proposta.
-            </p>
+            <p>Verifique os prazos e as condições informadas na proposta.</p>
           </article>
 
           <article class="mini-card">
             <h3>Atendimento consultivo</h3>
-            <p>
-              Receba ajuda para comparar as informações antes de tomar sua decisão.
-            </p>
+            <p>Receba ajuda para comparar as informações antes de tomar sua decisão.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- SOBRE -->
     <section class="sobre">
       <div class="container">
-        <h2 style="text-align: center;">
-          Sobre o corretor
-        </h2>
+        <h2>Sobre o corretor</h2>
 
         <p>
           Sou corretor de planos de saúde parceiro da JC Luz Corretora de Seguros,
@@ -1117,16 +948,16 @@
           ou empresa, com clareza e sem pressão.
         </p>
 
-        <div style="text-align: center; margin-top: 22px;">
+        <p style="margin-top: 20px;">
           <a
             class="btn whatsapp-link"
-            href="https://wa.me/5521985112985?text=Ol%C3%A1%20Carlos%2C%20quero%20conhecer%20melhor%20seu%20trabalho." 
+            href="https://wa.me/5521985112985?text=Ol%C3%A1%20Carlos%2C%20quero%20conhecer%20melhor%20seu%20trabalho."
             target="_blank"
             rel="noopener noreferrer"
           >
-            Falar com Carlos
+            FALAR COM CARLOS
           </a>
-        </div>
+        </p>
 
         <div class="galeria">
           <img src="premiacao1.jpg" alt="Reconhecimento profissional">
@@ -1137,20 +968,16 @@
       </div>
     </section>
 
-    <!-- DEPOIMENTOS -->
     <section class="depoimentos">
       <div class="container">
-        <h2 style="text-align: center;">
-          O que nossos clientes dizem
-        </h2>
+        <h2 style="text-align: center;">O que nossos clientes dizem</h2>
 
         <div class="depoimentos-grid">
           <article class="depoimento">
             <h3>Cliente satisfeito</h3>
             <div class="estrelas">★★★★★</div>
             <p>
-              “Excelente atendimento, comprometimento com o cliente. A pessoa se sente
-              segura e acolhida do início ao fim.”
+              “Excelente atendimento, comprometimento com o cliente. A pessoa se sente segura e acolhida do início ao fim.”
             </p>
           </article>
 
@@ -1158,8 +985,7 @@
             <h3>Maria S.</h3>
             <div class="estrelas">★★★★★</div>
             <p>
-              “Fiquei muito satisfeita com o plano e com o atendimento impecável do
-              começo ao fim.”
+              “Fiquei muito satisfeita com o plano e com o atendimento impecável do começo ao fim.”
             </p>
           </article>
 
@@ -1167,18 +993,15 @@
             <h3>Cliente corporativo</h3>
             <div class="estrelas">★★★★★</div>
             <p>
-              “A disponibilidade, a clareza nas explicações e o profissionalismo fizeram
-              toda a diferença.”
+              “A disponibilidade, a clareza nas explicações e o profissionalismo fizeram toda a diferença.”
             </p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- GUIAS -->
     <section>
       <div class="container">
-
         <article class="acordeao">
           <button type="button" class="acordeao-cabecalho">
             <span>
@@ -1190,35 +1013,31 @@
 
           <div class="acordeao-conteudo">
             <p>
-              A disponibilidade de planos varia conforme a operadora, a cidade e o perfil
-              dos beneficiários.
+              A disponibilidade de planos varia conforme a operadora, a cidade e o perfil dos beneficiários.
             </p>
 
             <h3>Plano individual ou familiar</h3>
             <p>
-              A contratação pode ser feita para uma pessoa ou para integrantes da família.
-              Confira preço, cobertura, rede credenciada e reajustes.
+              A contratação pode ser feita para uma pessoa ou para integrantes da família. Confira preço, cobertura, rede credenciada e reajustes.
             </p>
 
             <h3>Plano coletivo por adesão</h3>
             <p>
-              Pode exigir vínculo com entidade de classe, associação ou sindicato.
-              As condições dependem da administradora e da operadora.
+              Pode exigir vínculo com entidade de classe, associação ou sindicato. As condições dependem da administradora e da operadora.
             </p>
 
             <h3>Você tem MEI ou CNPJ?</h3>
             <p>
-              Podem existir opções empresariais, conforme documentação, número de pessoas
-              e regras da operadora.
+              Podem existir opções empresariais, conforme documentação, número de pessoas e regras da operadora.
             </p>
 
             <a
               class="btn whatsapp-link"
-              href="https://wa.me/5521985112985?text=Ol%C3%A1%20Carlos%2C%20quero%20consultar%20as%20op%C3%A7%C3%B5es%20para%20pessoa%20f%C3%ADsica." 
+              href="https://wa.me/5521985112985?text=Ol%C3%A1%20Carlos%2C%20quero%20consultar%20as%20op%C3%A7%C3%B5es%20para%20pessoa%20f%C3%ADsica."
               target="_blank"
               rel="noopener noreferrer"
             >
-              Consultar opções
+              CONSULTAR OPÇÕES
             </a>
           </div>
         </article>
@@ -1234,46 +1053,21 @@
 
           <div class="acordeao-conteudo">
             <p>
-              Carência é o período previsto em contrato durante o qual alguns atendimentos
-              podem ainda não estar disponíveis.
+              Carência é o período previsto em contrato durante o qual alguns atendimentos podem ainda não estar disponíveis.
             </p>
-
-            <table class="tabela">
-              <thead>
-                <tr>
-                  <th>Cobertura</th>
-                  <th>Referência geral</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Urgências e emergências</td>
-                  <td>24 horas</td>
-                </tr>
-                <tr>
-                  <td>Partos a termo</td>
-                  <td>300 dias</td>
-                </tr>
-                <tr>
-                  <td>Demais coberturas</td>
-                  <td>Consulte a proposta e o contrato</td>
-                </tr>
-              </tbody>
-            </table>
 
             <div class="aviso">
               <strong>Importante:</strong>
-              preencha a Declaração de Saúde com informações verdadeiras e peça
-              esclarecimentos antes de assinar.
+              preencha a Declaração de Saúde com informações verdadeiras e peça esclarecimentos antes de assinar.
             </div>
 
             <a
               class="btn whatsapp-link"
-              href="https://wa.me/5521985112985?text=Ol%C3%A1%20Carlos%2C%20tenho%20d%C3%BAvidas%20sobre%20car%C3%AAncias." 
+              href="https://wa.me/5521985112985?text=Ol%C3%A1%20Carlos%2C%20tenho%20d%C3%BAvidas%20sobre%20car%C3%AAncias."
               target="_blank"
               rel="noopener noreferrer"
             >
-              Tirar dúvidas
+              TIRAR DÚVIDAS
             </a>
           </div>
         </article>
@@ -1289,14 +1083,12 @@
 
           <div class="acordeao-conteudo">
             <p>
-              Compare não apenas a mensalidade, mas também coparticipação, reajustes,
-              abrangência, acomodação e rede credenciada.
+              Compare não apenas a mensalidade, mas também coparticipação, reajustes, abrangência, acomodação e rede credenciada.
             </p>
 
             <h3>Coparticipação</h3>
             <p>
-              Em alguns planos, além da mensalidade, podem existir valores por determinados
-              atendimentos, conforme as regras do contrato.
+              Em alguns planos, além da mensalidade, podem existir valores por determinados atendimentos, conforme as regras do contrato.
             </p>
 
             <div class="destaque">
@@ -1306,11 +1098,11 @@
 
             <a
               class="btn whatsapp-link"
-              href="https://wa.me/5521985112985?text=Ol%C3%A1%20Carlos%2C%20quero%20comparar%20pre%C3%A7os%20e%20condi%C3%A7%C3%B5es." 
+              href="https://wa.me/5521985112985?text=Ol%C3%A1%20Carlos%2C%20quero%20comparar%20pre%C3%A7os%20e%20condi%C3%A7%C3%B5es."
               target="_blank"
               rel="noopener noreferrer"
             >
-              Comparar opções
+              COMPARAR OPÇÕES
             </a>
           </div>
         </article>
@@ -1334,17 +1126,16 @@
             </ol>
 
             <div class="aviso">
-              A aceitação, a contratação e as condições finais dependem da operadora
-              e da análise do perfil.
+              A aceitação, a contratação e as condições finais dependem da operadora e da análise do perfil.
             </div>
 
             <a
               class="btn whatsapp-link"
-              href="https://wa.me/5521985112985?text=Ol%C3%A1%20Carlos%2C%20quero%20ajuda%20para%20entender%20uma%20proposta." 
+              href="https://wa.me/5521985112985?text=Ol%C3%A1%20Carlos%2C%20quero%20ajuda%20para%20entender%20uma%20proposta."
               target="_blank"
               rel="noopener noreferrer"
             >
-              Conversar sobre uma proposta
+              CONVERSAR SOBRE UMA PROPOSTA
             </a>
           </div>
         </article>
@@ -1360,113 +1151,82 @@
 
           <div class="acordeao-conteudo">
             <p>
-              A redução ou o aproveitamento de carências depende da operadora, do plano
-              anterior, da modalidade contratada e dos documentos apresentados.
+              A redução ou o aproveitamento de carências depende da operadora, do plano anterior, da modalidade contratada e dos documentos apresentados.
             </p>
 
             <p>
-              A redução não é automática. Confirme por escrito quais carências serão
-              reduzidas ou mantidas antes de cancelar o plano atual.
+              A redução não é automática. Confirme por escrito quais carências serão reduzidas ou mantidas antes de cancelar o plano atual.
             </p>
 
             <div class="aviso">
               <strong>Evite ficar sem cobertura:</strong>
-              não cancele o plano atual antes da aceitação do novo contrato e da confirmação
-              da data de início da cobertura.
+              não cancele o plano atual antes da aceitação do novo contrato e da confirmação da data de início da cobertura.
             </div>
 
             <a
               class="btn whatsapp-link"
-              href="https://wa.me/5521985112985?text=Ol%C3%A1%20Carlos%2C%20quero%20saber%20se%20posso%20reduzir%20car%C3%AAncias." 
+              href="https://wa.me/5521985112985?text=Ol%C3%A1%20Carlos%2C%20quero%20saber%20se%20posso%20reduzir%20car%C3%AAncias."
               target="_blank"
               rel="noopener noreferrer"
             >
-              Consultar possibilidade
+              CONSULTAR POSSIBILIDADE
             </a>
           </div>
         </article>
-
       </div>
     </section>
-
   </main>
 
   <footer>
-    <p>Carlos Alexandre © 2026 — Corretor de Planos de Saúde</p>
+    <p> Carlos Alexandre © 2026 — Corretor de Planos de Saúde</p>
     <p>Parceiro JC Luz Corretora de Seguros | Rio de Janeiro</p>
     <p>WhatsApp: (21) 98511-2985 | carlosalexandre@corretorsaudepro.com.br</p>
   </footer>
 
   <a
     class="whatsapp-fixo whatsapp-link"
-    href="https://wa.me/5521985112985?text=Ol%C3%A1%20Carlos%2C%20vim%20pela%20landing%20page%20e%20quero%20uma%20cota%C3%A7%C3%A3o." 
+    href="https://wa.me/5521985112985?text=Ol%C3%A1%20Carlos%2C%20vim%20pela%20landing%20page%20e%20quero%20uma%20cota%C3%A7%C3%A3o."
     target="_blank"
     rel="noopener noreferrer"
   >
     💬 WhatsApp
   </a>
-
-  <!-- POPUP DE SAÍDA -->
-  <div id="popupSaida" class="popup" role="dialog" aria-modal="true" aria-labelledby="tituloPopup">
-    <div class="popup-conteudo">
-      <button type="button" id="fecharPopup" class="fechar-popup" aria-label="Fechar">
-        ×
-      </button>
-
-      <h2 id="tituloPopup">Antes de sair...</h2>
-
-      <p>
-        Ainda ficou com dúvidas sobre qual plano pode atender ao seu perfil?
-        Fale comigo pelo WhatsApp.
-      </p>
-
-      <a
-        class="btn whatsapp-link"
-        href="https://wa.me/5521985112985?text=Ol%C3%A1%20Carlos%2C%20vi%20o%20site%20e%20quero%20tirar%20uma%20d%C3%BAvida."
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Falar com Carlos
-      </a>
-    </div>
-  </div>
-
-  <script>
+    <script>
     "use strict";
 
-    const respostas = {};
-    const totalEtapas = 6;
-    let etapaAtual = 1;
-    let quizIniciado = false;
+    var respostas = {};
+    var totalEtapas = 6;
+    var etapaAtual = 1;
+    var quizIniciado = false;
 
-    const progressBar = document.getElementById("progressBar");
-    const loadingBar = document.getElementById("loadingBar");
-    const idadesContainer = document.getElementById("idadesContainer");
-    const tituloIdade = document.getElementById("tituloIdade");
+    var progressBar = document.getElementById("progressBar");
+    var loadingBar = document.getElementById("loadingBar");
+    var idadesContainer = document.getElementById("idadesContainer");
+    var tituloIdade = document.getElementById("tituloIdade");
 
-    function registrarEvento(nome, parametros = {}) {
-      if (typeof gtag === "function") {
-        gtag("event", nome, parametros);
+    function registrarEvento(nome, parametros) {
+      parametros = parametros || {};
+
+      if (typeof window.gtag === "function") {
+        window.gtag("event", nome, parametros);
       }
     }
 
     function atualizarProgresso() {
-      const porcentagem =
-        (etapaAtual / totalEtapas) * 100;
-
+      var porcentagem = (etapaAtual / totalEtapas) * 100;
       progressBar.style.width = porcentagem + "%";
     }
 
     function irParaEtapa(numero) {
-      const proximaEtapa = document.querySelector(
-        `.quiz-step[data-step="${numero}"]`
+      var proximaEtapa = document.querySelector(
+        '.quiz-step[data-step="' + numero + '"]'
       );
 
       if (!proximaEtapa) {
         return;
       }
 
-      document.querySelectorAll(".quiz-step").forEach((etapa) => {
+      document.querySelectorAll(".quiz-step").forEach(function(etapa) {
         etapa.classList.remove("active");
       });
 
@@ -1477,11 +1237,11 @@
       if (numero === 5) {
         loadingBar.style.width = "0%";
 
-        setTimeout(() => {
+        setTimeout(function() {
           loadingBar.style.width = "100%";
         }, 100);
 
-        setTimeout(() => {
+        setTimeout(function() {
           irParaEtapa(6);
         }, 1800);
       }
@@ -1493,7 +1253,7 @@
       if (quantidade === 1) {
         tituloIdade.textContent = "Agora, informe sua idade";
 
-        const input = document.createElement("input");
+        var input = document.createElement("input");
         input.type = "number";
         input.min = "0";
         input.max = "110";
@@ -1506,29 +1266,30 @@
       }
 
       if (quantidade > 1) {
-        tituloIdade.textContent =
-          "Agora, informe a idade de cada pessoa";
+        tituloIdade.textContent = "Agora, informe a idade de cada pessoa";
 
-        for (let i = 1; i <= quantidade; i++) {
-          const input = document.createElement("input");
+        for (var i = 1; i <= quantidade; i++) {
+          var campo = document.createElement("input");
 
-          input.type = "number";
-          input.min = "0";
-          input.max = "110";
-          input.className = "campo idade";
-          input.placeholder = `Idade da ${i}ª pessoa`;
-          input.setAttribute("aria-label", `Idade da ${i}ª pessoa`);
+          campo.type = "number";
+          campo.min = "0";
+          campo.max = "110";
+          campo.className = "campo idade";
+          campo.placeholder = "Idade da " + i + "ª pessoa";
+          campo.setAttribute(
+            "aria-label",
+            "Idade da " + i + "ª pessoa"
+          );
 
-          idadesContainer.appendChild(input);
+          idadesContainer.appendChild(campo);
         }
 
         return;
       }
 
-      tituloIdade.textContent =
-        "Informe as idades das pessoas";
+      tituloIdade.textContent = "Informe as idades das pessoas";
 
-      const textarea = document.createElement("textarea");
+      var textarea = document.createElement("textarea");
 
       textarea.id = "idadesLivre";
       textarea.className = "campo";
@@ -1539,29 +1300,33 @@
     }
 
     function coletarIdades() {
-      const campos = idadesContainer.querySelectorAll(".idade");
+      var campos = idadesContainer.querySelectorAll(".idade");
 
       if (campos.length > 0) {
         respostas.idades = Array.from(campos)
-          .map((campo) => campo.value.trim())
+          .map(function(campo) {
+            return campo.value.trim();
+          })
           .filter(Boolean)
           .join(", ");
 
         return;
       }
 
-      const campoLivre = document.getElementById("idadesLivre");
+      var campoLivre = document.getElementById("idadesLivre");
 
       respostas.idades = campoLivre
         ? campoLivre.value.trim()
         : "";
     }
 
-    /* Clique nas opções do quiz */
-    document.querySelectorAll(".quiz-btn[data-field]").forEach((botao) => {
-      botao.addEventListener("click", () => {
-        const campo = botao.dataset.field;
-        const valor = botao.dataset.value;
+    /*
+     * Clique nas opções do simulador
+     */
+    document.querySelectorAll(".quiz-btn[data-field]").forEach(function(botao) {
+      botao.addEventListener("click", function() {
+        var campo = botao.dataset.field;
+        var valor = botao.dataset.value;
 
         respostas[campo] = valor;
 
@@ -1572,7 +1337,7 @@
         botao
           .closest(".opcoes")
           .querySelectorAll(".quiz-btn")
-          .forEach((item) => {
+          .forEach(function(item) {
             item.classList.remove("selecionado");
           });
 
@@ -1591,8 +1356,8 @@
           field: campo
         });
 
-        setTimeout(() => {
-          const proximaEtapa = etapaAtual + 1;
+        setTimeout(function() {
+          var proximaEtapa = etapaAtual + 1;
 
           if (proximaEtapa === 4) {
             gerarCamposIdade(respostas.quantidadeNumero || 0);
@@ -1603,18 +1368,21 @@
       });
     });
 
-    /* Botões voltar */
-    document.querySelectorAll(".voltar").forEach((botao) => {
-      botao.addEventListener("click", () => {
-        const etapaAnterior = Number(botao.dataset.voltar);
-        irParaEtapa(etapaAnterior);
+    /*
+     * Botões voltar
+     */
+    document.querySelectorAll(".voltar").forEach(function(botao) {
+      botao.addEventListener("click", function() {
+        irParaEtapa(Number(botao.dataset.voltar));
       });
     });
 
-    /* Continuar após as idades */
+    /*
+     * Continuar após informar as idades
+     */
     document
       .getElementById("continuarIdades")
-      .addEventListener("click", () => {
+      .addEventListener("click", function() {
         coletarIdades();
 
         registrarEvento("quiz_age_completed", {
@@ -1624,78 +1392,80 @@
         irParaEtapa(5);
       });
 
-    /* Envio final para o WhatsApp */
+    /*
+     * Envio final do simulador.
+     * Esta é a conversão de lead.
+     */
+    document
+      .getElementById("enviarCotacao")
+      .addEventListener("click", async function() {
+        var campoNome = document.getElementById("nome");
+        var nome = campoNome.value.trim();
 
-document
-  .getElementById("enviarCotacao")
-  .addEventListener("click", async () => {
-    const campoNome = document.getElementById("nome");
-    const nome = campoNome.value.trim();
+        if (!nome) {
+          campoNome.focus();
 
-    if (!nome) {
-      campoNome.focus();
+          registrarEvento("form_error", {
+            form_name: "simulador_plano_saude",
+            error_type: "nome_obrigatorio"
+          });
 
-      registrarEvento("form_error", {
-        form_name: "simulador_plano_saude",
-        error_type: "nome_obrigatorio"
+          alert("Por favor, informe seu nome.");
+          return;
+        }
+
+        var mensagem = [
+          "Olá Carlos, concluí a simulação e quero receber uma cotação.",
+          "",
+          "Nome: " + nome,
+          "Perfil: " + (respostas.perfil || "Não informado"),
+          "Pessoas: " + (respostas.quantidade || "Não informado"),
+          "Município/região: " + (respostas.municipio || "Não informado"),
+          "Idades: " + (respostas.idades || "Não informado")
+        ].join("\n");
+
+        var url =
+          "https://wa.me/5521985112985?text=" +
+          encodeURIComponent(mensagem);
+
+        /*
+         * A aba é aberta imediatamente após o clique
+         * para reduzir o risco de bloqueio do navegador.
+         */
+        var novaAba = window.open("about:blank", "_blank");
+
+        registrarEvento("generate_lead", {
+          method: "whatsapp",
+          form_name: "simulador_plano_saude",
+          lead_type: "cotacao_plano_saude"
+        });
+
+        registrarEvento("quiz_complete", {
+          quiz_name: "simulador_plano_saude"
+        });
+
+        /*
+         * Aguarda o envio da conversão do Google Ads.
+         */
+        await registrarConversaoGoogleAds({
+          conversion_type: "quiz_lead",
+          form_name: "simulador_plano_saude",
+          lead_type: "cotacao_plano_saude"
+        });
+
+        if (novaAba) {
+          novaAba.location.href = url;
+        } else {
+          window.location.href = url;
+        }
       });
 
-      alert("Por favor, informe seu nome.");
-      return;
-    }
-
-    const mensagem = [
-      "Olá Carlos, concluí a simulação e quero receber uma cotação.",
-      "",
-      "Nome: " + nome,
-      "Perfil: " + (respostas.perfil || "Não informado"),
-      "Pessoas: " + (respostas.quantidade || "Não informado"),
-      "Município/região: " + (respostas.municipio || "Não informado"),
-      "Idades: " + (respostas.idades || "Não informado")
-    ].join("\n");
-
-    const url =
-      "https://wa.me/5521985112985?text=" +
-      encodeURIComponent(mensagem);
-
     /*
-     * Abre uma aba em branco imediatamente.
-     * Isso ajuda a evitar bloqueio do navegador.
+     * CTA do cabeçalho
      */
-    const novaAba = window.open("about:blank", "_blank");
-
-    registrarEvento("generate_lead", {
-      method: "whatsapp",
-      form_name: "simulador_plano_saude",
-      lead_type: "cotacao_plano_saude",
-      transport_type: "beacon"
-    });
-
-    registrarEvento("quiz_complete", {
-      quiz_name: "simulador_plano_saude"
-    });
-
-    /*
-     * Envia a conversão do Google Ads
-     * e aguarda o disparo antes de abrir o WhatsApp.
-     */
-    await registrarConversaoGoogleAds({
-      conversion_type: "quiz_lead",
-      form_name: "simulador_plano_saude",
-      lead_type: "cotacao_plano_saude"
-    });
-
-    if (novaAba) {
-      novaAba.location.href = url;
-    } else {
-      // Alternativa caso o navegador bloqueie a nova aba
-      window.location.href = url;
-    }
-  });
-    /* CTA do cabeçalho */
     document
       .getElementById("headerCta")
-      .addEventListener("click", () => {
+      .addEventListener("click", function() {
         registrarEvento("select_content", {
           content_type: "cta",
           content_id: "header_simulador",
@@ -1703,13 +1473,15 @@ document
         });
       });
 
-    /* Acordeões */
-    document.querySelectorAll(".acordeao-cabecalho").forEach((botao) => {
-      botao.addEventListener("click", () => {
-        const acordeao = botao.closest(".acordeao");
-        const estavaAberto = acordeao.classList.contains("aberto");
+    /*
+     * Acordeões
+     */
+    document.querySelectorAll(".acordeao-cabecalho").forEach(function(botao) {
+      botao.addEventListener("click", function() {
+        var acordeao = botao.closest(".acordeao");
+        var estavaAberto = acordeao.classList.contains("aberto");
 
-        document.querySelectorAll(".acordeao").forEach((item) => {
+        document.querySelectorAll(".acordeao").forEach(function(item) {
           item.classList.remove("aberto");
         });
 
@@ -1719,75 +1491,53 @@ document
       });
     });
 
-   /* Rastreamento dos links do WhatsApp */
-document.querySelectorAll(".whatsapp-link").forEach((link) => {
-  link.addEventListener("click", async (evento) => {
-    const url = link.href;
-    const textoLink = link.textContent.trim().substring(0, 100);
+    /*
+     * Rastreamento dos links diretos do WhatsApp.
+     */
+    document.querySelectorAll(".whatsapp-link").forEach(function(link) {
+      link.addEventListener("click", async function(evento) {
+        var url = link.href;
+        var textoLink = link.textContent.trim().substring(0, 100);
 
-    registrarEvento("whatsapp_click", {
-      link_text: textoLink,
-      page_location: window.location.href,
-      transport_type: "beacon"
+        registrarEvento("whatsapp_click", {
+          link_text: textoLink,
+          page_location: window.location.href
+        });
+
+        /*
+         * Impede a navegação imediata para dar tempo
+         * de enviar a conversão ao Google Ads.
+         */
+        evento.preventDefault();
+
+        /*
+         * Abre uma aba em branco enquanto o clique
+         * ainda é considerado uma ação do usuário.
+         */
+        var novaAba = window.open("about:blank", "_blank");
+
+        await registrarConversaoGoogleAds({
+          conversion_type: "whatsapp_click",
+          link_text: textoLink
+        });
+
+        if (novaAba) {
+          novaAba.location.href = url;
+        } else {
+          window.location.href = url;
+        }
+      });
     });
 
-    // Impede a navegação imediata enquanto o evento é enviado
-    evento.preventDefault();
-
-    const novaAba = window.open("about:blank", "_blank");
-
-    await registrarConversaoGoogleAds({
-      conversion_type: "whatsapp_click",
-      link_text: textoLink
-    });
-
-    if (novaAba) {
-      novaAba.location.href = url;
-    } else {
-      // Fallback caso o navegador bloqueie a nova aba
-      window.location.href = url;
-    }
-  });
-});
-
-    atualizarProgresso();
-
-    /* Popup de saída */
-    const popup = document.getElementById("popupSaida");
-    const fecharPopup = document.getElementById("fecharPopup");
-
-    function abrirPopup() {
-      if (sessionStorage.getItem("popup_exibido")) {
-        return;
-      }
-
-      popup.classList.add("aberto");
-      sessionStorage.setItem("popup_exibido", "true");
-    }
-
-    fecharPopup.addEventListener("click", () => {
-      popup.classList.remove("aberto");
-    });
-
-    popup.addEventListener("click", (evento) => {
-      if (evento.target === popup) {
-        popup.classList.remove("aberto");
-      }
-    });
-
-    document.addEventListener("mouseleave", (evento) => {
-      if (evento.clientY <= 0) {
-        abrirPopup();
-      }
-    });
-
+    /*
+     * Evento de visualização da landing page.
+     */
     registrarEvento("landing_page_view", {
       page_type: "lead_generation",
       landing_page: "plano_saude_pessoa_fisica"
     });
-  </script>
-  <script>
-    // seu JavaScript existente
+
+    atualizarProgresso();
   </script>
 </body>
 </html>
