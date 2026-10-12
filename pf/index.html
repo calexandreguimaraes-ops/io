@@ -26,40 +26,24 @@
     gtag("config", "G-CYLKN1Z244");
     gtag("config", "AW-18413773557");
 
-    /*
-     * Dispara a conversão do Google Ads.
-     * O código aguarda até 2 segundos para enviar o evento
-     * antes de abrir o WhatsApp.
-     */
-    function registrarConversaoGoogleAds(dados = {}) {
-      return new Promise(function(resolve) {
-        if (typeof window.gtag !== "function") {
-          console.warn("Google tag não está disponível.");
-          resolve(false);
-          return;
-        }
+    function registrarEvento(nome, parametros) {
+      if (typeof window.gtag !== "function") {
+        return;
+      }
 
-        var finalizado = false;
+      window.gtag("event", nome, parametros || {});
+    }
 
-        function concluir() {
-          if (finalizado) {
-            return;
-          }
+    function registrarConversaoGoogleAds(parametros) {
+      if (typeof window.gtag !== "function") {
+        return;
+      }
 
-          finalizado = true;
-          resolve(true);
-        }
-
-        window.gtag("event", "conversion", {
-          send_to: "AW-18413773557/yxo4CP-I_YwdEPXFr8xE",
-          value: 1.0,
-          currency: "BRL",
-          ...dados,
-          event_callback: concluir,
-          event_timeout: 2000
-        });
-
-        setTimeout(concluir, 2000);
+      window.gtag("event", "conversion", {
+        send_to: "AW-18413773557/yxo4CP-I_YwdEPXFr8xE",
+        value: 1,
+        currency: "BRL",
+        ...(parametros || {})
       });
     }
   </script>
@@ -151,7 +135,7 @@
       font-weight: 700;
       text-decoration: none;
       text-align: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,.2);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, .2);
       transition: transform .2s, filter .2s;
     }
 
@@ -168,13 +152,13 @@
     .card {
       background: #fff;
       border-radius: 14px;
-      box-shadow: 0 2px 12px rgba(0,0,0,.07);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, .07);
       padding: 28px;
     }
 
     .perfil {
-      margin-top: -18px;
       position: relative;
+      margin-top: -18px;
       text-align: center;
     }
 
@@ -204,10 +188,10 @@
     }
 
     .observacao {
+      max-width: 700px;
+      margin: 14px auto 20px;
       color: #777;
       font-size: .8rem;
-      margin: 14px auto 20px;
-      max-width: 700px;
     }
 
     .logo {
@@ -226,12 +210,12 @@
     }
 
     .operadoras span {
-      background: #e8f4ff;
+      padding: 7px 12px;
       border-radius: 999px;
+      background: #e8f4ff;
       color: var(--azul);
       font-size: .85rem;
       font-weight: bold;
-      padding: 7px 12px;
     }
 
     .indicadores {
@@ -239,9 +223,9 @@
       flex-wrap: wrap;
       justify-content: center;
       gap: 28px;
-      border-top: 1px solid #e5e5e5;
       margin-top: 24px;
       padding-top: 22px;
+      border-top: 1px solid #e5e5e5;
     }
 
     .indicador {
@@ -294,9 +278,9 @@
     .passo h3,
     .mini-card h3,
     .depoimento h3 {
+      margin-bottom: 6px;
       color: var(--azul);
       font-size: 1rem;
-      margin-bottom: 6px;
     }
 
     .passo p,
@@ -307,27 +291,27 @@
     }
 
     .destaque {
-      background: #e8f4ff;
-      border-left: 4px solid var(--verde);
-      border-radius: 8px;
       margin-top: 22px;
       padding: 16px;
+      border-left: 4px solid var(--verde);
+      border-radius: 8px;
+      background: #e8f4ff;
       text-align: center;
     }
 
     .destaque strong {
       display: block;
-      color: var(--azul);
       margin-bottom: 5px;
+      color: var(--azul);
     }
 
     .quiz-section {
-      background: var(--azul);
-      border-radius: 14px;
-      color: #fff;
+      width: min(900px, calc(100% - 32px));
       margin: 20px auto;
       padding: 36px 20px;
-      width: min(900px, calc(100% - 32px));
+      border-radius: 14px;
+      background: var(--azul);
+      color: #fff;
     }
 
     .quiz-section h2 {
@@ -343,10 +327,10 @@
     .progress {
       width: 100%;
       height: 8px;
-      background: rgba(255,255,255,.25);
-      border-radius: 10px;
       margin-bottom: 28px;
       overflow: hidden;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, .25);
     }
 
     .progress-bar {
@@ -368,9 +352,9 @@
     }
 
     .pergunta {
+      margin-bottom: 18px;
       font-size: 1.15rem;
       font-weight: bold;
-      margin-bottom: 18px;
     }
 
     .opcoes {
@@ -384,37 +368,37 @@
 
     .quiz-btn {
       width: 100%;
+      padding: 14px 12px;
       border: 2px solid #fff;
       border-radius: 9px;
       background: #fff;
       color: var(--azul);
       font-weight: bold;
-      padding: 14px 12px;
       transition: .2s;
     }
 
     .quiz-btn:hover,
     .quiz-btn:focus-visible,
     .quiz-btn.selecionado {
-      background: var(--whatsapp);
       border-color: var(--whatsapp);
+      background: var(--whatsapp);
       color: #fff;
     }
 
     .voltar {
+      margin-top: 16px;
       border: 0;
       background: transparent;
       color: #fff;
-      margin-top: 16px;
       text-decoration: underline;
     }
 
     .campo {
       width: 100%;
-      border: 0;
-      border-radius: 8px;
       margin-bottom: 12px;
       padding: 14px;
+      border: 0;
+      border-radius: 8px;
     }
 
     .campo:focus {
@@ -423,18 +407,18 @@
 
     .quiz-final {
       width: 100%;
+      padding: 15px;
       border: 0;
       border-radius: 8px;
       background: var(--whatsapp);
       color: #fff;
       font-weight: bold;
-      padding: 15px;
     }
 
     .privacidade {
-      font-size: .82rem;
       margin-top: 14px;
       opacity: .9;
+      font-size: .82rem;
     }
 
     .grade {
@@ -443,10 +427,10 @@
 
     .mini-card,
     .depoimento {
-      background: #fff;
-      border-radius: 10px;
-      border-top: 4px solid var(--verde);
       padding: 18px;
+      border-top: 4px solid var(--verde);
+      border-radius: 10px;
+      background: #fff;
     }
 
     .sobre {
@@ -482,8 +466,8 @@
     }
 
     .estrelas {
-      color: var(--verde);
       margin-bottom: 12px;
+      color: var(--verde);
     }
 
     .depoimento p {
@@ -491,11 +475,11 @@
     }
 
     .acordeao {
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 2px 10px rgba(0,0,0,.06);
       margin-bottom: 14px;
       overflow: hidden;
+      border-radius: 12px;
+      background: #fff;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, .06);
     }
 
     .acordeao-cabecalho {
@@ -503,18 +487,18 @@
       align-items: center;
       justify-content: space-between;
       width: 100%;
+      padding: 20px;
       border: 0;
       background: #fff;
       color: var(--azul);
-      padding: 20px;
       text-align: left;
     }
 
     .resumo {
       display: block;
+      margin-top: 4px;
       color: #666;
       font-size: .85rem;
-      margin-top: 4px;
     }
 
     .seta {
@@ -535,16 +519,16 @@
     }
 
     .acordeao-conteudo h3 {
+      margin: 18px 0 7px;
       color: var(--azul);
       font-size: 1.05rem;
-      margin: 18px 0 7px;
     }
 
     .acordeao-conteudo p,
     .acordeao-conteudo li {
+      margin-bottom: 10px;
       color: #444;
       font-size: .95rem;
-      margin-bottom: 10px;
     }
 
     .acordeao-conteudo ul,
@@ -553,18 +537,18 @@
     }
 
     .aviso {
-      background: #fff3cd;
-      border-left: 4px solid #e0a000;
-      border-radius: 7px;
       margin: 16px 0;
       padding: 14px;
+      border-left: 4px solid #e0a000;
+      border-radius: 7px;
+      background: #fff3cd;
     }
 
     footer {
+      padding: 24px 16px;
       background: var(--azul-escuro);
       color: #dce8f5;
       font-size: .88rem;
-      padding: 24px 16px;
       text-align: center;
     }
 
@@ -574,19 +558,19 @@
 
     .whatsapp-fixo {
       position: fixed;
+      z-index: 1000;
       bottom: 16px;
       left: 16px;
-      z-index: 1000;
       display: inline-flex;
       align-items: center;
       gap: 8px;
+      padding: 13px 17px;
       border-radius: 999px;
       background: var(--whatsapp);
       color: #fff;
-      padding: 13px 17px;
       font-weight: bold;
       text-decoration: none;
-      box-shadow: 0 4px 14px rgba(0,0,0,.3);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, .3);
     }
 
     @media (max-width: 760px) {
@@ -620,16 +604,17 @@
       }
 
       .whatsapp-fixo {
+        right: 12px;
         bottom: 12px;
         left: 12px;
-        right: 12px;
         justify-content: center;
       }
     }
   </style>
 </head>
+
 <body>
-    <header class="hero">
+  <header class="hero">
     <h1>Planos de Saúde Individual e Familiar</h1>
 
     <p>
@@ -784,15 +769,30 @@
         </p>
 
         <div class="opcoes">
-          <button type="button" class="quiz-btn" data-field="perfil" data-value="Pessoa física - individual">
+          <button
+            type="button"
+            class="quiz-btn"
+            data-field="perfil"
+            data-value="Pessoa física - individual"
+          >
             Pessoa física — individual
           </button>
 
-          <button type="button" class="quiz-btn" data-field="perfil" data-value="Pessoa física - familiar">
+          <button
+            type="button"
+            class="quiz-btn"
+            data-field="perfil"
+            data-value="Pessoa física - familiar"
+          >
             Pessoa física — familiar
           </button>
 
-          <button type="button" class="quiz-btn" data-field="perfil" data-value="Tenho MEI ou CNPJ">
+          <button
+            type="button"
+            class="quiz-btn"
+            data-field="perfil"
+            data-value="Tenho MEI ou CNPJ"
+          >
             Tenho MEI ou CNPJ e quero comparar essa possibilidade
           </button>
         </div>
@@ -802,19 +802,43 @@
         <p class="pergunta">Quantas pessoas serão incluídas?</p>
 
         <div class="opcoes">
-          <button type="button" class="quiz-btn" data-field="quantidade" data-value="1 pessoa" data-qtd="1">
+          <button
+            type="button"
+            class="quiz-btn"
+            data-field="quantidade"
+            data-value="1 pessoa"
+            data-qtd="1"
+          >
             1 pessoa
           </button>
 
-          <button type="button" class="quiz-btn" data-field="quantidade" data-value="2 pessoas" data-qtd="2">
+          <button
+            type="button"
+            class="quiz-btn"
+            data-field="quantidade"
+            data-value="2 pessoas"
+            data-qtd="2"
+          >
             2 pessoas
           </button>
 
-          <button type="button" class="quiz-btn" data-field="quantidade" data-value="3 a 5 pessoas" data-qtd="5">
+          <button
+            type="button"
+            class="quiz-btn"
+            data-field="quantidade"
+            data-value="3 a 5 pessoas"
+            data-qtd="5"
+          >
             3 a 5 pessoas
           </button>
 
-          <button type="button" class="quiz-btn" data-field="quantidade" data-value="Mais de 5 pessoas" data-qtd="0">
+          <button
+            type="button"
+            class="quiz-btn"
+            data-field="quantidade"
+            data-value="Mais de 5 pessoas"
+            data-qtd="0"
+          >
             Mais de 5 pessoas
           </button>
         </div>
@@ -825,7 +849,9 @@
       </div>
 
       <div class="quiz-step" data-step="3">
-        <p class="pergunta">Em qual município ou região você está?</p>
+        <p class="pergunta">
+          Em qual município ou região você está?
+        </p>
 
         <div class="opcoes duas-colunas">
           <button type="button" class="quiz-btn" data-field="municipio" data-value="Baixada">Baixada</button>
@@ -1178,7 +1204,7 @@
   </main>
 
   <footer>
-    <p> Carlos Alexandre © 2026 — Corretor de Planos de Saúde</p>
+    <p>Carlos Alexandre © 2026 — Corretor de Planos de Saúde</p>
     <p>Parceiro JC Luz Corretora de Seguros | Rio de Janeiro</p>
     <p>WhatsApp: (21) 98511-2985 | carlosalexandre@corretorsaudepro.com.br</p>
   </footer>
@@ -1191,7 +1217,8 @@
   >
     💬 WhatsApp
   </a>
-    <script>
+
+  <script>
     "use strict";
 
     var respostas = {};
@@ -1204,15 +1231,11 @@
     var idadesContainer = document.getElementById("idadesContainer");
     var tituloIdade = document.getElementById("tituloIdade");
 
-    function registrarEvento(nome, parametros) {
-      parametros = parametros || {};
-
-      if (typeof window.gtag === "function") {
-        window.gtag("event", nome, parametros);
-      }
-    }
-
     function atualizarProgresso() {
+      if (!progressBar) {
+        return;
+      }
+
       var porcentagem = (etapaAtual / totalEtapas) * 100;
       progressBar.style.width = porcentagem + "%";
     }
@@ -1235,11 +1258,13 @@
       atualizarProgresso();
 
       if (numero === 5) {
-        loadingBar.style.width = "0%";
+        if (loadingBar) {
+          loadingBar.style.width = "0%";
 
-        setTimeout(function() {
-          loadingBar.style.width = "100%";
-        }, 100);
+          setTimeout(function() {
+            loadingBar.style.width = "100%";
+          }, 100);
+        }
 
         setTimeout(function() {
           irParaEtapa(6);
@@ -1248,12 +1273,17 @@
     }
 
     function gerarCamposIdade(quantidade) {
+      if (!idadesContainer || !tituloIdade) {
+        return;
+      }
+
       idadesContainer.innerHTML = "";
 
       if (quantidade === 1) {
         tituloIdade.textContent = "Agora, informe sua idade";
 
         var input = document.createElement("input");
+
         input.type = "number";
         input.min = "0";
         input.max = "110";
@@ -1266,7 +1296,8 @@
       }
 
       if (quantidade > 1) {
-        tituloIdade.textContent = "Agora, informe a idade de cada pessoa";
+        tituloIdade.textContent =
+          "Agora, informe a idade de cada pessoa";
 
         for (var i = 1; i <= quantidade; i++) {
           var campo = document.createElement("input");
@@ -1287,19 +1318,25 @@
         return;
       }
 
-      tituloIdade.textContent = "Informe as idades das pessoas";
+      tituloIdade.textContent =
+        "Informe as idades das pessoas";
 
       var textarea = document.createElement("textarea");
 
       textarea.id = "idadesLivre";
       textarea.className = "campo";
       textarea.rows = 3;
-      textarea.placeholder = "Exemplo: 25, 30, 34, 41, 52";
+      textarea.placeholder =
+        "Exemplo: 25, 30, 34, 41, 52";
 
       idadesContainer.appendChild(textarea);
     }
 
     function coletarIdades() {
+      if (!idadesContainer) {
+        return;
+      }
+
       var campos = idadesContainer.querySelectorAll(".idade");
 
       if (campos.length > 0) {
@@ -1313,7 +1350,8 @@
         return;
       }
 
-      var campoLivre = document.getElementById("idadesLivre");
+      var campoLivre =
+        document.getElementById("idadesLivre");
 
       respostas.idades = campoLivre
         ? campoLivre.value.trim()
@@ -1321,7 +1359,7 @@
     }
 
     /*
-     * Clique nas opções do simulador
+     * Opções do simulador
      */
     document.querySelectorAll(".quiz-btn[data-field]").forEach(function(botao) {
       botao.addEventListener("click", function() {
@@ -1331,15 +1369,17 @@
         respostas[campo] = valor;
 
         if (botao.dataset.qtd) {
-          respostas.quantidadeNumero = Number(botao.dataset.qtd);
+          respostas.quantidadeNumero =
+            Number(botao.dataset.qtd);
         }
 
-        botao
-          .closest(".opcoes")
-          .querySelectorAll(".quiz-btn")
-          .forEach(function(item) {
+        var grupo = botao.closest(".opcoes");
+
+        if (grupo) {
+          grupo.querySelectorAll(".quiz-btn").forEach(function(item) {
             item.classList.remove("selecionado");
           });
+        }
 
         botao.classList.add("selecionado");
 
@@ -1353,14 +1393,17 @@
 
         registrarEvento("quiz_step", {
           quiz_name: "simulador_plano_saude",
-          field: campo
+          field: campo,
+          value: valor
         });
 
         setTimeout(function() {
           var proximaEtapa = etapaAtual + 1;
 
           if (proximaEtapa === 4) {
-            gerarCamposIdade(respostas.quantidadeNumero || 0);
+            gerarCamposIdade(
+              respostas.quantidadeNumero || 0
+            );
           }
 
           irParaEtapa(proximaEtapa);
@@ -1369,7 +1412,7 @@
     });
 
     /*
-     * Botões voltar
+     * Botões Voltar
      */
     document.querySelectorAll(".voltar").forEach(function(botao) {
       botao.addEventListener("click", function() {
@@ -1380,9 +1423,11 @@
     /*
      * Continuar após informar as idades
      */
-    document
-      .getElementById("continuarIdades")
-      .addEventListener("click", function() {
+    var continuarIdades =
+      document.getElementById("continuarIdades");
+
+    if (continuarIdades) {
+      continuarIdades.addEventListener("click", function() {
         coletarIdades();
 
         registrarEvento("quiz_age_completed", {
@@ -1391,15 +1436,23 @@
 
         irParaEtapa(5);
       });
+    }
 
     /*
-     * Envio final do simulador.
-     * Esta é a conversão de lead.
+     * Envio final do simulador
      */
-    document
-      .getElementById("enviarCotacao")
-      .addEventListener("click", async function() {
-        var campoNome = document.getElementById("nome");
+    var enviarCotacao =
+      document.getElementById("enviarCotacao");
+
+    if (enviarCotacao) {
+      enviarCotacao.addEventListener("click", function() {
+        var campoNome =
+          document.getElementById("nome");
+
+        if (!campoNome) {
+          return;
+        }
+
         var nome = campoNome.value.trim();
 
         if (!nome) {
@@ -1418,21 +1471,19 @@
           "Olá Carlos, concluí a simulação e quero receber uma cotação.",
           "",
           "Nome: " + nome,
-          "Perfil: " + (respostas.perfil || "Não informado"),
-          "Pessoas: " + (respostas.quantidade || "Não informado"),
-          "Município/região: " + (respostas.municipio || "Não informado"),
-          "Idades: " + (respostas.idades || "Não informado")
+          "Perfil: " +
+            (respostas.perfil || "Não informado"),
+          "Pessoas: " +
+            (respostas.quantidade || "Não informado"),
+          "Município/região: " +
+            (respostas.municipio || "Não informado"),
+          "Idades: " +
+            (respostas.idades || "Não informado")
         ].join("\n");
 
         var url =
           "https://wa.me/5521985112985?text=" +
           encodeURIComponent(mensagem);
-
-        /*
-         * A aba é aberta imediatamente após o clique
-         * para reduzir o risco de bloqueio do navegador.
-         */
-        var novaAba = window.open("about:blank", "_blank");
 
         registrarEvento("generate_lead", {
           method: "whatsapp",
@@ -1444,42 +1495,50 @@
           quiz_name: "simulador_plano_saude"
         });
 
-        /*
-         * Aguarda o envio da conversão do Google Ads.
-         */
-        await registrarConversaoGoogleAds({
+        registrarConversaoGoogleAds({
           conversion_type: "quiz_lead",
           form_name: "simulador_plano_saude",
           lead_type: "cotacao_plano_saude"
         });
 
-        if (novaAba) {
-          novaAba.location.href = url;
-        } else {
-          window.location.href = url;
-        }
+        /*
+         * Abre o WhatsApp imediatamente.
+         * Não bloqueia a navegação aguardando o rastreamento.
+         */
+        window.open(url, "_blank");
       });
+    }
 
     /*
      * CTA do cabeçalho
      */
-    document
-      .getElementById("headerCta")
-      .addEventListener("click", function() {
+    var headerCta =
+      document.getElementById("headerCta");
+
+    if (headerCta) {
+      headerCta.addEventListener("click", function() {
         registrarEvento("select_content", {
           content_type: "cta",
           content_id: "header_simulador",
           cta_name: "simular_gratis"
         });
       });
+    }
 
     /*
      * Acordeões
      */
     document.querySelectorAll(".acordeao-cabecalho").forEach(function(botao) {
       botao.addEventListener("click", function() {
-        var acordeao = botao.closest(".acordeao");
-        var estavaAberto = acordeao.classList.contains("aberto");
+        var acordeao =
+          botao.closest(".acordeao");
+
+        if (!acordeao) {
+          return;
+        }
+
+        var estavaAberto =
+          acordeao.classList.contains("aberto");
 
         document.querySelectorAll(".acordeao").forEach(function(item) {
           item.classList.remove("aberto");
@@ -1492,45 +1551,36 @@
     });
 
     /*
-     * Rastreamento dos links diretos do WhatsApp.
+     * Links diretos do WhatsApp
+     *
+     * Não usamos preventDefault, async, await
+     * nem janela intermediária.
      */
-    document.querySelectorAll(".whatsapp-link").forEach(function(link) {
-      link.addEventListener("click", async function(evento) {
-        var url = link.href;
-        var textoLink = link.textContent.trim().substring(0, 100);
+    document.querySelectorAll("a.whatsapp-link").forEach(function(link) {
+      link.addEventListener("click", function() {
+        var textoLink = link.textContent
+          .trim()
+          .substring(0, 100);
 
         registrarEvento("whatsapp_click", {
           link_text: textoLink,
           page_location: window.location.href
         });
 
-        /*
-         * Impede a navegação imediata para dar tempo
-         * de enviar a conversão ao Google Ads.
-         */
-        evento.preventDefault();
-
-        /*
-         * Abre uma aba em branco enquanto o clique
-         * ainda é considerado uma ação do usuário.
-         */
-        var novaAba = window.open("about:blank", "_blank");
-
-        await registrarConversaoGoogleAds({
+        registrarConversaoGoogleAds({
           conversion_type: "whatsapp_click",
           link_text: textoLink
         });
 
-        if (novaAba) {
-          novaAba.location.href = url;
-        } else {
-          window.location.href = url;
-        }
+        /*
+         * O navegador segue normalmente
+         * o endereço definido no atributo href.
+         */
       });
     });
 
     /*
-     * Evento de visualização da landing page.
+     * Visualização da landing page
      */
     registrarEvento("landing_page_view", {
       page_type: "lead_generation",
@@ -1540,4 +1590,4 @@
     atualizarProgresso();
   </script>
 </body>
-</html>
+</html>         
