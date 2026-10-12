@@ -22,14 +22,36 @@
   gtag("js", new Date());
   gtag("config", "G-CYLKN1Z244");
   gtag("config", "AW-18413773557");
+</script>
+  function registrarConversaoGoogleAds(dados = {}) {
+  return new Promise((resolve) => {
+    if (typeof window.gtag !== "function") {
+      console.warn("Google tag ainda não está disponível.");
+      resolve(false);
+      return;
+    }
 
-  function registrarCliqueWhatsAppPF() {
-    gtag("event", "conversion", {
+    let finalizado = false;
+
+    function concluir() {
+      if (finalizado) return;
+      finalizado = true;
+      resolve(true);
+    }
+
+    window.gtag("event", "conversion", {
       send_to: "AW-18413773557/yxo4CP-I_YwdEPXFr8xE",
       value: 1.0,
-      currency: "BRL"
+      currency: "BRL",
+      ...dados,
+      event_callback: concluir,
+      event_timeout: 2000
     });
-  }
+
+    // Garante que a navegação não fique bloqueada
+    setTimeout(concluir, 2000);
+  });
+}
 </script>
   <style>
     :root {
@@ -753,7 +775,7 @@
 
         <a
           class="btn whatsapp-link"
-          href="https://wa.me/5521985112985?text=Ol%C3%A1%20Carlos%2C%20quero%20falar%20sobre%20planos%20de%20sa%C3%BAde." onclick="registrarCliqueWhatsAppPF()"
+          href="https://wa.me/5521985112985?text=Ol%C3%A1%20Carlos%2C%20quero%20falar%20sobre%20planos%20de%20sa%C3%BAde."
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -1098,7 +1120,7 @@
         <div style="text-align: center; margin-top: 22px;">
           <a
             class="btn whatsapp-link"
-            href="https://wa.me/5521985112985?text=Ol%C3%A1%20Carlos%2C%20quero%20conhecer%20melhor%20seu%20trabalho." onclick="registrarCliqueWhatsAppPF()"
+            href="https://wa.me/5521985112985?text=Ol%C3%A1%20Carlos%2C%20quero%20conhecer%20melhor%20seu%20trabalho." 
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -1192,7 +1214,7 @@
 
             <a
               class="btn whatsapp-link"
-              href="https://wa.me/5521985112985?text=Ol%C3%A1%20Carlos%2C%20quero%20consultar%20as%20op%C3%A7%C3%B5es%20para%20pessoa%20f%C3%ADsica." onclick="registrarCliqueWhatsAppPF()"
+              href="https://wa.me/5521985112985?text=Ol%C3%A1%20Carlos%2C%20quero%20consultar%20as%20op%C3%A7%C3%B5es%20para%20pessoa%20f%C3%ADsica." 
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -1247,7 +1269,7 @@
 
             <a
               class="btn whatsapp-link"
-              href="https://wa.me/5521985112985?text=Ol%C3%A1%20Carlos%2C%20tenho%20d%C3%BAvidas%20sobre%20car%C3%AAncias." onclick="registrarCliqueWhatsAppPF()"
+              href="https://wa.me/5521985112985?text=Ol%C3%A1%20Carlos%2C%20tenho%20d%C3%BAvidas%20sobre%20car%C3%AAncias." 
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -1284,7 +1306,7 @@
 
             <a
               class="btn whatsapp-link"
-              href="https://wa.me/5521985112985?text=Ol%C3%A1%20Carlos%2C%20quero%20comparar%20pre%C3%A7os%20e%20condi%C3%A7%C3%B5es." onclick="registrarCliqueWhatsAppPF()"
+              href="https://wa.me/5521985112985?text=Ol%C3%A1%20Carlos%2C%20quero%20comparar%20pre%C3%A7os%20e%20condi%C3%A7%C3%B5es." 
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -1318,7 +1340,7 @@
 
             <a
               class="btn whatsapp-link"
-              href="https://wa.me/5521985112985?text=Ol%C3%A1%20Carlos%2C%20quero%20ajuda%20para%20entender%20uma%20proposta." onclick="registrarCliqueWhatsAppPF()"
+              href="https://wa.me/5521985112985?text=Ol%C3%A1%20Carlos%2C%20quero%20ajuda%20para%20entender%20uma%20proposta." 
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -1355,7 +1377,7 @@
 
             <a
               class="btn whatsapp-link"
-              href="https://wa.me/5521985112985?text=Ol%C3%A1%20Carlos%2C%20quero%20saber%20se%20posso%20reduzir%20car%C3%AAncias." onclick="registrarCliqueWhatsAppPF()"
+              href="https://wa.me/5521985112985?text=Ol%C3%A1%20Carlos%2C%20quero%20saber%20se%20posso%20reduzir%20car%C3%AAncias." 
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -1377,7 +1399,7 @@
 
   <a
     class="whatsapp-fixo whatsapp-link"
-    href="https://wa.me/5521985112985?text=Ol%C3%A1%20Carlos%2C%20vim%20pela%20landing%20page%20e%20quero%20uma%20cota%C3%A7%C3%A3o." onclick="registrarCliqueWhatsAppPF()"
+    href="https://wa.me/5521985112985?text=Ol%C3%A1%20Carlos%2C%20vim%20pela%20landing%20page%20e%20quero%20uma%20cota%C3%A7%C3%A3o." 
     target="_blank"
     rel="noopener noreferrer"
   >
@@ -1400,7 +1422,7 @@
 
       <a
         class="btn whatsapp-link"
-        href="https://wa.me/5521985112985?text=Ol%C3%A1%20Carlos%2C%20vi%20o%20site%20e%20quero%20tirar%20uma%20d%C3%BAvida." onclick="registrarCliqueWhatsAppPF()"
+        href="https://wa.me/5521985112985?text=Ol%C3%A1%20Carlos%2C%20vi%20o%20site%20e%20quero%20tirar%20uma%20d%C3%BAvida."
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -1430,7 +1452,7 @@
 
     function atualizarProgresso() {
       const porcentagem =
-        ((etapaAtual - 1) / (totalEtapas - 1)) * 100;
+        (etapaAtual / totalEtapas) * 100;
 
       progressBar.style.width = porcentagem + "%";
     }
@@ -1603,58 +1625,73 @@
       });
 
     /* Envio final para o WhatsApp */
-    document
-      .getElementById("enviarCotacao")
-      .addEventListener("click", () => {
-        const campoNome = document.getElementById("nome");
-        const nome = campoNome.value.trim();
 
-        if (!nome) {
-          campoNome.focus();
+document
+  .getElementById("enviarCotacao")
+  .addEventListener("click", async () => {
+    const campoNome = document.getElementById("nome");
+    const nome = campoNome.value.trim();
 
-          registrarEvento("form_error", {
-            form_name: "simulador_plano_saude",
-            error_type: "nome_obrigatorio"
-          });
+    if (!nome) {
+      campoNome.focus();
 
-          alert("Por favor, informe seu nome.");
-          return;
-        }
-
-        const mensagem = [
-          "Olá Carlos, concluí a simulação e quero receber uma cotação.",
-          "",
-          "Nome: " + nome,
-          "Perfil: " + (respostas.perfil || "Não informado"),
-          "Pessoas: " + (respostas.quantidade || "Não informado"),
-          "Município/região: " + (respostas.municipio || "Não informado"),
-          "Idades: " + (respostas.idades || "Não informado")
-        ].join("\n");
-
-        const url = "https://wa.me/5521985112985?text=" +
-          encodeURIComponent(mensagem);
-
-        registrarEvento("generate_lead", {
-          method: "whatsapp",
-          form_name: "simulador_plano_saude",
-          lead_type: "cotacao_plano_saude"
-        });
-
-        registrarEvento("quiz_complete", {
-          quiz_name: "simulador_plano_saude"
-        });
-
-        if (typeof gtag === "function") {
-          gtag("event", "conversion", {
-            send_to: "AW-18413773557/yxo4CP-I_YwdEPXFr8xE",
-            value: 1.0,
-            currency: "BRL"
-          });
-        }
-
-        window.open(url, "_blank", "noopener,noreferrer");
+      registrarEvento("form_error", {
+        form_name: "simulador_plano_saude",
+        error_type: "nome_obrigatorio"
       });
 
+      alert("Por favor, informe seu nome.");
+      return;
+    }
+
+    const mensagem = [
+      "Olá Carlos, concluí a simulação e quero receber uma cotação.",
+      "",
+      "Nome: " + nome,
+      "Perfil: " + (respostas.perfil || "Não informado"),
+      "Pessoas: " + (respostas.quantidade || "Não informado"),
+      "Município/região: " + (respostas.municipio || "Não informado"),
+      "Idades: " + (respostas.idades || "Não informado")
+    ].join("\n");
+
+    const url =
+      "https://wa.me/5521985112985?text=" +
+      encodeURIComponent(mensagem);
+
+    /*
+     * Abre uma aba em branco imediatamente.
+     * Isso ajuda a evitar bloqueio do navegador.
+     */
+    const novaAba = window.open("about:blank", "_blank");
+
+    registrarEvento("generate_lead", {
+      method: "whatsapp",
+      form_name: "simulador_plano_saude",
+      lead_type: "cotacao_plano_saude",
+      transport_type: "beacon"
+    });
+
+    registrarEvento("quiz_complete", {
+      quiz_name: "simulador_plano_saude"
+    });
+
+    /*
+     * Envia a conversão do Google Ads
+     * e aguarda o disparo antes de abrir o WhatsApp.
+     */
+    await registrarConversaoGoogleAds({
+      conversion_type: "quiz_lead",
+      form_name: "simulador_plano_saude",
+      lead_type: "cotacao_plano_saude"
+    });
+
+    if (novaAba) {
+      novaAba.location.href = url;
+    } else {
+      // Alternativa caso o navegador bloqueie a nova aba
+      window.location.href = url;
+    }
+  });
     /* CTA do cabeçalho */
     document
       .getElementById("headerCta")
@@ -1684,11 +1721,32 @@
 
    /* Rastreamento dos links do WhatsApp */
 document.querySelectorAll(".whatsapp-link").forEach((link) => {
-  link.addEventListener("click", () => {
+  link.addEventListener("click", async (evento) => {
+    const url = link.href;
+    const textoLink = link.textContent.trim().substring(0, 100);
+
     registrarEvento("whatsapp_click", {
-      link_text: link.textContent.trim().substring(0, 100),
-      page_location: window.location.href
+      link_text: textoLink,
+      page_location: window.location.href,
+      transport_type: "beacon"
     });
+
+    // Impede a navegação imediata enquanto o evento é enviado
+    evento.preventDefault();
+
+    const novaAba = window.open("about:blank", "_blank");
+
+    await registrarConversaoGoogleAds({
+      conversion_type: "whatsapp_click",
+      link_text: textoLink
+    });
+
+    if (novaAba) {
+      novaAba.location.href = url;
+    } else {
+      // Fallback caso o navegador bloqueie a nova aba
+      window.location.href = url;
+    }
   });
 });
 
