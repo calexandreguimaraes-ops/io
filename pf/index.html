@@ -11,51 +11,53 @@
     content="Compare opções de planos de saúde para pessoa física e família no Rio de Janeiro. Receba atendimento consultivo com Carlos Alexandre."
   >
 
- <!-- Google Analytics 4 e Google Ads -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18413773557"></script>
+  <!-- Google Analytics 4 e Google Ads -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18413773557"></script>
 
-<script>
-  window.dataLayer = window.dataLayer || [];
+  <script>
+    window.dataLayer = window.dataLayer || [];
 
-  function gtag() {
-    window.dataLayer.push(arguments);
-  }
-
-  gtag("js", new Date());
-
-  gtag("config", "AW-18413773557");
-  gtag("config", "G-CYLKN1Z244");
-
-  function registrarEvento(nome, parametros) {
-    if (typeof window.gtag !== "function") {
-      return;
+    function gtag() {
+      window.dataLayer.push(arguments);
     }
 
-    window.gtag("event", nome, parametros || {});
-  }
+    gtag("js", new Date());
+    gtag("config", "AW-18413773557");
+    gtag("config", "G-CYLKN1Z244");
 
-  function registrarConversaoGoogleAds(parametros) {
-    if (typeof window.gtag !== "function") {
-      return;
+    function registrarEvento(nome, parametros) {
+      if (typeof window.gtag !== "function") {
+        return;
+      }
+
+      window.gtag("event", nome, parametros || {});
     }
 
-    window.gtag("event", "conversion", {
-      send_to: "AW-18413773557/yxo4CP-I_YwdEPXFr8xE",
-      value: 1,
-      currency: "BRL",
-      ...(parametros || {})
-    });
-  }
-</script>
+    function registrarConversaoGoogleAds(parametros) {
+      if (typeof window.gtag !== "function") {
+        return;
+      }
+
+      window.gtag("event", "conversion", {
+        send_to: "AW-18413773557/yxo4CP-I_YwdEPXFr8xE",
+        value: 1,
+        currency: "BRL",
+        ...(parametros || {})
+      });
+    }
+  </script>
 
   <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);
+      t.async=1;
+      t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];
+      y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "yz77ia24va");
-</script>
- 
+  </script>
+
   <style>
     :root {
       --azul: #0057a8;
@@ -217,13 +219,28 @@
       margin-top: 18px;
     }
 
-    .operadoras span {
+    /* Operadoras transformadas em botões, no mesmo lugar */
+    .operadoras button {
       padding: 7px 12px;
+      border: 0;
       border-radius: 999px;
       background: #e8f4ff;
       color: var(--azul);
       font-size: .85rem;
       font-weight: bold;
+      cursor: pointer;
+      transition: background .2s, color .2s;
+    }
+
+    .operadoras button:hover,
+    .operadoras button.selecionada {
+      background: var(--azul);
+      color: #fff;
+    }
+
+    .operadoras button:focus-visible {
+      outline: 3px solid var(--verde);
+      outline-offset: 3px;
     }
 
     .indicadores {
@@ -329,6 +346,16 @@
 
     .quiz-intro {
       margin-bottom: 24px;
+      text-align: center;
+    }
+
+    .operadora-escolhida {
+      max-width: 560px;
+      margin: 0 auto 20px;
+      padding: 12px;
+      border: 1px solid rgba(255, 255, 255, .4);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .12);
       text-align: center;
     }
 
@@ -650,9 +677,7 @@
 
         <p>🛡️ <strong>Corretor autorizado</strong></p>
 
-        <p>
-          Parceiro oficial da JC Luz Corretora de Seguros
-        </p>
+        <p>Parceiro oficial da JC Luz Corretora de Seguros</p>
 
         <p class="preco">
           Planos individuais a partir de R$ 145,82*
@@ -679,27 +704,28 @@
           alt="Logo JC Luz Corretora de Seguros"
         >
 
-        <h2>Orientação para escolher seu plano</h2>
+        <h2>PLANOS DE SEU INTERESSE</h2>
 
         <p>
           As opções, os preços, a rede credenciada e as regras de contratação
           variam conforme a operadora e o perfil.
         </p>
 
-        <div class="operadoras" aria-label="Operadoras disponíveis">
-          <span>Bradesco Saúde</span>
-          <span>SulAmérica</span>
-          <span>Porto Saúde</span>
-          <span>Amil</span>
-          <span>Hapvida NotreDame</span>
-          <span>Assim Saúde</span>
-          <span>Leve Saúde</span>
-          <span>MedSênior</span>
-          <span>PreventSênior</span>
-          <span>Klini Saúde</span>
-          <span>Unimed Leste</span>
-          <span>Odontoprev</span>
-          <span>Cemeru</span>
+        <!-- Mesmo local e mesma ordem das operadoras -->
+        <div class="operadoras" aria-label="Escolha uma operadora para cotar">
+          <button type="button" data-operadora="Bradesco Saúde" aria-pressed="false">Bradesco Saúde</button>
+          <button type="button" data-operadora="SulAmérica" aria-pressed="false">SulAmérica</button>
+          <button type="button" data-operadora="Porto Saúde" aria-pressed="false">Porto Saúde</button>
+          <button type="button" data-operadora="Amil" aria-pressed="false">Amil</button>
+          <button type="button" data-operadora="Hapvida NotreDame" aria-pressed="false">Hapvida NotreDame</button>
+          <button type="button" data-operadora="Assim Saúde" aria-pressed="false">Assim Saúde</button>
+          <button type="button" data-operadora="Leve Saúde" aria-pressed="false">Leve Saúde</button>
+          <button type="button" data-operadora="MedSênior" aria-pressed="false">MedSênior</button>
+          <button type="button" data-operadora="PreventSênior" aria-pressed="false">PreventSênior</button>
+          <button type="button" data-operadora="Klini Saúde" aria-pressed="false">Klini Saúde</button>
+          <button type="button" data-operadora="Unimed Leste" aria-pressed="false">Unimed Leste</button>
+          <button type="button" data-operadora="Odontoprev" aria-pressed="false">Odontoprev</button>
+          <button type="button" data-operadora="Cemeru" aria-pressed="false">Cemeru</button>
         </div>
 
         <div class="indicadores">
@@ -724,7 +750,6 @@
     <section>
       <div class="container card como-funciona">
         <h2>Como funciona</h2>
-
         <p>Simples, rápido e sem burocracia.</p>
 
         <div class="passos">
@@ -766,6 +791,9 @@
       <p class="quiz-intro">
         Responda algumas perguntas e receba uma cotação personalizada.
       </p>
+
+      <!-- Aparece apenas depois de escolher uma operadora -->
+      <p id="operadoraEscolhida" class="operadora-escolhida" hidden aria-live="polite"></p>
 
       <div class="progress" aria-label="Progresso do simulador">
         <div id="progressBar" class="progress-bar"></div>
@@ -810,50 +838,24 @@
         <p class="pergunta">Quantas pessoas serão incluídas?</p>
 
         <div class="opcoes">
-          <button
-            type="button"
-            class="quiz-btn"
-            data-field="quantidade"
-            data-value="1 pessoa"
-            data-qtd="1"
-          >
+          <button type="button" class="quiz-btn" data-field="quantidade" data-value="1 pessoa" data-qtd="1">
             1 pessoa
           </button>
 
-          <button
-            type="button"
-            class="quiz-btn"
-            data-field="quantidade"
-            data-value="2 pessoas"
-            data-qtd="2"
-          >
+          <button type="button" class="quiz-btn" data-field="quantidade" data-value="2 pessoas" data-qtd="2">
             2 pessoas
           </button>
 
-          <button
-            type="button"
-            class="quiz-btn"
-            data-field="quantidade"
-            data-value="3 a 5 pessoas"
-            data-qtd="5"
-          >
+          <button type="button" class="quiz-btn" data-field="quantidade" data-value="3 a 5 pessoas" data-qtd="5">
             3 a 5 pessoas
           </button>
 
-          <button
-            type="button"
-            class="quiz-btn"
-            data-field="quantidade"
-            data-value="Mais de 5 pessoas"
-            data-qtd="0"
-          >
+          <button type="button" class="quiz-btn" data-field="quantidade" data-value="Mais de 5 pessoas" data-qtd="0">
             Mais de 5 pessoas
           </button>
         </div>
 
-        <button type="button" class="voltar" data-voltar="1">
-          Voltar
-        </button>
+        <button type="button" class="voltar" data-voltar="1">Voltar</button>
       </div>
 
       <div class="quiz-step" data-step="3">
@@ -874,15 +876,11 @@
           <button type="button" class="quiz-btn" data-field="municipio" data-value="Outra região">Outra região</button>
         </div>
 
-        <button type="button" class="voltar" data-voltar="2">
-          Voltar
-        </button>
+        <button type="button" class="voltar" data-voltar="2">Voltar</button>
       </div>
 
       <div class="quiz-step" data-step="4">
-        <p id="tituloIdade" class="pergunta">
-          Agora, informe a idade
-        </p>
+        <p id="tituloIdade" class="pergunta">Agora, informe a idade</p>
 
         <div id="idadesContainer"></div>
 
@@ -890,9 +888,7 @@
           Continuar
         </button>
 
-        <button type="button" class="voltar" data-voltar="3">
-          Voltar
-        </button>
+        <button type="button" class="voltar" data-voltar="3">Voltar</button>
       </div>
 
       <div class="quiz-step" data-step="5">
@@ -918,6 +914,7 @@
           type="text"
           placeholder="Seu nome"
           autocomplete="name"
+          aria-label="Seu nome"
         >
 
         <button type="button" id="enviarCotacao" class="quiz-final">
@@ -1037,12 +1034,12 @@
     <section>
       <div class="container">
         <article class="acordeao">
-          <button type="button" class="acordeao-cabecalho">
+          <button type="button" class="acordeao-cabecalho" aria-expanded="false">
             <span>
               <strong>Entenda os tipos de plano</strong>
               <small class="resumo">Opções para você e sua família</small>
             </span>
-            <span class="seta">▼</span>
+            <span class="seta" aria-hidden="true">▼</span>
           </button>
 
           <div class="acordeao-conteudo">
@@ -1077,12 +1074,12 @@
         </article>
 
         <article class="acordeao">
-          <button type="button" class="acordeao-cabecalho">
+          <button type="button" class="acordeao-cabecalho" aria-expanded="false">
             <span>
               <strong>Carências e doenças preexistentes</strong>
               <small class="resumo">Entenda os prazos e a declaração de saúde</small>
             </span>
-            <span class="seta">▼</span>
+            <span class="seta" aria-hidden="true">▼</span>
           </button>
 
           <div class="acordeao-conteudo">
@@ -1107,12 +1104,12 @@
         </article>
 
         <article class="acordeao">
-          <button type="button" class="acordeao-cabecalho">
+          <button type="button" class="acordeao-cabecalho" aria-expanded="false">
             <span>
               <strong>Preço, reajustes e coparticipação</strong>
               <small class="resumo">Compare o custo total do plano</small>
             </span>
-            <span class="seta">▼</span>
+            <span class="seta" aria-hidden="true">▼</span>
           </button>
 
           <div class="acordeao-conteudo">
@@ -1142,12 +1139,12 @@
         </article>
 
         <article class="acordeao">
-          <button type="button" class="acordeao-cabecalho">
+          <button type="button" class="acordeao-cabecalho" aria-expanded="false">
             <span>
               <strong>Como contratar com segurança</strong>
               <small class="resumo">Confira as informações antes de assinar</small>
             </span>
-            <span class="seta">▼</span>
+            <span class="seta" aria-hidden="true">▼</span>
           </button>
 
           <div class="acordeao-conteudo">
@@ -1175,12 +1172,12 @@
         </article>
 
         <article class="acordeao">
-          <button type="button" class="acordeao-cabecalho">
+          <button type="button" class="acordeao-cabecalho" aria-expanded="false">
             <span>
               <strong>Redução de carências</strong>
               <small class="resumo">Veja se é possível aproveitar prazos</small>
             </span>
-            <span class="seta">▼</span>
+            <span class="seta" aria-hidden="true">▼</span>
           </button>
 
           <div class="acordeao-conteudo">
@@ -1233,11 +1230,52 @@
     var totalEtapas = 6;
     var etapaAtual = 1;
     var quizIniciado = false;
+    var transicaoPendente = false;
 
     var progressBar = document.getElementById("progressBar");
     var loadingBar = document.getElementById("loadingBar");
     var idadesContainer = document.getElementById("idadesContainer");
     var tituloIdade = document.getElementById("tituloIdade");
+    var operadoraEscolhida = document.getElementById("operadoraEscolhida");
+
+    /*
+     * Botões das operadoras:
+     * salva a escolha, destaca o botão e encaminha ao quiz.
+     */
+    document.querySelectorAll(".operadoras button[data-operadora]")
+      .forEach(function(botao) {
+        botao.addEventListener("click", function() {
+          respostas.operadora = botao.dataset.operadora;
+
+          document.querySelectorAll(".operadoras button[data-operadora]")
+            .forEach(function(item) {
+              var selecionado = item === botao;
+
+              item.classList.toggle("selecionada", selecionado);
+              item.setAttribute("aria-pressed", String(selecionado));
+            });
+
+          if (operadoraEscolhida) {
+            operadoraEscolhida.textContent =
+              "Operadora de interesse: " + respostas.operadora;
+            operadoraEscolhida.hidden = false;
+          }
+
+          registrarEvento("operadora_selected", {
+            operadora: respostas.operadora,
+            quiz_name: "simulador_plano_saude"
+          });
+
+          var quiz = document.getElementById("cotacao");
+
+          if (quiz) {
+            quiz.scrollIntoView({
+              behavior: "smooth",
+              block: "start"
+            });
+          }
+        });
+      });
 
     function atualizarProgresso() {
       if (!progressBar) {
@@ -1275,7 +1313,9 @@
         }
 
         setTimeout(function() {
-          irParaEtapa(6);
+          if (etapaAtual === 5) {
+            irParaEtapa(6);
+          }
         }, 1800);
       }
     }
@@ -1291,7 +1331,6 @@
         tituloIdade.textContent = "Agora, informe sua idade";
 
         var input = document.createElement("input");
-
         input.type = "number";
         input.min = "0";
         input.max = "110";
@@ -1304,21 +1343,16 @@
       }
 
       if (quantidade > 1) {
-        tituloIdade.textContent =
-          "Agora, informe a idade de cada pessoa";
+        tituloIdade.textContent = "Agora, informe a idade de cada pessoa";
 
         for (var i = 1; i <= quantidade; i++) {
           var campo = document.createElement("input");
-
           campo.type = "number";
           campo.min = "0";
           campo.max = "110";
           campo.className = "campo idade";
           campo.placeholder = "Idade da " + i + "ª pessoa";
-          campo.setAttribute(
-            "aria-label",
-            "Idade da " + i + "ª pessoa"
-          );
+          campo.setAttribute("aria-label", "Idade da " + i + "ª pessoa");
 
           idadesContainer.appendChild(campo);
         }
@@ -1326,16 +1360,14 @@
         return;
       }
 
-      tituloIdade.textContent =
-        "Informe as idades das pessoas";
+      tituloIdade.textContent = "Informe as idades das pessoas";
 
       var textarea = document.createElement("textarea");
-
       textarea.id = "idadesLivre";
       textarea.className = "campo";
       textarea.rows = 3;
-      textarea.placeholder =
-        "Exemplo: 25, 30, 34, 41, 52";
+      textarea.placeholder = "Exemplo: 25, 30, 34, 41, 52";
+      textarea.setAttribute("aria-label", "Idades das pessoas");
 
       idadesContainer.appendChild(textarea);
     }
@@ -1358,8 +1390,7 @@
         return;
       }
 
-      var campoLivre =
-        document.getElementById("idadesLivre");
+      var campoLivre = document.getElementById("idadesLivre");
 
       respostas.idades = campoLivre
         ? campoLivre.value.trim()
@@ -1367,18 +1398,25 @@
     }
 
     /*
-     * Opções do simulador
+     * Opções do simulador.
+     * Proteção contra cliques rápidos que poderiam pular etapas.
      */
     document.querySelectorAll(".quiz-btn[data-field]").forEach(function(botao) {
       botao.addEventListener("click", function() {
+        if (transicaoPendente) {
+          return;
+        }
+
+        transicaoPendente = true;
+
+        var etapaOrigem = etapaAtual;
         var campo = botao.dataset.field;
         var valor = botao.dataset.value;
 
         respostas[campo] = valor;
 
         if (botao.dataset.qtd) {
-          respostas.quantidadeNumero =
-            Number(botao.dataset.qtd);
+          respostas.quantidadeNumero = Number(botao.dataset.qtd);
         }
 
         var grupo = botao.closest(".opcoes");
@@ -1406,33 +1444,38 @@
         });
 
         setTimeout(function() {
-          var proximaEtapa = etapaAtual + 1;
+          if (etapaAtual === etapaOrigem) {
+            var proximaEtapa = etapaOrigem + 1;
 
-          if (proximaEtapa === 4) {
-            gerarCamposIdade(
-              respostas.quantidadeNumero || 0
-            );
+            if (proximaEtapa === 4) {
+              gerarCamposIdade(respostas.quantidadeNumero || 0);
+            }
+
+            irParaEtapa(proximaEtapa);
           }
 
-          irParaEtapa(proximaEtapa);
+          transicaoPendente = false;
         }, 250);
       });
     });
 
     /*
-     * Botões Voltar
+     * Botões Voltar.
      */
     document.querySelectorAll(".voltar").forEach(function(botao) {
       botao.addEventListener("click", function() {
+        if (transicaoPendente) {
+          return;
+        }
+
         irParaEtapa(Number(botao.dataset.voltar));
       });
     });
 
     /*
-     * Continuar após informar as idades
+     * Continuar após informar as idades.
      */
-    var continuarIdades =
-      document.getElementById("continuarIdades");
+    var continuarIdades = document.getElementById("continuarIdades");
 
     if (continuarIdades) {
       continuarIdades.addEventListener("click", function() {
@@ -1447,15 +1490,14 @@
     }
 
     /*
-     * Envio final do simulador
+     * Envio final do simulador.
+     * A operadora selecionada aparece na mensagem do WhatsApp.
      */
-    var enviarCotacao =
-      document.getElementById("enviarCotacao");
+    var enviarCotacao = document.getElementById("enviarCotacao");
 
     if (enviarCotacao) {
       enviarCotacao.addEventListener("click", function() {
-        var campoNome =
-          document.getElementById("nome");
+        var campoNome = document.getElementById("nome");
 
         if (!campoNome) {
           return;
@@ -1479,6 +1521,8 @@
           "Olá Carlos, concluí a simulação e quero receber uma cotação.",
           "",
           "Nome: " + nome,
+          "Operadora de interesse: " +
+            (respostas.operadora || "Quero comparar as opções disponíveis"),
           "Perfil: " +
             (respostas.perfil || "Não informado"),
           "Pessoas: " +
@@ -1509,19 +1553,14 @@
           lead_type: "cotacao_plano_saude"
         });
 
-        /*
-         * Abre o WhatsApp imediatamente.
-         * Não bloqueia a navegação aguardando o rastreamento.
-         */
-        window.open(url, "_blank");
+        window.open(url, "_blank", "noopener,noreferrer");
       });
     }
 
     /*
-     * CTA do cabeçalho
+     * CTA do cabeçalho.
      */
-    var headerCta =
-      document.getElementById("headerCta");
+    var headerCta = document.getElementById("headerCta");
 
     if (headerCta) {
       headerCta.addEventListener("click", function() {
@@ -1534,41 +1573,61 @@
     }
 
     /*
-     * Acordeões
+     * Acordeões.
      */
     document.querySelectorAll(".acordeao-cabecalho").forEach(function(botao) {
       botao.addEventListener("click", function() {
-        var acordeao =
-          botao.closest(".acordeao");
+        var acordeao = botao.closest(".acordeao");
 
         if (!acordeao) {
           return;
         }
 
-        var estavaAberto =
-          acordeao.classList.contains("aberto");
+        var estavaAberto = acordeao.classList.contains("aberto");
 
         document.querySelectorAll(".acordeao").forEach(function(item) {
           item.classList.remove("aberto");
+
+          var cabecalho = item.querySelector(".acordeao-cabecalho");
+
+          if (cabecalho) {
+            cabecalho.setAttribute("aria-expanded", "false");
+          }
         });
 
         if (!estavaAberto) {
           acordeao.classList.add("aberto");
+          botao.setAttribute("aria-expanded", "true");
         }
       });
     });
 
     /*
-     * Links diretos do WhatsApp
-     *
-     * Não usamos preventDefault, async, await
-     * nem janela intermediária.
+     * Links diretos do WhatsApp.
+     * Se houver operadora escolhida, ela também aparece
+     * nas mensagens desses links, preservando o texto original.
      */
     document.querySelectorAll("a.whatsapp-link").forEach(function(link) {
+      var enderecoOriginal = link.getAttribute("href");
+
       link.addEventListener("click", function() {
-        var textoLink = link.textContent
-          .trim()
-          .substring(0, 100);
+        if (respostas.operadora) {
+          var endereco = new URL(enderecoOriginal);
+          var textoOriginal = endereco.searchParams.get("text") || "";
+
+          endereco.searchParams.set(
+            "text",
+            textoOriginal +
+              "\n\nOperadora de interesse: " +
+              respostas.operadora
+          );
+
+          link.href = endereco.toString();
+        } else {
+          link.href = enderecoOriginal;
+        }
+
+        var textoLink = link.textContent.trim().substring(0, 100);
 
         registrarEvento("whatsapp_click", {
           link_text: textoLink,
@@ -1581,14 +1640,14 @@
         });
 
         /*
-         * O navegador segue normalmente
-         * o endereço definido no atributo href.
+         * O navegador segue normalmente o href.
+         * Não bloqueamos a abertura do WhatsApp.
          */
       });
     });
 
     /*
-     * Visualização da landing page
+     * Visualização da landing page.
      */
     registrarEvento("landing_page_view", {
       page_type: "lead_generation",
@@ -1598,4 +1657,4 @@
     atualizarProgresso();
   </script>
 </body>
-</html>         
+</html>
