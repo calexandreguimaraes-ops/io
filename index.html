@@ -831,6 +831,43 @@
         padding: 12px 15px;
         font-size: .9rem;
       }
+      /* Seção: envio da tabela de preços */
+.tabela-info .grade {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 24px;
+}
+
+.tabela-info .mini-card {
+  padding: 22px 18px;
+  border: 0;
+  border-top: 5px solid var(--verde);
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, .08);
+  text-align: center;
+}
+
+.tabela-info .mini-card h3 {
+  margin-bottom: 12px;
+  color: var(--azul);
+}
+
+.tabela-info .mini-card p {
+  color: #444;
+  font-size: .95rem;
+}
+
+.tabela-info .destaque {
+  margin-top: 24px;
+  text-align: center;
+}
+
+@media (max-width: 760px) {
+  .tabela-info .grade {
+    grid-template-columns: 1fr;
+  }
     }
   </style>
 </head>
@@ -931,34 +968,49 @@
     </div>
   </section>
 
-   <section>
-      <div class="container card">
-        <h2 style="text-align: center; color: var(--azul);">ENTENDA COMO FUNCIONA O ENVIO DA TABELA DE PREÇOS</h2>
-        <p style="text-align: center; margin-bottom: 24px; color: #444;">A transparência é o nosso maior valor. Enviamos a tabela exata para o seu WhatsApp em vez de usar preços genéricos:</p>
+   <section class="tabela-info">
+  <div class="container card">
+    <h2 style="text-align: center;">
+      ENTENDA COMO FUNCIONA O ENVIO DA TABELA DE PREÇOS
+    </h2>
 
-        <div class="grade">
-          <article class="mini-card" style="text-align: center; border: 1px solid #eaeaea; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
-            <h3 style="color: var(--azul);">📊 VARIAÇÃO POR IDADE E PERFIL (Regra ANS)</h3>
-            <p style="font-size: 0.92rem;">Os valores mudam estritamente de acordo com a faixa etária e o perfil do seu grupo. Mostrar uma tabela genérica poderia te dar uma falsa expectativa de preço.</p>
-          </article>
+    <p style="text-align: center; margin-bottom: 24px;">
+      A transparência é o nosso maior valor. Enviamos a tabela adequada ao seu perfil pelo WhatsApp, em vez de apresentar um preço genérico.
+    </p>
 
-          <article class="mini-card" style="text-align: center; border: 1px solid #eaeaea; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
-            <h3 style="color: var(--azul);">🏢 DESCONTOS PARA CNPJ/MEI</h3>
-            <p style="font-size: 0.92rem;">Planos para quem possui CNPJ podem ser até 40% mais baratos que os de Pessoa Física. Precisamos saber seu perfil para aplicar o desconto.</p>
-          </article>
+    <div class="grade">
+      <article class="mini-card">
+        <h3>📊 VARIAÇÃO POR IDADE E PERFIL</h3>
+        <p>
+          O valor depende das faixas etárias e da modalidade de contratação.
+          Assim, você recebe uma referência mais adequada ao seu caso.
+        </p>
+      </article>
 
-          <article class="mini-card" style="text-align: center; border: 1px solid #eaeaea; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
-            <h3 style="color: var(--azul);">🏥 HOSPITAIS DE SUA REGIÃO</h3>
-            <p style="font-size: 0.92rem;">O preço varia muito dependendo dos hospitais que você faz questão de ter. Filtramos isso para você não pagar a mais por algo que não vai usar.</p>
-          </article>
-        </div>
+      <article class="mini-card">
+        <h3>🏢 MODALIDADE DE CONTRATAÇÃO</h3>
+        <p>
+          As opções e condições podem variar entre pessoa física, MEI e empresa.
+          Primeiro identificamos qual modalidade se aplica ao seu perfil.
+        </p>
+      </article>
 
-        <div class="destaque" style="text-align: center; margin-top: 24px;">
-          <strong style="color: var(--azul); display: block; margin-bottom: 8px;">💡 NOSSO COMPROMISSO COM VOCÊ:</strong> 
-          Sem falsas promessas e sem telemarketing chato. Você me diz quem vai entrar no plano, e eu te envio o PDF contendo os valores direto no seu WhatsApp.
-        </div>
-      </div>
-    </section>
+      <article class="mini-card">
+        <h3>🏥 REGIÃO E REDE CREDENCIADA</h3>
+        <p>
+          A disponibilidade de planos e a rede credenciada variam conforme a
+          região e a operadora. Esses dados ajudam a selecionar opções pertinentes.
+        </p>
+      </article>
+    </div>
+
+    <div class="destaque">
+      <strong>💡 NOSSO COMPROMISSO COM VOCÊ:</strong>
+      Você informa seu perfil e eu envio pelo WhatsApp as opções e os valores
+      aplicáveis, sujeitos à confirmação da operadora.
+    </div>
+  </div>
+</section>
   
   <section id="cotacao" class="quiz-section">
     <div class="quiz-container">
