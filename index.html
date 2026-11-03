@@ -830,46 +830,84 @@
         bottom: 10px;
         padding: 12px 15px;
         font-size: .9rem;
-      }
-      /* Seção: envio da tabela de preços */
-.tabela-info .grade {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 20px;
-  margin-top: 24px;
-}
-
-.tabela-info .mini-card {
-  padding: 22px 18px;
-  border: 0;
-  border-top: 5px solid var(--verde);
-  border-radius: 12px;
-  background: #fff;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, .08);
-  text-align: center;
-}
-
-.tabela-info .mini-card h3 {
-  margin-bottom: 12px;
-  color: var(--azul);
-}
-
-.tabela-info .mini-card p {
-  color: #444;
-  font-size: .95rem;
-}
-
-.tabela-info .destaque {
-  margin-top: 24px;
-  text-align: center;
-}
-
-@media (max-width: 760px) {
-  .tabela-info .grade {
-    grid-template-columns: 1fr;
   }
+
+  /* Seção: envio da tabela de preços */
+  .tabela-info {
+    padding: 10px 0 30px;
+  }
+
+  .tabela-box {
+    width: min(900px, 100%);
+    margin: 0 auto;
+    padding: 30px 24px;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: var(--sombra);
+    color: #333;
+    text-align: center;
+  }
+
+  .tabela-box h2 {
+    color: var(--azul);
+    margin-bottom: 12px;
+    font-size: 1.4rem;
+  }
+
+  .tabela-intro {
+    max-width: 680px;
+    margin: 0 auto 24px;
+    color: #444;
+  }
+
+  .tabela-cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .tabela-card {
+    padding: 22px 18px;
+    border-top: 5px solid var(--verde);
+    border-radius: 12px;
+    background: #f4f7fa;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .08);
+    text-align: center;
+  }
+
+  .tabela-card h3 {
+    color: var(--azul);
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+
+  .tabela-card p {
+    color: #444;
+    font-size: .95rem;
+  }
+
+  .tabela-destaque {
+    margin-top: 24px;
+    padding: 16px;
+    border-left: 4px solid var(--verde);
+    border-radius: 8px;
+    background: #e8f4ff;
+    color: #333;
+    text-align: center;
+  }
+
+  .tabela-destaque strong {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--azul);
+  }
+
+  @media (max-width: 760px) {
+    .tabela-cards {
+      grid-template-columns: 1fr;
     }
-  </style>
+  }
+</style>
 </head>
 
 <body>
@@ -969,45 +1007,33 @@
   </section>
 
    <section class="tabela-info">
-  <div class="container card">
-    <h2 style="text-align: center;">
-      ENTENDA COMO FUNCIONA O ENVIO DA TABELA DE PREÇOS
-    </h2>
+  <div class="tabela-box">
+    <h2>ENTENDA COMO FUNCIONA O ENVIO DA TABELA DE PREÇOS</h2>
 
-    <p style="text-align: center; margin-bottom: 24px;">
+    <p class="tabela-intro">
       A transparência é o nosso maior valor. Enviamos a tabela adequada ao seu perfil pelo WhatsApp, em vez de apresentar um preço genérico.
     </p>
 
-    <div class="grade">
-      <article class="mini-card">
+    <div class="tabela-cards">
+      <article class="tabela-card">
         <h3>📊 VARIAÇÃO POR IDADE E PERFIL</h3>
-        <p>
-          O valor depende das faixas etárias e da modalidade de contratação.
-          Assim, você recebe uma referência mais adequada ao seu caso.
-        </p>
+        <p>O valor depende das faixas etárias e da modalidade de contratação. Assim, você recebe uma referência mais adequada ao seu caso.</p>
       </article>
 
-      <article class="mini-card">
+      <article class="tabela-card">
         <h3>🏢 MODALIDADE DE CONTRATAÇÃO</h3>
-        <p>
-          As opções e condições podem variar entre pessoa física, MEI e empresa.
-          Primeiro identificamos qual modalidade se aplica ao seu perfil.
-        </p>
+        <p>As opções e condições podem variar entre MEI, CNPJ e pessoa física. Primeiro identificamos qual modalidade se aplica ao seu perfil.</p>
       </article>
 
-      <article class="mini-card">
+      <article class="tabela-card">
         <h3>🏥 REGIÃO E REDE CREDENCIADA</h3>
-        <p>
-          A disponibilidade de planos e a rede credenciada variam conforme a
-          região e a operadora. Esses dados ajudam a selecionar opções pertinentes.
-        </p>
+        <p>A disponibilidade de planos e a rede credenciada variam conforme a região e a operadora. Esses dados ajudam a selecionar opções pertinentes.</p>
       </article>
     </div>
 
-    <div class="destaque">
+    <div class="tabela-destaque">
       <strong>💡 NOSSO COMPROMISSO COM VOCÊ:</strong>
-      Você informa seu perfil e eu envio pelo WhatsApp as opções e os valores
-      aplicáveis, sujeitos à confirmação da operadora.
+      Você informa seu perfil e eu envio pelo WhatsApp as opções e os valores aplicáveis, sujeitos à confirmação da operadora.
     </div>
   </div>
 </section>
