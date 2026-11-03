@@ -1841,5 +1841,45 @@
       });
     })();
   </script>
+    <div class="popup-overlay" id="popup-overlay" hidden>
+    <div class="popup-caixa" role="dialog" aria-modal="true" aria-labelledby="popup-titulo">
+      <button type="button" class="popup-fechar" id="popup-fechar" aria-label="Fechar">&times;</button>
+      <h2 id="popup-titulo">Antes de sair...</h2>
+      <p>Quer saber quanto custa um plano para sua empresa ou MEI? Fale direto comigo e receba as opções no seu WhatsApp.</p>
+      <a class="popup-btn" href="https://wa.me/5521985112985?text=Ol%C3%A1%20Carlos%2C%20vi%20no%20seu%20site%20e%20quero%20falar%20com%20um%20corretor." data-evento="popup_whatsapp">Falar com Carlos</a>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var overlay = document.getElementById("popup-overlay");
+      var btnFechar = document.getElementById("popup-fechar");
+
+      function abrirPopup() {
+        overlay.hidden = false;
+      }
+
+      function fecharPopup() {
+        overlay.hidden = true;
+      }
+
+      btnFechar.addEventListener("click", fecharPopup);
+
+      overlay.addEventListener("click", function (e) {
+        if (e.target === overlay) fecharPopup();
+      });
+
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && !overlay.hidden) fecharPopup();
+      });
+
+      if (!sessionStorage.getItem("popupVisto")) {
+        setTimeout(function () {
+          abrirPopup();
+          sessionStorage.setItem("popupVisto", "1");
+        }, 20000);
+      }
+    })();
+  </script>
 </body>
 </html>
