@@ -777,26 +777,99 @@
       .premiacao-foto {
         height: 220px;
       }
-    }@media (max-width: 480px) {
-      .container, .perfil, .quiz-section, .guia-secao {
-        width: calc(100% - 24px);
-      }
+    footer {
+      padding: 22px 20px 85px;
+      background: var(--azul-escuro);
+      color: #dce8f5;
+      font-size: .9rem;
+      text-align: center;
+    }
 
-      section { padding: 24px 12px; }
+    footer p { margin-bottom: 6px; }
 
-      .quiz-options.grid-2, .premiacoes-galeria {
-        grid-template-columns: 1fr;
-      }
+    .whatsapp-float {
+      position: fixed;
+      z-index: 999;
+      right: 16px;
+      bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 50px;
+      background: var(--whatsapp);
+      color: var(--branco);
+      padding: 14px 18px;
+      box-shadow: 0 4px 14px rgba(0,0,0,.3);
+      font-weight: 700;
+      text-decoration: none;
+      animation: pulso 2s infinite;
+    }
 
-      .depoimentos-grid { grid-template-columns: 1fr; }
+    @keyframes pulso {
+      0% { box-shadow: 0 0 0 0 rgba(37,211,102,.5); }
+      70% { box-shadow: 0 0 0 12px rgba(37,211,102,0); }
+      100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+    }
 
-      .confianca-barra { gap: 15px; }
+    .popup-overlay {
+      position: fixed;
+      z-index: 2000;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,.6);
+      padding: 20px;
+    }
 
-      .whatsapp-float {
-        right: 10px;
-        bottom: 10px;
-        padding: 12px 15px;
-        font-size: .9rem;
+    .popup-overlay.ativo { display: flex; }
+
+    .popup-caixa {
+      position: relative;
+      width: min(420px,100%);
+      border-radius: 16px;
+      background: var(--branco);
+      padding: 32px 26px;
+      box-shadow: 0 10px 40px rgba(0,0,0,.3);
+      text-align: center;
+    }
+
+    .popup-fechar {
+      position: absolute;
+      top: 12px;
+      right: 14px;
+      border: 0;
+      background: transparent;
+      color: #999;
+      cursor: pointer;
+      font-size: 1.2rem;
+    }
+
+    .popup-icone {
+      margin-bottom: 10px;
+      font-size: 2.4rem;
+    }
+
+    .popup-caixa h2 {
+      margin-bottom: 12px;
+      color: var(--azul);
+    }
+
+    .popup-caixa p {
+      margin-bottom: 20px;
+      color: #444;
+    }
+
+    .popup-aviso {
+      margin-top: 14px !important;
+      margin-bottom: 0 !important;
+      color: #999 !important;
+      font-size: .8rem;
+    }
+
+    @media (max-width: 700px) {
+      .passos-fixo, .premiacoes-galeria {
+        grid-template-columns: repeat(2,1fr);
       }
     }
   </style> 
