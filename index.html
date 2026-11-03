@@ -794,7 +794,119 @@
       .premiacao-foto {
         height: 220px;
       }
-    }
+    }/* ===== CORREÇÕES ===== */
+body { padding-bottom: 84px; }
+
+.container { width: min(900px, 100%); margin: 0 auto; }
+
+.perfil { margin: 24px auto 0; }
+.perfil.perfil-operadoras { margin-top: 0; }
+
+/* Botão fixo do WhatsApp */
+.whatsapp-float {
+  position: fixed;
+  z-index: 900;
+  right: 16px;
+  bottom: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 18px;
+  border-radius: 999px;
+  background: var(--whatsapp);
+  color: var(--branco);
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(0,0,0,.3);
+}
+
+.whatsapp-float:hover { filter: brightness(.95); }
+
+/* Acordeões */
+.acordeao-cabecalho > span:first-child { display: block; }
+.acordeao-cabecalho h2 { margin: 0 0 4px; }
+.acordeao-cabecalho .resumo { display: block; }
+
+.destaque {
+  margin: 18px 0;
+  padding: 14px 16px;
+  border-left: 4px solid var(--verde);
+  border-radius: 8px;
+  background: #e8f4ff;
+  color: #333;
+}
+
+.destaque strong { color: var(--azul); }
+
+.aviso {
+  margin: 18px 0;
+  padding: 14px 16px;
+  border-left: 4px solid #e0a000;
+  border-radius: 8px;
+  background: #fff3cd;
+  color: #333;
+}
+
+.tabela-carencias {
+  width: 100%;
+  margin: 12px 0 18px;
+  border-collapse: collapse;
+  font-size: .9rem;
+}
+
+.tabela-carencias th,
+.tabela-carencias td {
+  padding: 10px;
+  border: 1px solid #d9e2ec;
+  text-align: left;
+}
+
+.tabela-carencias th {
+  background: #e8f4ff;
+  color: var(--azul);
+}
+
+/* Depoimentos */
+.depoimento-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.depoimento-avatar {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #e8f4ff;
+  font-size: 1.5rem;
+}
+
+.depoimento-info h3 { color: var(--azul); font-size: 1rem; }
+.depoimento-info p { margin: 0; color: var(--verde); }
+
+/* Rodapé */
+.rodape a { color: #fff; text-decoration: underline; word-break: break-word; }
+
+/* Pop-up */
+.popup-overlay { z-index: 2000; }
+.popup-btn { max-width: 100%; }
+
+@media (max-width: 480px) {
+  .whatsapp-float {
+    right: 12px;
+    bottom: 12px;
+    left: 12px;
+    justify-content: center;
+  }
+
+  .rodape a { display: block; margin: 4px 0; }
+  .tabela-carencias { font-size: .82rem; }
+  .tabela-carencias th, .tabela-carencias td { padding: 8px; }
+}
   </style>
 </head>
 <body>
@@ -816,7 +928,7 @@
     </a>
   </header>
 
-  <section class="perfil">
+    <section class="perfil">
     <img src="carlos-alexandre.jpg"
          alt="Foto de Carlos Alexandre, corretor de planos de saúde"
          width="120" height="120">
@@ -824,9 +936,7 @@
     <h2>Carlos Alexandre</h2>
     <p>🛡️ <strong>Corretor Autorizado</strong></p>
     <p><strong>✅ Atendimento 100% consultivo</strong></p>
-        Sem a pressão e incomodo de chamadas indesejadas, as informações são fornecidas quando você decidir.
-     <p>
- </p>
+    <p>Sem a pressão e incômodo de chamadas indesejadas, as informações são fornecidas quando você decidir.</p>
 
     <p class="preco">Planos corporativos a partir de R$ 76,12*</p>
 
@@ -841,38 +951,41 @@
       2 vidas, faixa etária de 0 a 18 anos, no município do Rio de Janeiro.
       Sujeito a alteração e análise de perfil.
     </p>
-<section class="tabela-info">
-      <div class="tabela-box">
-        <h2 class="tabela-titulo">ENTENDA COMO FUNCIONA O ENVIO DA TABELA DE PREÇOS</h2>
+  </section>
 
-        <p class="tabela-intro">
-          A transparência é o nosso maior valor. Enviamos a tabela adequada ao seu perfil pelo WhatsApp, em vez de apresentar um preço genérico.
-        </p>
+  <section class="tabela-info">
+    <div class="tabela-box">
+      <h2 class="tabela-titulo">ENTENDA COMO FUNCIONA O ENVIO DA TABELA DE PREÇOS</h2>
 
-        <div class="tabela-cards">
-          <article class="tabela-card">
-            <h3>📊 VARIAÇÃO POR IDADE E PERFIL</h3>
-            <p>Os valores mudam de acordo com a faixa etária e o perfil do seu grupo. Uma tabela genérica poderia gerar uma expectativa de preço que não se confirma.</p>
-          </article>
+      <p class="tabela-intro">
+        A transparência é o nosso maior valor. Enviamos a tabela adequada ao seu perfil pelo WhatsApp, em vez de apresentar um preço genérico.
+      </p>
 
-          <article class="tabela-card">
-            <h3>🏢 MODALIDADE PARA CNPJ/MEI</h3>
-            <p>As opções e condições podem variar entre pessoa física, MEI e empresa. Precisamos saber seu perfil para indicar a modalidade e as condições corretas.</p>
-          </article>
+      <div class="tabela-cards">
+        <article class="tabela-card">
+          <h3>📊 VARIAÇÃO POR IDADE E PERFIL</h3>
+          <p>Os valores mudam de acordo com a faixa etária e o perfil do seu grupo. Uma tabela genérica poderia gerar uma expectativa de preço que não se confirma.</p>
+        </article>
 
-          <article class="tabela-card">
-            <h3>🏥 HOSPITAIS DE SUA REGIÃO</h3>
-            <p>O preço varia conforme a rede que você quer ter. Assim você não paga a mais por uma rede que não vai usar.</p>
-          </article>
-        </div>
+        <article class="tabela-card">
+          <h3>🏢 MODALIDADE PARA CNPJ/MEI</h3>
+          <p>As opções e condições podem variar entre pessoa física, MEI e empresa. Precisamos saber seu perfil para indicar a modalidade e as condições corretas.</p>
+        </article>
 
-        <div class="tabela-destaque">
-          <strong>💡 NOSSO COMPROMISSO COM VOCÊ:</strong>
-          Sem falsas promessas e sem telemarketing chato. Você me diz quem vai entrar no plano, e eu envio a tabela com os valores direto no seu WhatsApp.
-        </div>
+        <article class="tabela-card">
+          <h3>🏥 HOSPITAIS DE SUA REGIÃO</h3>
+          <p>O preço varia conforme a rede que você quer ter. Assim você não paga a mais por uma rede que não vai usar.</p>
+        </article>
       </div>
-    </section>
-    
+
+      <div class="tabela-destaque">
+        <strong>💡 NOSSO COMPROMISSO COM VOCÊ:</strong>
+        Sem falsas promessas e sem telemarketing chato. Você me diz quem vai entrar no plano, e eu envio a tabela com os valores direto no seu WhatsApp.
+      </div>
+    </div>
+  </section>
+
+  <section class="perfil perfil-operadoras">
     <p style="font-size:.9rem;color:#555">
       Parceiro Oficial da JC Luz Corretora de Seguros
     </p>
@@ -892,7 +1005,6 @@
       para solicitar sua cotação personalizada.
     </p>
 
-    <!-- Operadoras no mesmo local e na mesma ordem -->
     <div class="operadoras" aria-label="Escolha uma operadora para cotar">
       <button type="button" data-operadora="Bradesco Saúde" aria-pressed="false">Bradesco Saúde</button>
       <button type="button" data-operadora="SulAmérica" aria-pressed="false">SulAmérica</button>
@@ -923,7 +1035,7 @@
         <span>Atendimento consultivo</span>
       </div>
     </div>
-  </section>
+  </section>  
 
    <section id="cotacao" class="quiz-section">
     <div class="quiz-container">
@@ -1368,7 +1480,7 @@
     </div>
   </main>
 
-  <footer>
+  <footer class="rodape">
     <p>Carlos Alexandre © 2026 — Corretora de Planos de Saúde</p>
     <p>Parceiro JC Luz Corretora de Seguros | Rio de Janeiro</p>
     <p>
@@ -1390,6 +1502,16 @@
      aria-label="Falar com Carlos pelo WhatsApp">
     💬 WhatsApp
   </a>
+  <div class="popup-overlay" id="popup-overlay" hidden>
+    <div class="popup-caixa" role="dialog" aria-modal="true" aria-labelledby="popup-titulo">
+      <button type="button" class="popup-fechar" id="popup-fechar" aria-label="Fechar">&times;</button>
+      <h2 id="popup-titulo">Antes de sair...</h2>
+      <p>Quer saber quanto custa um plano para sua empresa ou MEI? Fale direto comigo e receba as opções no seu WhatsApp.</p>
+      <a class="popup-btn whatsapp-link"
+         href="https://wa.me/5521985112985?text=Ol%C3%A1%20Carlos%2C%20vi%20no%20seu%20site%20e%20quero%20falar%20com%20um%20corretor."
+         target="_blank" rel="noopener noreferrer">Falar com Carlos</a>
+    </div>
+  </div>
   <script>
     "use strict";
 
@@ -1745,100 +1867,38 @@
       });
 
     atualizarProgresso();
+      <script>
+    (function () {
+      var overlay = document.getElementById("popup-overlay");
+      var btnFechar = document.getElementById("popup-fechar");
+      var linkPopup = overlay.querySelector("a");
+      var focoAnterior = null;
 
-    /*
-     * Popup de saída, uma vez por sessão.
-     */
-    (function configurarPopup() {
-      const popup = document.getElementById("popupSaida");
-      const fechar = document.getElementById("fecharPopup");
-      let mostrado = false;
-      let focoAnterior = null;
+      function jaVisto() {
+        try { return sessionStorage.getItem("popupVisto"); }
+        catch (e) { return null; }
+      }
+
+      function marcarVisto() {
+        try { sessionStorage.setItem("popupVisto", "1"); }
+        catch (e) {}
+      }
 
       function abrirPopup() {
-        if (mostrado) return;
-
-        try {
-          if (sessionStorage.getItem("popupSaidaMostrado")) return;
-          sessionStorage.setItem("popupSaidaMostrado", "true");
-        } catch (erro) {
-          // Mantém o popup funcional se o armazenamento estiver bloqueado.
-        }
-
-        mostrado = true;
         focoAnterior = document.activeElement;
-        popup.classList.add("ativo");
-        fechar.focus();
+        overlay.hidden = false;
+        btnFechar.focus();
       }
 
       function fecharPopup() {
-        popup.classList.remove("ativo");
-
+        overlay.hidden = true;
         if (focoAnterior && typeof focoAnterior.focus === "function") {
           focoAnterior.focus();
         }
       }
 
-      fechar.addEventListener("click", fecharPopup);
-
-      popup.addEventListener("click", function(evento) {
-        if (evento.target === popup) fecharPopup();
-      });
-
-      document.addEventListener("keydown", function(evento) {
-        if (!popup.classList.contains("ativo")) return;
-
-        if (evento.key === "Escape") {
-          fecharPopup();
-          return;
-        }
-
-        if (evento.key === "Tab") {
-          const elementos = Array.from(
-            popup.querySelectorAll("button, a[href]")
-          );
-          const primeiro = elementos[0];
-          const ultimo = elementos[elementos.length - 1];
-
-          if (evento.shiftKey && document.activeElement === primeiro) {
-            evento.preventDefault();
-            ultimo.focus();
-          } else if (!evento.shiftKey && document.activeElement === ultimo) {
-            evento.preventDefault();
-            primeiro.focus();
-          }
-        }
-      });
-
-      document.documentElement.addEventListener("mouseleave", function(evento) {
-        if (evento.clientY <= 0) abrirPopup();
-      });
-    })();
-  </script>
-  
-    <div class="popup-overlay" id="popup-overlay" hidden>
-    <div class="popup-caixa" role="dialog" aria-modal="true" aria-labelledby="popup-titulo">
-      <button type="button" class="popup-fechar" id="popup-fechar" aria-label="Fechar">&times;</button>
-      <h2 id="popup-titulo">Antes de sair...</h2>
-      <p>Quer saber quanto custa um plano para sua empresa ou MEI? Fale direto comigo e receba as opções no seu WhatsApp.</p>
-      <a class="popup-btn" href="https://wa.me/5521985112985?text=Ol%C3%A1%20Carlos%2C%20vi%20no%20seu%20site%20e%20quero%20falar%20com%20um%20corretor." data-evento="popup_whatsapp">Falar com Carlos</a>
-    </div>
-  </div>
-
-  <script>
-    (function () {
-      var overlay = document.getElementById("popup-overlay");
-      var btnFechar = document.getElementById("popup-fechar");
-
-      function abrirPopup() {
-        overlay.hidden = false;
-      }
-
-      function fecharPopup() {
-        overlay.hidden = true;
-      }
-
       btnFechar.addEventListener("click", fecharPopup);
+      linkPopup.addEventListener("click", fecharPopup);
 
       overlay.addEventListener("click", function (e) {
         if (e.target === overlay) fecharPopup();
@@ -1848,10 +1908,10 @@
         if (e.key === "Escape" && !overlay.hidden) fecharPopup();
       });
 
-      if (!sessionStorage.getItem("popupVisto")) {
+      if (!jaVisto()) {
         setTimeout(function () {
           abrirPopup();
-          sessionStorage.setItem("popupVisto", "1");
+          marcarVisto();
         }, 20000);
       }
     })();
