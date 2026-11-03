@@ -777,6 +777,27 @@
       .premiacao-foto {
         height: 220px;
       }
+    }@media (max-width: 480px) {
+      .container, .perfil, .quiz-section, .guia-secao {
+        width: calc(100% - 24px);
+      }
+
+      section { padding: 24px 12px; }
+
+      .quiz-options.grid-2, .premiacoes-galeria {
+        grid-template-columns: 1fr;
+      }
+
+      .depoimentos-grid { grid-template-columns: 1fr; }
+
+      .confianca-barra { gap: 15px; }
+
+      .whatsapp-float {
+        right: 10px;
+        bottom: 10px;
+        padding: 12px 15px;
+        font-size: .9rem;
+      }
     }
   </style> 
 
