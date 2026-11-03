@@ -52,7 +52,7 @@
     })(window, document, "clarity", "script", "yz75ohsts9");
   </script>
 
-    <style>
+  <style>
     :root {
       --azul: #0057a8;
       --azul-escuro: #003b73;
@@ -474,8 +474,15 @@
       padding: 14px;
       font-size: 1rem;
     }
-.quiz-step textarea {
+
+    .quiz-step textarea {
+      width: 100%;
       min-height: 80px;
+      margin-bottom: 12px;
+      border: 0;
+      border-radius: 8px;
+      padding: 14px;
+      font-size: 1rem;
       resize: vertical;
     }
 
@@ -695,6 +702,9 @@
     .guia-secao-conteudo ul,
     .guia-secao-conteudo ol { margin-bottom: 12px; }
 
+    .guia-secao-conteudo ul,
+    .guia-secao-conteudo ol { padding-left: 22px; }
+
     .guia-secao-acoes {
       display: flex;
       flex-wrap: wrap;
@@ -706,7 +716,7 @@
     .popup-overlay {
       position: fixed;
       inset: 0;
-      z-index: 1000;
+      z-index: 2000;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -751,6 +761,8 @@
       line-height: 1;
     }
 
+    .popup-btn { max-width: 100%; }
+
     .rodape {
       padding: 30px 20px 40px;
       background: var(--azul-escuro);
@@ -760,6 +772,108 @@
     }
 
     .rodape p { margin-bottom: 6px; }
+
+    .rodape a {
+      color: #fff;
+      text-decoration: underline;
+      word-break: break-word;
+    }
+
+    /* ===== Correções ===== */
+    body { padding-bottom: 84px; }
+
+    .container { width: min(900px, 100%); margin: 0 auto; }
+
+    .perfil { margin: 24px auto 0; }
+    .perfil.perfil-operadoras { margin-top: 0; }
+
+    .quiz-section { margin-top: 24px; }
+
+    /* Botão fixo do WhatsApp */
+    .whatsapp-float {
+      position: fixed;
+      z-index: 900;
+      right: 16px;
+      bottom: 16px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 18px;
+      border-radius: 999px;
+      background: var(--whatsapp);
+      color: var(--branco);
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 4px 14px rgba(0,0,0,.3);
+    }
+
+    .whatsapp-float:hover { filter: brightness(.95); }
+
+    /* Acordeões */
+    .acordeao-cabecalho > span:first-child { display: block; }
+    .acordeao-cabecalho h2 { margin: 0 0 4px; }
+    .acordeao-cabecalho .resumo { display: block; }
+
+    .destaque {
+      margin: 18px 0;
+      padding: 14px 16px;
+      border-left: 4px solid var(--verde);
+      border-radius: 8px;
+      background: #e8f4ff;
+      color: #333;
+    }
+
+    .destaque strong { color: var(--azul); }
+
+    .aviso {
+      margin: 18px 0;
+      padding: 14px 16px;
+      border-left: 4px solid #e0a000;
+      border-radius: 8px;
+      background: #fff3cd;
+      color: #333;
+    }
+
+    .tabela-carencias {
+      width: 100%;
+      margin: 12px 0 18px;
+      border-collapse: collapse;
+      font-size: .9rem;
+    }
+
+    .tabela-carencias th,
+    .tabela-carencias td {
+      padding: 10px;
+      border: 1px solid #d9e2ec;
+      text-align: left;
+    }
+
+    .tabela-carencias th {
+      background: #e8f4ff;
+      color: var(--azul);
+    }
+
+    /* Depoimentos */
+    .depoimento-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .depoimento-avatar {
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #e8f4ff;
+      font-size: 1.5rem;
+    }
+
+    .depoimento-info h3 { color: var(--azul); font-size: 1rem; }
+    .depoimento-info p { margin: 0; color: var(--verde); }
 
     @media (max-width: 900px) {
       .premiacoes-galeria {
@@ -794,123 +908,22 @@
       .premiacao-foto {
         height: 220px;
       }
-    }/* ===== CORREÇÕES ===== */
-body { padding-bottom: 84px; }
 
-.container { width: min(900px, 100%); margin: 0 auto; }
+      .whatsapp-float {
+        right: 12px;
+        bottom: 12px;
+        padding: 11px 15px;
+        font-size: .9rem;
+      }
 
-.perfil { margin: 24px auto 0; }
-.perfil.perfil-operadoras { margin-top: 0; }
-
-/* Botão fixo do WhatsApp */
-.whatsapp-float {
-  position: fixed;
-  z-index: 900;
-  right: 16px;
-  bottom: 16px;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 13px 18px;
-  border-radius: 999px;
-  background: var(--whatsapp);
-  color: var(--branco);
-  font-weight: 700;
-  text-decoration: none;
-  box-shadow: 0 4px 14px rgba(0,0,0,.3);
-}
-
-.whatsapp-float:hover { filter: brightness(.95); }
-
-/* Acordeões */
-.acordeao-cabecalho > span:first-child { display: block; }
-.acordeao-cabecalho h2 { margin: 0 0 4px; }
-.acordeao-cabecalho .resumo { display: block; }
-
-.destaque {
-  margin: 18px 0;
-  padding: 14px 16px;
-  border-left: 4px solid var(--verde);
-  border-radius: 8px;
-  background: #e8f4ff;
-  color: #333;
-}
-
-.destaque strong { color: var(--azul); }
-
-.aviso {
-  margin: 18px 0;
-  padding: 14px 16px;
-  border-left: 4px solid #e0a000;
-  border-radius: 8px;
-  background: #fff3cd;
-  color: #333;
-}
-
-.tabela-carencias {
-  width: 100%;
-  margin: 12px 0 18px;
-  border-collapse: collapse;
-  font-size: .9rem;
-}
-
-.tabela-carencias th,
-.tabela-carencias td {
-  padding: 10px;
-  border: 1px solid #d9e2ec;
-  text-align: left;
-}
-
-.tabela-carencias th {
-  background: #e8f4ff;
-  color: var(--azul);
-}
-
-/* Depoimentos */
-.depoimento-header {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 14px;
-}
-
-.depoimento-avatar {
-  display: grid;
-  place-items: center;
-  flex-shrink: 0;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: #e8f4ff;
-  font-size: 1.5rem;
-}
-
-.depoimento-info h3 { color: var(--azul); font-size: 1rem; }
-.depoimento-info p { margin: 0; color: var(--verde); }
-
-/* Rodapé */
-.rodape a { color: #fff; text-decoration: underline; word-break: break-word; }
-
-/* Pop-up */
-.popup-overlay { z-index: 2000; }
-.popup-btn { max-width: 100%; }
-
-@media (max-width: 480px) {
-  .whatsapp-float {
-    right: 12px;
-    bottom: 12px;
-    left: 12px;
-    justify-content: center;
-  }
-
-  .rodape a { display: block; margin: 4px 0; }
-  .tabela-carencias { font-size: .82rem; }
-  .tabela-carencias th, .tabela-carencias td { padding: 8px; }
-}
+      .rodape a { display: block; margin: 4px 0; }
+      .tabela-carencias { font-size: .82rem; }
+      .tabela-carencias th, .tabela-carencias td { padding: 8px; }
+    }
   </style>
 </head>
 <body>
-  
+
   <header>
     <h1>Proteja sua empresa pagando o preço justo: Descubra o Plano de Saúde ideal para MEI/CNPJ.</h1>
 
@@ -928,7 +941,7 @@ body { padding-bottom: 84px; }
     </a>
   </header>
 
-    <section class="perfil">
+  <section class="perfil">
     <img src="carlos-alexandre.jpg"
          alt="Foto de Carlos Alexandre, corretor de planos de saúde"
          width="120" height="120">
@@ -1035,9 +1048,9 @@ body { padding-bottom: 84px; }
         <span>Atendimento consultivo</span>
       </div>
     </div>
-  </section>  
+  </section>
 
-   <section id="cotacao" class="quiz-section">
+  <section id="cotacao" class="quiz-section">
     <div class="quiz-container">
       <div class="quiz-titulo-secao">
         <h2>Simulador de Plano de Saúde</h2>
@@ -1138,8 +1151,7 @@ body { padding-bottom: 84px; }
       </div>
     </div>
   </section>
-
-  <section class="sobre-premiacoes-section" id="sobre-premiacoes">
+    <section class="sobre-premiacoes-section" id="sobre-premiacoes">
     <div class="container">
       <h2 class="section-title">Sobre o Corretor</h2>
 
@@ -1502,6 +1514,7 @@ body { padding-bottom: 84px; }
      aria-label="Falar com Carlos pelo WhatsApp">
     💬 WhatsApp
   </a>
+
   <div class="popup-overlay" id="popup-overlay" hidden>
     <div class="popup-caixa" role="dialog" aria-modal="true" aria-labelledby="popup-titulo">
       <button type="button" class="popup-fechar" id="popup-fechar" aria-label="Fechar">&times;</button>
@@ -1512,6 +1525,7 @@ body { padding-bottom: 84px; }
          target="_blank" rel="noopener noreferrer">Falar com Carlos</a>
     </div>
   </div>
+
   <script>
     "use strict";
 
@@ -1867,7 +1881,9 @@ body { padding-bottom: 84px; }
       });
 
     atualizarProgresso();
-      <script>
+  </script>
+
+  <script>
     (function () {
       var overlay = document.getElementById("popup-overlay");
       var btnFechar = document.getElementById("popup-fechar");
