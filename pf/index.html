@@ -644,6 +644,7 @@
         left: 12px;
         justify-content: center;
       }
+    }
     /* ===== Destaque da seção de operadoras ===== */
     .perfil.perfil-operadoras {
       margin-top: 24px;
@@ -1340,40 +1341,147 @@
       progressBar.style.width = porcentagem + "%";
     }
 
-    function irParaEtapa(numero) {
-      var proximaEtapa = document.querySelector(
-        '.quiz-step[data-step="' + numero + '"]'
-      );
+    var reposicionamentoQuiz = null;
 
-      if (!proximaEtapa) {
-        return;
-      }
+function posicionarEtapaQuiz(etapa) {
+  if (reposicionamentoQuiz !== null) {
+    cancelAnimationFrame(reposicionamentoQuiz);
+  }
 
-      document.querySelectorAll(".quiz-step").forEach(function(etapa) {
-        etapa.classList.remove("active");
-      });
+  // Aguarda a nova etapa entrar no layout antes de medir sua altura.
+  reposicionamentoQuiz = requestAnimationFrame(function() {
+    reposicionamentoQuiz = null;
 
-      proximaEtapa.classList.add("active");
-      etapaAtual = numero;
-      atualizarProgresso();
+    if (!etapa.classList.contains("active")) {
+      return;
+    }
 
-      if (numero === 5) {
-        if (loadingBar) {
-          loadingBar.style.width = "0%";
+    var viewport = window.visualViewport;
+    var alturaVisivel = viewport
+      ? viewport.height
+      : window.innerHeight;
 
-          setTimeout(function() {
-            loadingBar.style.width = "100%";
-          }, 100);
-        }
+    var deslocamentoViewport = viewport
+      ? viewport.offsetTop
+      : 0;
 
-        setTimeout(function() {
-          if (etapaAtual === 5) {
-            irParaEtapa(6);
-          }
-        }, 1800);
+    var margemSuperior = 24;
+    var margemInferior = 24;
+
+    // Reserva espaço para o botão fixo do WhatsApp.
+    var whatsappFixo = document.querySelector(".whatsapp-fixo");
+
+    if (whatsappFixo) {
+      var retanguloWhatsapp = whatsappFixo.getBoundingClientRect();
+
+      if (retanguloWhatsapp.width > 0 && retanguloWhatsapp.height > 0) {
+        margemInferior = retanguloWhatsapp.height + 32;
       }
     }
 
+    var alturaDisponivel = Math.max(
+      0,
+      alturaVisivel - margemSuperior - margemInferior
+    );
+
+    var retanguloEtapa = etapa.getBoundingClientRect();
+
+    // Etapas curtas ficam centralizadas no espaço disponível.
+    // Etapas longas começam pelo topo para não esconder a pergunta.
+    var espacoAcima = retanguloEtapa.height <= alturaDisponivel
+      ? (alturaDisponivel - retanguloEtapa.height) / 2
+      : 0;
+
+    var destino =
+      window.scrollY +
+      retanguloEtapa.top -
+      deslocamentoViewport -
+      margemSuperior -
+      espacoAcima;
+
+    var raiz = document.documentElement;
+    var comportamentoAnterior =
+      raiz.style.getPropertyValue("scroll-behavior");
+    var prioridadeAnterior =
+      raiz.style.getPropertyPriority("scroll-behavior");
+
+    // Evita que o scroll-behavior: smooth da página mantenha
+    // uma animação de rolagem durante a troca da pergunta.
+    raiz.style.setProperty("scroll-behavior", "auto", "important");
+
+    window.scrollTo({
+      top: Math.max(0, destino),
+      left: 0,
+      behavior: "auto"
+    });
+
+    if (comportamentoAnterior) {
+      raiz.style.setProperty(
+        "scroll-behavior",
+        comportamentoAnterior,
+        prioridadeAnterior
+      );
+    } else {
+      raiz.style.removeProperty("scroll-behavior");
+    }
+
+    // Move o foco para a pergunta, sem abrir o teclado do celular.
+    var pergunta = etapa.querySelector(".pergunta");
+
+    if (pergunta) {
+      pergunta.setAttribute("tabindex", "-1");
+      pergunta.focus({ preventScroll: true });
+    }
+  });
+}
+
+function irParaEtapa(numero) {
+  var proximaEtapa = document.querySelector(
+    '.quiz-step[data-step="' + numero + '"]'
+  );
+
+  if (!proximaEtapa) {
+    return;
+  }
+
+  // Fecha o teclado caso um campo esteja sendo editado.
+  var elementoAtivo = document.activeElement;
+
+  if (
+    elementoAtivo &&
+    elementoAtivo.matches("input, textarea")
+  ) {
+    elementoAtivo.blur();
+  }
+
+  document.querySelectorAll(".quiz-step").forEach(function(etapa) {
+    etapa.classList.remove("active");
+  });
+
+  proximaEtapa.classList.add("active");
+  etapaAtual = numero;
+
+  atualizarProgresso();
+  posicionarEtapaQuiz(proximaEtapa);
+
+  if (numero === 5) {
+    if (loadingBar) {
+      loadingBar.style.width = "0%";
+
+      setTimeout(function() {
+        if (etapaAtual === 5) {
+          loadingBar.style.width = "100%";
+        }
+      }, 100);
+    }
+
+    setTimeout(function() {
+      if (etapaAtual === 5) {
+        irParaEtapa(6);
+      }
+    }, 1800);
+  }
+}
     function gerarCamposIdade(quantidade) {
       if (!idadesContainer || !tituloIdade) {
         return;
