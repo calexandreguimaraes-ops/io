@@ -919,6 +919,66 @@
       .rodape a { display: block; margin: 4px 0; }
       .tabela-carencias { font-size: .82rem; }
       .tabela-carencias th, .tabela-carencias td { padding: 8px; }
+    }    
+    /* ===== Destaque da seção de operadoras ===== */
+    .perfil.perfil-operadoras {
+      margin-top: 24px;
+      padding: 36px 24px 32px;
+      border: 3px solid var(--azul);
+      background: linear-gradient(180deg, #ffffff 0%, #e8f4ff 100%);
+      box-shadow: 0 8px 24px rgba(0, 87, 168, .22);
+    }
+
+    .perfil.perfil-operadoras .titulo-operadoras {
+      margin-top: 24px;
+      margin-bottom: 8px;
+      color: var(--azul);
+      font-size: clamp(1.5rem, 4vw, 1.9rem);
+      line-height: 1.25;
+    }
+
+    .perfil.perfil-operadoras .legenda-operadoras {
+      color: #444;
+      font-size: 1rem;
+    }
+
+    .operadoras {
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .operadoras button {
+      padding: 11px 20px;
+      border: 2px solid var(--azul);
+      border-radius: 30px;
+      background: var(--branco);
+      color: var(--azul);
+      font-size: 1.02rem; /* antes .85rem: cerca de 2 pontos maior */
+      font-weight: 700;
+      box-shadow: 0 2px 6px rgba(0, 87, 168, .18);
+      transition: background .2s, color .2s, transform .2s, box-shadow .2s;
+    }
+
+    .operadoras button:hover,
+    .operadoras button.selecionada {
+      background: var(--azul);
+      color: var(--branco);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 12px rgba(0, 87, 168, .35);
+    }
+
+    @media (max-width: 480px) {
+      .perfil.perfil-operadoras {
+        padding: 28px 16px 26px;
+      }
+
+      .operadoras {
+        gap: 10px;
+      }
+
+      .operadoras button {
+        padding: 10px 16px;
+      }
     }
   </style>
 </head>
